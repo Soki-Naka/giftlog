@@ -24,37 +24,37 @@ module SessionsHelper
     end
   end
 
-   # 渡されたユーザーがカレントユーザーであればtrueを返す
-   def current_user?(user)
+  # 渡されたユーザーがカレントユーザーであればtrueを返す
+  def current_user?(user)
     user && user == current_user
-   end
+  end
 
-   # ユーザーがログインしていればtrue、その他ならfalseを返す
-   def logged_in?
+  # ユーザーがログインしていればtrue、その他ならfalseを返す
+  def logged_in?
     !current_user.nil?
-   end
+  end
 
-   # 永続的セッションを破棄する
-   def forget(user)
+  # 永続的セッションを破棄する
+  def forget(user)
     user.forget
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
-   end
+  end
 
-   # 現在のユーザーをログアウトする
-   def log_out
+  # 現在のユーザーをログアウトする
+  def log_out
     forget(current_user)
     session.delete(:user_id)
-   end
+  end
 
-   # 記憶したURL（もしくはデフォルト値）にリダイレクト
-   def redirect_back_or(default)
+  # 記憶したURL（もしくはデフォルト値）にリダイレクト
+  def redirect_back_or(default)
     redirect_to(session[:forwarding_url] || default)
     session.delete(:forwarding_url)
-   end
+  end
 
-   # アクセスしようとしたURLを覚えておく
-   def store_location
+  # アクセスしようとしたURLを覚えておく
+  def store_location
     session[:forwarding_url] = request.original_url if request.get?
-   end
+  end
 end

@@ -68,3 +68,8 @@ Metrics/MethodLength:
   Max: 20
   Exclude:
     - "db/migrate/*.rb"
+
+# if 文の中に 3 行程度のブロックを書くぐらいは許容した方が現実的
+
+Style/GuardClause:
+  MinBodyLength: 5
