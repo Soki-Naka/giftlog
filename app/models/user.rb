@@ -7,4 +7,8 @@ class User < ApplicationRecord
               uniqueness: true
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+  validates :gender, presence: true
+  validates :age, presence: true
+  validates :job, length: { maximum: 50 }
+  validates :introduction, length: { maximum: 200 }
 end

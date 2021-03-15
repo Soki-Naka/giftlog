@@ -1,3 +1,40 @@
-<% provide(:title, 'ユーザー登録') %>
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<% provide(:title, '新規ユーザー登録') %>
+<h1>新規ユーザー登録</h1>
+
+<div class="row">
+  <div>
+    <%= form_with(model: @user, local: true) do |f| %>
+        <%= render 'shared/error_messages' %>
+
+        <p><%= f.label :name, "ユーザー名" %>(必須)</p>
+        <%= f.text_field :name,  class:'form-control' %>
+
+        <p><%= f.label :email, "メールアドレス" %>(必須)</p>
+        <%= f.email_field :email, class:'form-control' %>
+
+        <p><%= f.label :password, "パスワード" %>(必須)</p>
+        <%= f.password_field :password, class:'form-control' %>
+
+        <p><%= f.label :password_confirmation, "パスワード確認" %>(必須)</p>
+        <%= f.password_field :password_confirmation,  class:'form-control' %>
+
+        <p><%= f.label :gender, "性別" %>(必須)</p>
+        <%= f.select :gender, [["男性", "男性"], ["女性", "女性"]], include_blank: "選択してください", class:'form-control' %>
+
+        <p><%= f.label :age, "年齢" %>(必須)</p>
+        <%= f.number_field :age, :placeholder => "半角数字で入力", class:'form-control', min:0, max:100 %>
+
+        <p><%= f.label :job, "職業" %>(任意)</p>
+        <%= f.text_field :job %>
+
+        <p><%= f.label :prefecture, "出身" %>(任意)</p>
+        <%= f.text_field :prefecture %>
+
+        <p><%= f.label :introduction, "自己紹介" %>(任意)</p>
+        <%= f.text_area :introduction %>
+
+        <%= f.submit "作成" %>
+
+    <% end %>
+  </div>
+</div>
