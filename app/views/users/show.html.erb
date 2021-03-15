@@ -1,1 +1,55 @@
-<%= @user.name %>
+<% provide(:title, @user.name) %>
+
+<h1><%= @user.name %></h1>
+<% @user ||= current_user %>
+<% if false %>
+<div>
+  <a href="<%= following_user_path(@user) %>">
+    <strong id="following">
+      <%= @user.following.count %>
+    </strong>
+    フォロー
+  </a>
+  <a href="<%= followers_user_path(@user) %>">
+    <strong id="followers">
+      <%= @user.followers.count %>
+    </strong>
+    フォロワー
+  </a>
+</div>
+<% end %>
+<p>性別:<%= @user.gender %></p>
+<p>年齢:<%= @user.age %>歳</p>
+<p>職業:<%= @user.job %></p>
+<p>出身:<%= @user.prefecture %></p>
+<p>自己紹介:<%= @user.introduction %></p>
+
+<% if false %>
+  <% unless current_user?(@user) %>
+    <div id="follow_form">
+    <% if current_user.following?(@user) %>
+      <%= render 'unfollow' %>
+    <% else %>
+      <%= render 'follow' %>
+    <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<div class="container">
+  <ul class="menu">
+    <li><a href="#" id="posts" class="menu_item active">投稿一覧</a></li>
+    <li><a href="#" id="comments" class="menu_item">回答コメント一覧</a></li>
+    <li><a href="#" id="likes_posts" class="menu_item">いいね(投稿)</a></li>
+    <li><a href="#" id="likes_comments" class="menu_item">いいね(コメント)</a></li>
+  </ul>
+  <div>
+    <% if @user.posts.any? %>
+      <h3>投稿一覧</h3>
+      <ol class="posts">
+        <%= render @posts %>
+      </ol>
+    <% end %>
+  </div>
+</div>

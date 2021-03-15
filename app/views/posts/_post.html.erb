@@ -1,0 +1,29 @@
+<div>
+  <ul>
+    <li>
+    <%= link_to post.id, "/posts/#{post.id}" %> 
+      <span class="user">
+        <%= link_to post.user.name, post.user %>
+        <%= post.user.gender %>
+        <p><%= post.user.age %>歳</p>
+      </span>
+      <span class="content">
+        <%= post.item %>
+        <%= post.who %>
+        <%= post.situation %>
+      </span>
+      <span class="timestamp">
+        Posted <%= time_ago_in_words(post.created_at) %> ago.
+      </span>
+      <% if current_user?(post.user) %>
+        <%= link_to "削除する", post, method: :delete,
+                                        data: { confirm: "投稿を削除してもよろしいですか?" } %>
+        <%= link_to "編集する", edit_post_path(post)  %>
+      <% end %>
+    </li>
+  </ul>
+<div>
+
+
+
+

@@ -1,0 +1,24 @@
+<div class="user-info">
+  <h2><%= @post.user.name %></h2>
+  <p>性別:<%= @post.user.gender %></p>
+  <p>年齢:<%= @post.user.age %>歳</p>
+</div>
+
+<div class="gift-info">
+  <p>贈りたいもの:<%= @post.item %></p>
+  <p>贈りたい人:<%= @post.who %></p>
+  <p>その人の特徴:</p>
+  <p>性別:<%= @post.gender %></p>
+  <p>年齢:<%= @post.age %></p>
+  <p>職業:<%= @post.job %></p>
+  <p>シチュエーション:<%= @post.situation %></p>
+  <p>予算:<%= @post.price %></p>
+  <p>いつ贈りたいか:<%= @post.when %></p>
+  <p>説明:<%= @post.description %></p>
+</div>
+
+<% if false %>
+  <% if logged_in? %>
+      <%= render 'posts/posts_likes' %>
+  <% end %>
+<% end %>
