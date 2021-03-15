@@ -14,6 +14,13 @@ class User < ApplicationRecord
   validates :job, length: { maximum: 50 }
   validates :introduction, length: { maximum: 200 }
 
+  # 渡された文字列のハッシュ値を返す
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
   # ランダムなトークンを返す
   def self.new_token
     SecureRandom.urlsafe_base64
