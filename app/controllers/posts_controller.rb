@@ -33,7 +33,8 @@ class PostsController < ApplicationController
   def update
     @post = Post.find_by(params[:id])
     if @post.update(post_params)
-      redirect_to request.referer
+      flash[:success] = '投稿を編集しました'
+      redirect_to root_url
     else
       render '/posts/edit'
     end

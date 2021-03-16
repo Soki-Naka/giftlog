@@ -3,12 +3,12 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: %i[edit update]
 
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(5)
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.page(params[:page]).per(5)
   end
 
   def new
@@ -43,14 +43,14 @@ class UsersController < ApplicationController
   def following
     @title = 'フォロー'
     @user  = User.find(params[:id])
-    @users = @user.following
+    @users = @user.following.page(params[:page]).per(5)
     render 'show_followings'
   end
 
   def followers
     @title = 'フォロワー'
     @user  = User.find(params[:id])
-    @users = @user.followers
+    @users = @user.followers.page(params[:page]).per(5)
     render 'show_followers'
   end
 

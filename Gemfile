@@ -7,6 +7,7 @@ ruby '3.0.0'
 gem 'bcrypt'
 gem 'device'
 gem 'dotenv-rails'
+gem 'kaminari'
 gem 'mysql2', '~> 0.5'
 gem 'rails', '~> 6.1.3'
 # Use Puma as the app server
