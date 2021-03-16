@@ -5,12 +5,12 @@
       <span class="user">
         <p>ユーザー名:<%= link_to post.user.name, post.user %></p>
         <p>性別:<%= post.user.gender %></p>
-        <p><%= post.user.age %>歳</p>
+        <p>年齢:<%= post.user.age %>歳</p>
       </span>
       <span class="content">
         <p>贈りたいもの:<%= post.item %></p>
         <p>贈りたい人:<%= post.who %></p>
-        <p>シチュエーション<%= post.situation %></p>
+        <p>シチュエーション:<%= post.situation %></p>
       </span>
       <span class="timestamp">
         <%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
