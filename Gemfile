@@ -10,6 +10,7 @@ gem 'dotenv-rails'
 gem 'kaminari'
 gem 'mysql2', '~> 0.5'
 gem 'rails', '~> 6.1.3'
+gem 'rails-i18n'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets

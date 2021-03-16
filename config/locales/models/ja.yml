@@ -1,0 +1,26 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      post: 投稿
+    attributes:
+      user:
+        name: ユーザー名
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        gender: 性別
+        age: 年齢
+        job: 職業
+        prefecture: 出身
+        introduction: 自己紹介
+      post:
+          who: 贈りたい人
+          gender: 性別
+          age: 年齢
+          job: 職業
+          situation: シチュエーション
+          item: 贈りたいもの
+          price: 予算
+          when: いつ贈りたいか
+          description: 自由記述
