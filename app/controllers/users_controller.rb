@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: %i[index edit update]
+  before_action :logged_in_user, only: %i[index edit update following followers]
   before_action :correct_user,   only: %i[edit update]
 
   def index
@@ -38,6 +38,20 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def following
+    @title = 'フォロー'
+    @user  = User.find(params[:id])
+    @users = @user.following
+    render 'show_followings'
+  end
+
+  def followers
+    @title = 'フォロワー'
+    @user  = User.find(params[:id])
+    @users = @user.followers
+    render 'show_followers'
   end
 
   private

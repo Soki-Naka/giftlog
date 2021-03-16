@@ -2,7 +2,6 @@
 
 <h1><%= @user.name %></h1>
 <% @user ||= current_user %>
-<% if false %>
 <div>
   <a href="<%= following_user_path(@user) %>">
     <strong id="following">
@@ -17,25 +16,21 @@
     フォロワー
   </a>
 </div>
-<% end %>
 <p>性別:<%= @user.gender %></p>
 <p>年齢:<%= @user.age %>歳</p>
 <p>職業:<%= @user.job %></p>
 <p>出身:<%= @user.prefecture %></p>
 <p>自己紹介:<%= @user.introduction %></p>
 
-<% if false %>
-  <% unless current_user?(@user) %>
-    <div id="follow_form">
-    <% if current_user.following?(@user) %>
-      <%= render 'unfollow' %>
-    <% else %>
-      <%= render 'follow' %>
-    <% end %>
-    </div>
+<% unless current_user?(@user) %>
+  <div id="follow_form">
+  <% if current_user.following?(@user) %>
+    <%= render 'unfollow' %>
+  <% else %>
+    <%= render 'follow' %>
   <% end %>
+  </div>
 <% end %>
-
 
 <div class="container">
   <ul class="menu">

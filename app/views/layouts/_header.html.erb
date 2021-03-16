@@ -15,7 +15,7 @@
             <ul class="dropdown-menu">
               <li><%= link_to "マイページ", current_user %></li>
               <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
-              <li><%= link_to "フォロー/フォロワー", '#' %></li>
+              <li><%= link_to "フォロー/フォロワー", following_user_path(current_user) %></li>
               <li><%= link_to "下書きリスト", '#' %></li>
               <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
             </ul>

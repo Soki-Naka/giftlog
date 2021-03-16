@@ -1,0 +1,12 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <div>
+    <h3><%= @title %></h3>
+    <%= link_to "フォロワー", followers_user_path(@user) %>
+    <% if @users.any? %>
+      <ul>
+        <%= render @users %>
+      </ul>
+    <% end %>
+  </div>
+</div>
