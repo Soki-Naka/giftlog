@@ -3,17 +3,17 @@
     <li>
     <%= link_to post.id, "/posts/#{post.id}" %> 
       <span class="user">
-        <%= link_to post.user.name, post.user %>
-        <%= post.user.gender %>
+        <p>ユーザー名:<%= link_to post.user.name, post.user %></p>
+        <p>性別:<%= post.user.gender %></p>
         <p><%= post.user.age %>歳</p>
       </span>
       <span class="content">
-        <%= post.item %>
-        <%= post.who %>
-        <%= post.situation %>
+        <p>贈りたいもの:<%= post.item %></p>
+        <p>贈りたい人:<%= post.who %></p>
+        <p>シチュエーション<%= post.situation %></p>
       </span>
       <span class="timestamp">
-        Posted <%= time_ago_in_words(post.created_at) %> ago.
+        <%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
       </span>
       <% if current_user?(post.user) %>
         <%= link_to "削除する", post, method: :delete,

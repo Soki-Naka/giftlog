@@ -16,6 +16,9 @@
   <p>いつ贈りたいか:<%= @post.when %></p>
   <p>説明:<%= @post.description %></p>
 </div>
+<span class="timestamp">
+  <%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+</span>
 
 <% if false %>
   <% if logged_in? %>

@@ -24,3 +24,10 @@ ja:
           price: 予算
           when: いつ贈りたいか
           description: 自由記述
+  views:
+    pagination:
+      first: '最初'
+      last: "最後"
+      previous: ’前'
+      next: '次'
+      truncate: '...'
