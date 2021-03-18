@@ -15,6 +15,13 @@
       <span class="timestamp">
         <%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
       </span>
+
+      <% if current_user.liked_by?(post.id) %>
+        <td><%= link_to 'いいねを外す', destroy_like_path(post), method: :DELETE %> <%= post.post_likes.count %></td>
+      <% else %>
+        <td><%= link_to 'いいね', create_like_path(post), method: :POST %> <%= post.post_likes.count %></td>
+      <% end %>
+
       <% if current_user?(post.user) %>
         <%= link_to "削除する", post, method: :delete,
                                         data: { confirm: "投稿を削除してもよろしいですか?" } %>

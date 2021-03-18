@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/new_post', to: 'posts#new'
   get '/posts/:id', to: 'posts#show'
   get '/posts/:id/edit', to: 'posts#edit'
+  post 'post_like/:id' => 'post_likes#create', as: 'create_like'
+  delete 'post_like/:id' => 'post_likes#destroy', as: 'destroy_like'
   resources :users do
     member do
       get :following, :followers
