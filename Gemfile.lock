@@ -87,8 +87,8 @@ GEM
       railties (>= 3.2)
     erubi (1.10.0)
     ffi (1.15.0)
-    font-awesome-rails (4.7.0.7)
-      railties (>= 3.2, < 7)
+    font-awesome-sass (5.15.1)
+      sassc (>= 1.11)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.9)
@@ -257,7 +257,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   device
   dotenv-rails
-  font-awesome-rails
+  font-awesome-sass
   jbuilder (~> 2.7)
   kaminari
   listen (~> 3.3)
