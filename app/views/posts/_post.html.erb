@@ -16,7 +16,7 @@
         <%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
       </span>
 
-      <%= render 'post_likes/like', post: post%>
+      <%= render 'post_likes/like', post: post %>
 
       <% if current_user?(post.user) %>
         <%= link_to "削除する", post, method: :delete,
