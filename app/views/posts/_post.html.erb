@@ -1,6 +1,6 @@
 <div>
   <ul>
-    <li id="post_<%= post.id %>" >
+    <li>
     <%= link_to post.id, "/posts/#{post.id}" %> 
       <span class="user">
         <p>ユーザー名:<%= link_to post.user.name, post.user %></p>
@@ -15,15 +15,15 @@
       <span class="timestamp">
         <%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
       </span>
-
-      <%= render 'post_likes/like', post: post %>
+        
+        <%= render 'post_likes/like', post: post %>
+        
 
       <% if current_user?(post.user) %>
         <%= link_to "削除する", post, method: :delete,
                                     data: { confirm: "投稿を削除してもよろしいですか?" } %>
         <%= link_to "編集する", edit_post_path(post)  %>
       <% end %>
-
     </li>
   </ul>
 <div>

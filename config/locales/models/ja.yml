@@ -26,8 +26,8 @@ ja:
           description: 自由記述
   views:
     pagination:
-      first: '最初'
+      first: "最初"
       last: "最後"
-      previous: ’前'
-      next: '次'
-      truncate: '...'
+      previous: "前"
+      next: "次"
+      truncate: "..."

@@ -73,3 +73,6 @@ Metrics/MethodLength:
 
 Style/GuardClause:
   MinBodyLength: 5
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false

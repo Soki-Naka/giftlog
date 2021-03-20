@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     end
   end
   resources :users
-  resources :posts, only: %i[create update edit destroy]
+  resources :posts, only: %i[create update edit destroy] do
+    resources :post_likes, only: %i[create destroy]
+  end
   resources :relationships, only: %i[create destroy]
 end
