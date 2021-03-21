@@ -1,1 +1,1 @@
-document.getElementById("post_<%= @post.id %>").innerHTML = '<%= j(render "post_likes/like") %>'
+document.getElementById("post_<%= @post.id %>").innerHTML = '<%= j(render "post_likes/like", {post: @post}) %>'
