@@ -54,6 +54,11 @@ class UsersController < ApplicationController
     render 'show_followers'
   end
 
+  def post_likes
+    @user = User.find(params[:id])
+    @posts = @user.liked_posts.page(params[:page]).per(5)
+  end
+
   private
 
   def user_params

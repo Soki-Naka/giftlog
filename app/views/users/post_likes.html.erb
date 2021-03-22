@@ -40,12 +40,9 @@
     <li><%= link_to "いいね(コメント)", "#" %>
   </ul>
 <div>
-    <% if @user.posts.any? %>
-      <h3>投稿一覧</h3>
-      <ol class="posts">
-        <%= render @posts%>
-        <%= paginate @posts %>
-      </ol>
-    <% end %>
-  </div>
-</div>
+
+<h3>いいね(投稿)</h3>
+<% if @user.post_likes.any? %>
+  <%= render @posts%>
+  <%= paginate @posts %>
+<% end %>
