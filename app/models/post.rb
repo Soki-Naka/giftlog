@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   has_many :post_likes, dependent: :destroy
   has_many :liked_users, through: :post_likes, source: :user
   default_scope -> { order(created_at: :desc) }
+  has_many :comments, dependent: :destroy
+  has_many :commented_users, through: :comments, source: :user
   validates :user_id, presence: true
   validates :who, presence: true, length: { maximum: 50 }
   validates :gender, presence: true

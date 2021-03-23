@@ -59,6 +59,11 @@ class UsersController < ApplicationController
     @posts = @user.liked_posts.page(params[:page]).per(5)
   end
 
+  def comments
+    @user = User.find(params[:id])
+    @posts = @user.commented_posts.page(params[:page]).per(5)
+  end
+
   private
 
   def user_params

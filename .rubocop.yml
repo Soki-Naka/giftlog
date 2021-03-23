@@ -76,3 +76,7 @@ Style/GuardClause:
 
 Rails/UniqueValidationWithoutIndex:
   Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/routes.rb'
