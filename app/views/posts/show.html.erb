@@ -19,8 +19,9 @@
 <span class="timestamp">
   <%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
 </span>
-
-<%= render 'post_likes/like', post: @post %>
+<div>
+  <%= render 'post_likes/like', post: @post %>
+</div>
 
 <h2>いいねしたユーザー</h2>
 <% @post.liked_users.each do |user| %>
@@ -38,14 +39,16 @@
     <% end %>
   <% end %>
   <h2>コメント一覧</h2>
+  <h3>コメント<%= @comments.count%>件</h3>
   <% @comments.each do |c| %>
     <div>
       <% unless c.user.blank? %>
         <a href="<%= user_path(c.user_id) %>"></a>
         <% end %>
       <%= link_to c.user.name, c.user unless c.user.blank? %>
-      <br />
+      <br/>
       <%= c.content %>
+      <p><%= c.created_at.strftime('%Y/%m/%d %H:%M:%S') %></p>
       <% if current_user?(c.user) %>
         <%= link_to "コメントを削除する", post_comment_path(@post, c), method: :delete %>
       <% end %>
