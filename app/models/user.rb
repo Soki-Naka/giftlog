@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :post_likes, source: :post
   has_many :comments, dependent: :destroy
   has_many :commented_posts, through: :comments, source: :post
+  has_many :comment_likes, dependent: :destroy
   has_many :active_relationships, class_name: 'Relationship',
                                   foreign_key: 'follower_id',
                                   dependent: :destroy,
@@ -81,6 +82,10 @@ class User < ApplicationRecord
 
   def liked_by?(post_id)
     post_likes.where(post_id: post_id).exists?
+  end
+
+  def comment_liked_by?(comment_id)
+    comment_likes.where(comment_id: comment_id).exists?
   end
 
   private

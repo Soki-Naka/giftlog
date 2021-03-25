@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   delete 'post_like/:id' => 'post_likes#destroy', as: 'destroy_like'
   get 'users/:id/post_likes' => 'users#post_likes', as: 'user_post_likes'
   get 'users/:id/comments' => 'users#comments', as: 'user_comments'
+  post 'comment_like/:id' => 'comment_likes#create', as: 'create_comment_like'
+  delete 'comment_like/:id' => 'comment_likes#destroy', as: 'destroy_comment_like'
   resources :users do
     member do
       get :following, :followers
@@ -22,7 +24,9 @@ Rails.application.routes.draw do
   resources :users
   resources :posts, only: %i[create update edit destroy] do
     resources :post_likes, only: %i[create destroy]
-    resources :comments, only: %i[create destroy]
+    resources :comments, only: %i[create destroy] do
+      resources :comment_likes, only: %i[create destroy]
+    end
   end
   resources :relationships, only: %i[create destroy]
 end
