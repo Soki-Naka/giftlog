@@ -1,5 +1,5 @@
 class CommentLikesController < ApplicationController
-  before_action :post_params, only: %i[create destroy]
+  before_action :comment_params, only: %i[create destroy]
   def create
     CommentLike.create(user_id: current_user.id, comment_id: params[:id])
     redirect_back(fallback_location: @post)
@@ -12,8 +12,7 @@ class CommentLikesController < ApplicationController
 
   private
 
-  def post_params
+  def comment_params
     @comment = Comment.find(params[:id])
-    @post = @comment.post
   end
 end

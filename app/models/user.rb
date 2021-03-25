@@ -80,10 +80,12 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  # 現在のユーザーが投稿にいいねをしてたらtrueを返す
   def liked_by?(post_id)
     post_likes.where(post_id: post_id).exists?
   end
 
+  # 現在のユーザーがコメントにいいねをしてたらtrueを返す
   def comment_liked_by?(comment_id)
     comment_likes.where(comment_id: comment_id).exists?
   end
