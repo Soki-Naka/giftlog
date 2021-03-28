@@ -1,0 +1,26 @@
+<% @comments.each do |c| %>
+    <div>
+      <% unless c.user.blank? %>
+        <a href="<%= user_path(c.user_id) %>"></a>
+        <% end %>
+      <%= link_to c.user.name, c.user unless c.user.blank? %>
+      <br/>
+      <%= c.content %>
+      <p><%= c.created_at.strftime('%Y/%m/%d %H:%M:%S') %></p>
+
+      <% if current_user?(@post.user) %>
+        <span id="comment_<%= @comment.id %>" >
+          <% if current_user.comment_liked_by?(c.id) %>
+            <td><%= link_to 'いいねを外す', destroy_comment_like_path(c), method: :DELETE, remote: true %></td>
+          <% else %>
+            <td><%= link_to 'いいね', create_comment_like_path(c), method: :POST, remote: true %></td>
+          <% end %>
+        </span>
+      <% end %>
+      <% if current_user?(c.user) %>
+        <%= link_to "コメントを削除する", post_comment_path(@post, c), method: :delete %>
+      <% end %>
+    </div>
+    <br/>
+  <% end %>
+      
