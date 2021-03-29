@@ -1,1 +1,1 @@
-document.getElementById("comment_<%= @comment.id %>").innerHTML = '<%= j(render "comments/likes", collection: @comments) %>'
+document.getElementById("comment_<%= @comment.id %>").innerHTML = '<%= j(render "comments/likes") %>'

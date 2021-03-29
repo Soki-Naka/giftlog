@@ -8,7 +8,7 @@
       <%= c.content %>
       <p><%= c.created_at.strftime('%Y/%m/%d %H:%M:%S') %></p>
 
-      <% if current_user?(@post.user) %>
+      <% if current_user?(@post.user) && c.user != current_user %>
         <span id="comment_<%= @comment.id %>" >
           <% if current_user.comment_liked_by?(c.id) %>
             <td><%= link_to 'いいねを外す', destroy_comment_like_path(c), method: :DELETE, remote: true %></td>
@@ -22,5 +22,4 @@
       <% end %>
     </div>
     <br/>
-  <% end %>
-      
+<% end %>

@@ -1,5 +1,4 @@
 <div>
-  <% unless current_user == @post.user  %>
     <h2>コメントを投稿する</h2>
     <%= form_with(model: [@post, @comment], local: true) do |f| %>
       <%= f.text_area :content %>
@@ -7,10 +6,9 @@
         <i></i> コメントする
       <% end %>
     <% end %>
-  <% end %>
   <h2>コメント一覧</h2>
   <h3>コメント<%= @comments.count%>件</h3>
   
-    <%= render 'comments/likes' %>
-  </span>
+  <%= render 'comments/likes' %>
+
 </div>

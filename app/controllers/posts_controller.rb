@@ -18,8 +18,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by(id: params[:id])
-    @comments = @post.comments.page(params[:page])
     @comment = Comment.new
+    @comments = @post.comments
   end
 
   def destroy
