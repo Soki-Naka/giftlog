@@ -1,7 +1,19 @@
 <span id="comment_<%= comment.id %>" >
   <% if current_user.comment_liked_by?(comment.id) %>
-    <td><%= link_to 'いいねを外す', destroy_comment_like_path(comment), method: :DELETE, remote: true %></td>
+    <td>
+      <%= link_to destroy_comment_like_path(comment), class: "comment-like-link", method: :DELETE, remote: true do %>
+        <i class="far fa-kiss-wink-heart unlike-btn"><p>ためになったと思ったら押しましょう！</P></i>
+      <% end %>
+    </td>
   <% else %>
-    <td><%= link_to 'いいね', create_comment_like_path(comment), method: :POST, remote: true %></td>
+    <td>
+      <%= link_to create_comment_like_path(comment), class: "comment-like-link", method: :POST, remote: true do %>
+        <i class="far fa-kiss-wink-heart like-btn">
+          <p>ナイスアンサー！
+            <br>(いいね済み)
+          </p>
+        </i>
+      <% end %>
+    </td>
   <% end %>
 </span>
