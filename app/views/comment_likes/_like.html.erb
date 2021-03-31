@@ -1,9 +1,7 @@
-<% if current_user?(@post.user) && comment.user != current_user %>
-  <span id="comment_<%= comment.id %>" >
-    <% if current_user.comment_liked_by?(comment.id) %>
-      <td><%= link_to 'いいねを外す', destroy_comment_like_path(comment), method: :DELETE, remote: true %></td>
-    <% else %>
-      <td><%= link_to 'いいね', create_comment_like_path(comment), method: :POST, remote: true %></td>
-    <% end %>
-  </span>
-<% end %>
+<span id="comment_<%= comment.id %>" >
+  <% if current_user.comment_liked_by?(comment.id) %>
+    <td><%= link_to 'いいねを外す', destroy_comment_like_path(comment), method: :DELETE, remote: true %></td>
+  <% else %>
+    <td><%= link_to 'いいね', create_comment_like_path(comment), method: :POST, remote: true %></td>
+  <% end %>
+</span>

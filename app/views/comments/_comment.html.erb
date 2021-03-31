@@ -9,7 +9,11 @@
       <%= comment.content %>
       <p><%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %></p>
 
-      <%= render 'comment_likes/like', post: @post, comment: comment %>
+      <% if current_user?(@post.user) && comment.user != current_user %>
+
+        <%= render 'comment_likes/like', post: @post, comment: comment %>
+
+      <% end %>
 
       <% if current_user?(comment.user) %>
         <%= link_to "コメントを削除する", post_comment_path(@post, comment), method: :delete %>
