@@ -61,8 +61,14 @@ class UsersController < ApplicationController
 
   def comments
     @user = User.find(params[:id])
-    @posts = @user.commented_posts.page(params[:page]).per(5)
+    @posts = @user.commented_posts.distinct.page(params[:page]).per(5)
   end
+
+  # def comment_likes
+  #   @user = User.find(params[:id])
+  #   @posts = @user.liked_comments_posts.distinct.page(params[:page]).per(5)
+  #   @comments = @user.comment_likes.distinct
+  # end
 
   private
 

@@ -62,6 +62,6 @@
 
 <h3>コメントした投稿</h3>
 <% if @user.comments.any? %>
-  <%= render @posts%>
+  <%= render @posts %>
   <%= paginate @posts %>
 <% end %>

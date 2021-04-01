@@ -56,12 +56,11 @@
     <li><%= link_to "投稿一覧", @user %></li>
     <li><%= link_to "コメントした投稿", user_comments_path(@user.id) %></li>
     <li><%= link_to "いいね(投稿)", user_post_likes_path(@user.id) %></li>
-    <li><%= link_to "いいね(コメント)", "#" %>
+    <li><%= link_to "いいね(コメント)", user_comment_likes_path(@user.id) %>
   </ul>
 <div>
 
-<h3>いいね(投稿)</h3>
-<% if @user.post_likes.any? %>
-  <%= render @posts %>
-  <%= paginate @posts %>
+<h3>いいね(コメント)</h3>
+<% if @user.comment_likes.any? %>
+  <%= paginate @comments %>
 <% end %>

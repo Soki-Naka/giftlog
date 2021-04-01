@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   delete 'post_like/:id' => 'post_likes#destroy', as: 'destroy_like'
   get 'users/:id/post_likes' => 'users#post_likes', as: 'user_post_likes'
   get 'users/:id/comments' => 'users#comments', as: 'user_comments'
+  # get 'users/:id/comment_likes' => 'users#comment_likes', as:
+  # 'user_comment_likes'
   post 'comment_like/:id' => 'comment_likes#create', as: 'create_comment_like'
   delete 'comment_like/:id' => 'comment_likes#destroy', as: 'destroy_comment_like'
   resources :users do
