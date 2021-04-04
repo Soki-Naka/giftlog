@@ -8,6 +8,15 @@ class StaticPagesController < ApplicationController
     else
       @posts = Post.all.page(params[:page]).per(5)
     end
+
+    # コメント回答数ランキング(自分の投稿へのコメントも含む)
+    @comments_users_rank = User.find(Comment.group(:user_id).order('count(user_id) desc').limit(3).pluck(:user_id))
+
+    # コメントへのいいね獲得数ランキング
+    @comments_likes_users_rank = User.joins(comments: :comment_likes).where(CommentLike.group(:user_id).order('count(user_id) desc').limit(3).pluck(:user_id))
+
+    # .group("liked_comments.id").order("count(liked_comments.user_id) desc")
+    # .sort {|a,b| b.liked_comments.size <=> a.liked_comments.size}
   end
 
   def about; end

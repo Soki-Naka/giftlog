@@ -62,6 +62,7 @@
 
 <h3>コメントした投稿</h3>
 <% if @user.comments.any? %>
+  <p>コメント数:<%= @user.comments.count%></p>
   <%= render @posts %>
   <%= paginate @posts %>
 <% end %>

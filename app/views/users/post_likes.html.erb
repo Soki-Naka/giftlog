@@ -62,6 +62,7 @@
 
 <h3>いいね(投稿)</h3>
 <% if @user.post_likes.any? %>
+  <p>いいね数:<%= @user.post_likes.count%></p>
   <%= render @posts %>
   <%= paginate @posts %>
 <% end %>

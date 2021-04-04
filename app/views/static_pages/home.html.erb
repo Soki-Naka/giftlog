@@ -29,21 +29,87 @@
   </div>
 </div>
 
-<div class="ranking-lists">
-  <div class="ranking-list">
-    <div class="title">
-      <h2>回答数ランキング</h2>
-    </div>
-  </div>
-  <div class="ranking-list">
-    <div class="title">
-      <h2>いいね獲得ランキング</h2>
-    </div>
-  </div>
-</div>
-
 <div class="posts">
   <h1>投稿一覧</h1>
     <%= render @posts %>
     <%= paginate @posts %>
+</div>
+
+<div class="ranking-lists">
+  <% if false %>
+  <div class="ranking-list">
+    <div class="title">
+      <h2>回答数ランキング</h2>
+      <% lastComment = 0 %>
+      <% j = 1 %>
+      <% @comment__rank.each.with_index(1) do |comment, i| %>
+        <% if i == 1 %>
+          <% lastComment = comments.count %>
+        <% end %>
+        <% if comments.count != lastLike %>
+          <% j = i %>
+          <p>第<%= j %>位</p>
+          <p>ユーザー名: <%= link_to comment.user.name, comment.user %></p>
+          <p>回答数: <%= comment.user.comments.count %></p>
+          <% lastComment = comment.comments.count %>
+        <% else %>
+          <% lastComment = comment.comments.count %>
+          <p>第<%= j %>位</p>
+          <p>ユーザー名: <%= link_to comment.user.name, comment.user %></p>
+          <p>回答数: <%= comment.user.comments.count %></p>
+        <% end %>
+      <% end %>
+        
+    </div>
+  </div>
+  <% end %>
+
+  <div class="ranking-list">
+    <div class="title">
+      <h2>回答数ランキング</h2>
+      <% @comments_users_rank.each.with_index(1) do |user, i| %>
+        <p>第<%= i %>位</p>
+        <p>ユーザー名: <%= link_to user.name, user %></p>
+        <p>回答数: <%= user.comments.count %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="ranking-list">
+    <div class="title">
+      <h2>いいね獲得ランキング</h2>
+      <% @comments_likes_users_rank.each.with_index(3) do |user, i| %>
+        <p>第<%= i %>位</p>
+        <p>ユーザー名: <%= link_to user.name, user %></p>
+        <p>いいね獲得数: <%= user.Commentlike(comment_id: user.comment_id).count %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <% if false %>
+  <div class="ranking-list">
+    <div class="title">
+      <h2>いいね獲得ランキング</h2>
+      <% lastLike = 0 %>
+      <% j = 1 %>
+      <% @comment_likes_rank.each.with_index(1) do |user, i| %>
+        <% if i == 1 %>
+          <% lastLike = user.comment_likes.count %>
+        <% end %>
+        <% if user.comment_likes.count != lastLike %>
+          <% j = i %>
+          <p>第<%= j %>位</p>
+          <p>ユーザー名: <%= link_to user.name, user %></p>
+          <p>いいね獲得数: <%= user.comment_likes.count %></p>
+          <% lastLike = user.comment_likes.count %>
+        <% else %>
+          <% lastLike = user.comment_likes.count %>
+          <p>第<%= j %>位</p>
+          <p>ユーザー名: <%= link_to user.name, user %></p>
+          <p>いいね獲得数: <%= user.comment_likes.count %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
 </div>
