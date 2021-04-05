@@ -13,7 +13,7 @@ class StaticPagesController < ApplicationController
     @comments_users_rank = User.find(Comment.group(:user_id).order('count(user_id) desc').limit(3).pluck(:user_id))
 
     # コメントへのいいね獲得数ランキング
-    @comments_likes_users_rank = User.joins(comments: :comment_likes).where(CommentLike.group(:user_id).order('count(user_id) desc').limit(3).pluck(:user_id))
+    # @comments_likes_users_rank = User.joins(comments: :comment_likes).where(CommentLike.group(:user_id).order('count(user_id) desc').limit(3).pluck(:user_id))
 
     # .group("liked_comments.id").order("count(liked_comments.user_id) desc")
     # .sort {|a,b| b.liked_comments.size <=> a.liked_comments.size}

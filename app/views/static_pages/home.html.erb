@@ -75,16 +75,18 @@
     </div>
   </div>
 
+  <% if false %>
   <div class="ranking-list">
     <div class="title">
       <h2>いいね獲得ランキング</h2>
       <% @comments_likes_users_rank.each.with_index(3) do |user, i| %>
         <p>第<%= i %>位</p>
         <p>ユーザー名: <%= link_to user.name, user %></p>
-        <p>いいね獲得数: <%= user.Commentlike(comment_id: user.comment_id).count %></p>
+        <p>いいね獲得数: <%= user.comment_likes.count %></p>
       <% end %>
     </div>
   </div>
+  <% end %>
 
   <% if false %>
   <div class="ranking-list">
