@@ -3,6 +3,7 @@
     <li>
     <%= link_to post.id, "/posts/#{post.id}" %> 
       <span class="user">
+        <%= image_tag post.user.image.to_s %>
         <p>ユーザー名:<%= link_to post.user.name, post.user %></p>
         <p>性別:<%= post.user.gender %></p>
         <p>年齢:<%= post.user.age %>歳</p>

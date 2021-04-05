@@ -1,5 +1,6 @@
 <% provide(:title, @user.name) %>
 
+<%= image_tag @user.image.to_s %>
 <h1><%= @user.name %></h1>
 <% if logged_in? %>
 <% @user ||= current_user %>

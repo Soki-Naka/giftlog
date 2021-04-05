@@ -6,6 +6,15 @@
     <%= form_with(model: @user, local: true) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
 
+        <% if @user.image.present? %>
+          <p><%= f.label :image, "プロフィール画像" %>(任意)</p>
+          <%= image_tag @user.image.url %>
+          <%= f.file_field :image %>
+        <% else %>
+          <p><%= f.label :image, "プロフィール画像" %>(任意)</p>
+          <%= f.file_field :image %>
+        <% end %>
+
         <p><%= f.label :name, "ユーザー名" %>(必須)</p>
         <%= f.text_field :name,  class:'form-control' %>
 
