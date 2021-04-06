@@ -64,29 +64,31 @@
   </div>
   <% end %>
 
-  <div class="ranking-list">
-    <div class="title">
-      <h2>回答数ランキング</h2>
-      <% @comments_users_rank.each.with_index(1) do |user, i| %>
-        <p>第<%= i %>位</p>
-        <p>ユーザー名: <%= link_to user.name, user %></p>
-        <p>回答数: <%= user.comments.count %></p>
-      <% end %>
-    </div>
-  </div>
-
   <% if false %>
+    <div class="ranking-list">
+      <div class="title">
+        <h2>回答数ランキング</h2>
+        <% @comments_users_rank.each.with_index(1) do |user, i| %>
+          <p>第<%= i %>位</p>
+          <p>ユーザー名: <%= link_to user.name, user %></p>
+          <p>回答数: <%= user.comments.count %></p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+<% if logged_in? %>
   <div class="ranking-list">
     <div class="title">
       <h2>いいね獲得ランキング</h2>
-      <% @comments_likes_users_rank.each.with_index(3) do |user, i| %>
+      <% @comments_likes_users_rank.each.with_index(1) do |user, i| %>
         <p>第<%= i %>位</p>
         <p>ユーザー名: <%= link_to user.name, user %></p>
-        <p>いいね獲得数: <%= user.comment_likes.count %></p>
+        <p>いいね獲得数: <%= user.comments_count %></p>
       <% end %>
     </div>
   </div>
-  <% end %>
+<% end %>
 
   <% if false %>
   <div class="ranking-list">
