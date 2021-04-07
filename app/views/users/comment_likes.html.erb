@@ -33,7 +33,12 @@
   </span>
 <% end %>
 </div>
-<%= image_tag @user.image.to_s %>
+
+<% if @user.image? %>
+  <%= image_tag @user.image.to_s %>
+<% else %>
+  <%= image_tag "default.jpg" %>
+<% end %>
 <p>性別:<%= @user.gender %></p>
 <p>年齢:<%= @user.age %>歳</p>
 <p>職業:<%= @user.job %></p>

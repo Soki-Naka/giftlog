@@ -1,5 +1,10 @@
 <% provide(:title, @user.name) %>
 
+<% if @user.image?%>
+  <%= image_tag @user.image.to_s %>
+<% else %>
+  <%= image_tag "default.jpg" %>
+<% end %>
 <h1><%= @user.name %></h1>
 <% if logged_in? %>
 <% @user ||= current_user %>
@@ -33,7 +38,7 @@
   </span>
 <% end %>
 </div>
-<%= image_tag @user.image.to_s %>
+
 <p>性別:<%= @user.gender %></p>
 <p>年齢:<%= @user.age %>歳</p>
 <p>職業:<%= @user.job %></p>

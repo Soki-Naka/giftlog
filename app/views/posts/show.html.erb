@@ -1,5 +1,9 @@
 <div class="user-info">
-  <%= image_tag @post.user.image.to_s %>
+  <% if @post.user.image?%>
+    <%= image_tag @post.user.image.to_s %>
+  <% else %>
+    <%= image_tag "default.jpg" %>
+  <% end %>
   <h2>投稿者:<%= @post.user.name %></h2>
   <p>性別:<%= @post.user.gender %></p>
   <p>年齢:<%= @post.user.age %>歳</p>
@@ -7,6 +11,10 @@
 
 <div class="gift-info">
   <p>贈りたいもの:<%= @post.item %></p>
+  <% if @post.image? %>
+    <p>贈りたいもののイメージ画像</p>
+    <%= image_tag @post.image.to_s %>
+  <% end %>
   <p>贈りたい人:<%= @post.who %></p>
   <p>その人の特徴:</p>
   <p>性別:<%= @post.gender %></p>
@@ -26,7 +34,13 @@
 
 <h2>いいねしたユーザー</h2>
 <% @post.liked_users.each do |user| %>
-  <li><%= image_tag user.image.to_s %></li>
+  <li>
+    <% if user.image? %>
+      <%= image_tag user.image.to_s %>
+    <% else %>
+      <%= image_tag "default.jpg" %>
+    <% end %>
+  </li>
   <li><%= link_to user.name, user %></li>
 <% end %>
 

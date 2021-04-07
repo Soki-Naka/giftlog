@@ -12,6 +12,7 @@ class Post < ApplicationRecord
   validates :job, length: { maximum: 50 }
   validates :situation, presence: true
   validates :item, presence: true, length: { maximum: 100 }
+  mount_uploader :image, ImageUploader
   validates :price, presence: true
   validates :when, length: { maximum: 50 }
   validates :description, length: { maximum: 200 }

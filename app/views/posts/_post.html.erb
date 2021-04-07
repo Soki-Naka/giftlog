@@ -3,13 +3,21 @@
     <li>
     <%= link_to post.id, "/posts/#{post.id}" %> 
       <span class="user">
-        <%= image_tag post.user.image.to_s %>
+        <% if post.user.image? %>
+          <%= image_tag post.user.image.to_s %>
+        <% else %>
+          <%= image_tag "default.jpg" %>
+        <% end %>
         <p>ユーザー名:<%= link_to post.user.name, post.user %></p>
         <p>性別:<%= post.user.gender %></p>
         <p>年齢:<%= post.user.age %>歳</p>
       </span>
       <span class="content">
         <p>贈りたいもの:<%= post.item %></p>
+        <% if post.image? %>
+          <p>贈りたいもののイメージ画像</p>
+          <%= image_tag post.image.to_s %>
+        <% end %>
         <p>贈りたい人:<%= post.who %></p>
         <p>シチュエーション:<%= post.situation %></p>
       </span>

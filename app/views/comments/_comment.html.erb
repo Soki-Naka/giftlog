@@ -4,7 +4,11 @@
       <% unless comment.user.blank? %>
         <a href="<%= user_path(comment.user_id) %>"></a>
       <% end %>
-      <%= image_tag comment.user.image.to_s %>
+      <% if comment.user.image? %>
+        <%= image_tag comment.user.image.to_s %>
+      <% else %>
+        <%= image_tag "default.jpg" %>
+      <% end %>
       <%= link_to comment.user.name, comment.user unless comment.user.blank? %>
       <br/>
       <%= comment.content %>

@@ -10,6 +10,7 @@
           <p><%= f.label :image, "プロフィール画像" %>(任意)</p>
           <%= image_tag @user.image.url %>
           <%= f.file_field :image %>
+          <p><%= f.check_box :remove_image %>画像を削除する</p>
         <% else %>
           <p><%= f.label :image, "プロフィール画像" %>(任意)</p>
           <%= f.file_field :image %>
