@@ -14,16 +14,23 @@ Rails.application.routes.draw do
   delete 'post_like/:id' => 'post_likes#destroy', as: 'destroy_like'
   get 'users/:id/post_likes' => 'users#post_likes', as: 'user_post_likes'
   get 'users/:id/comments' => 'users#comments', as: 'user_comments'
+  # get 'users/:id/favorite_people' => 'users#favorite_people', as: 'user_favorite_people'
   # get 'users/:id/comment_likes' => 'users#comment_likes', as:
   # 'user_comment_likes'
   post 'comment_like/:id' => 'comment_likes#create', as: 'create_comment_like'
   delete 'comment_like/:id' => 'comment_likes#destroy', as: 'destroy_comment_like'
+  get 'users/:id/favorite_people' => 'users#favorite_people', as: 'user_favorite_people'
+  get '/new_favorite_person', to: 'favorite_people#new'
   resources :users do
     member do
       get :following, :followers
     end
   end
-  resources :users
+  resources :users do
+    member do
+      get :favorite_people
+    end
+  end
   resources :posts, only: %i[create new update edit destroy] do
     resources :post_likes, only: %i[create destroy]
     resources :comments, only: %i[create destroy] do
@@ -31,4 +38,5 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: %i[create destroy]
+  resources :favorite_people, only: %i[create destroy]
 end

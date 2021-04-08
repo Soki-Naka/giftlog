@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: %i[index edit update following followers]
+  before_action :logged_in_user, only: %i[index edit update following followers favorite_people]
   before_action :correct_user,   only: %i[edit update]
 
   def index
@@ -62,6 +62,13 @@ class UsersController < ApplicationController
   def comments
     @user = User.find(params[:id])
     @posts = @user.commented_posts.distinct.page(params[:page]).per(5)
+  end
+
+  def favorite_people
+    @title = '大切な人リスト'
+    @user  = User.find(params[:id])
+    @favorite_people = @user.favorite_people.page(params[:page]).per(5)
+    render 'show_favorite_people'
   end
 
   # def comment_likes

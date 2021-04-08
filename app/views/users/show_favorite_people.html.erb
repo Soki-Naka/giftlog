@@ -1,0 +1,13 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <div>
+    <h3>大切な人リスト</h3>
+    <%= link_to "登録する", new_favorite_person_path %>
+    <% if @favorite_people.any? %>
+      <ul>
+        <%= render @favorite_people %>
+        <%= paginate @favorite_people %>
+      </ul>
+    <% end %>
+  </div>
+</div>

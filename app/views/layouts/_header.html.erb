@@ -7,7 +7,7 @@
         <% if logged_in? %>
           <li><%= link_to "ユーザーリスト", users_path %></li>
           <li><%= link_to "カレンダー", '#' %></li>
-          <li><%= link_to "人リスト", '#' %></li>
+          <li><%= link_to "人リスト", favorite_people_user_path(current_user) %></li>
           <li class="dropdown">
             <a href= '#' class="dropdown-toggle" data-toggle="dropdown">
               <%= current_user.name %>
