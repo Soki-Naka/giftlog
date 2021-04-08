@@ -1,4 +1,5 @@
 <li>
+  <%= link_to favorite_person.id, "/users/#{@user.id}/favorite_people/#{favorite_person.id}" %> 
   <% if favorite_person.image? %>
     <%= image_tag favorite_person.image.to_s %>
   <% else %>
@@ -6,5 +7,4 @@
   <% end %>
   <p>名前:<%= favorite_person.name %>
   <p>誕生日:<%= favorite_person.birthday %></p>
-  <%= link_to "詳細", favorite_person %>
 </li>

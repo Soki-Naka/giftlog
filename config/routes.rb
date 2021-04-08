@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   delete 'comment_like/:id' => 'comment_likes#destroy', as: 'destroy_comment_like'
   get 'users/:id/favorite_people' => 'users#favorite_people', as: 'user_favorite_people'
   get '/new_favorite_person', to: 'favorite_people#new'
+  get 'users/:id/favorite_people/:id', to: 'favorite_people#show'
   resources :users do
     member do
       get :following, :followers

@@ -15,6 +15,10 @@ class FavoritePeopleController < ApplicationController
     end
   end
 
+  def show
+    @favorite_person = FavoritePerson.find_by(id: params[:id])
+  end
+
   private
 
   def favorite_person_params

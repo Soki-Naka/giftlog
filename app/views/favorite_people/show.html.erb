@@ -1,0 +1,12 @@
+<div class="favorite_person-info">
+  <% if @favorite_person.image?%>
+    <%= image_tag @favorite_person.image.to_s %>
+  <% else %>
+    <%= image_tag "default.jpg" %>
+  <% end %>
+  <h2>名前:<%= @favorite_person.name %></h2>
+  <p>誕生日:<%= @favorite_person.birthday %></p>
+  <p>備考:<%= @favorite_person.description %></p>
+</div>
+
+<h1>贈ったものリスト</h1>
