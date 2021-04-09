@@ -6,5 +6,5 @@
     <%= image_tag "default.jpg" %>
   <% end %>
   <p>名前:<%= favorite_person.name %>
-  <p>誕生日:<%= favorite_person.birthday %></p>
+  <p>誕生日:<%= favorite_person.birthday&.strftime('%m/%d') %></p>
 </li>

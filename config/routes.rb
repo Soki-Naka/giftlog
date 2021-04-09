@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get 'users/:id/favorite_people' => 'users#favorite_people', as: 'user_favorite_people'
   get '/new_favorite_person', to: 'favorite_people#new'
   get 'users/:id/favorite_people/:id', to: 'favorite_people#show'
+  get 'users/:id/favorite_people/:id/new_gift', to: 'gifts#new'
+  # get '/gifts/new', to: 'gifts#new'
   resources :users do
     member do
       get :following, :followers
@@ -39,5 +41,15 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: %i[create destroy]
-  resources :favorite_people, only: %i[create destroy]
+  resources :favorite_people, only: %i[create destroy] do
+    member do
+      get :gifts
+    end
+  end
+  resources :users do
+    resources :favorite_people do
+      resources :gifts
+    end
+  end
+  resources :gifts, only: %i[create]
 end

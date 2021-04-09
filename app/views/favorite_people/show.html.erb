@@ -9,4 +9,14 @@
   <p>備考:<%= @favorite_person.description %></p>
 </div>
 
-<h1>贈ったものリスト</h1>
+<div>
+  <h1>贈ったものリスト</h1>
+
+  <%= link_to "登録する", "/users/#{@user.id}/favorite_people/#{@favorite_person.id}/new_gift" %>
+  <% if @gifts.any? %>
+    <ul>
+      <%= render @gifts %>
+      <%= paginate @gifts %>
+    </ul>
+  <% end %>
+</div>

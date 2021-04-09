@@ -1,0 +1,29 @@
+<% provide(:title, "贈り物登録") %>
+
+<h1>贈り物登録</h1>
+
+<div class="row">
+  <div>
+    <%= form_with(model: @gift, local: true) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <p><%= f.label :item, "贈ったもの(必須)" %></p>
+        <%= f.text_field :item, class:'form-control' %>
+
+        <p><%= f.label :situation, "シチュエーション(任意)" %></p>
+        <%= f.text_field :situation %>
+
+        <p><%= f.label :price, "予算(任意)" %></p>
+        <%= f.text_field :price %>円
+
+        <p><%= f.label :when, "いつ贈ったか(任意)" %></p>
+        <%= f.text_field :when %>
+        
+        <p><%= f.label :description, "備考(任意)" %></p>
+        <%= f.text_area :description %>
+
+        <p><%= f.submit "登録" %></p>
+
+    <% end %>
+  </div>
+</div>

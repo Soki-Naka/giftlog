@@ -16,10 +16,10 @@
         <p><%= f.label :birthday, "誕生日(任意)" %></p>
         <%= f.date_select :birthday, discard_year: true, prompt:"--" %>
 
-        <p><%= f.label :description, "備考(任意)" %>
+        <p><%= f.label :description, "備考(任意)" %></p>
         <%= f.text_area :description %>
 
-         <%= f.submit "登録" %>
+         <p><%= f.submit "登録" %></p>
 
     <% end %>
   </div>
