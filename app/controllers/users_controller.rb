@@ -71,6 +71,14 @@ class UsersController < ApplicationController
     render 'show_favorite_people'
   end
 
+  # def gifts
+  #   @title = '贈ったものリスト'
+  #   @user  = User.find(params[:id])
+  #   @favorite_person  = FavoritePerson.find(params[:id])
+  #   @gifts = @favorite_person.gifts.page(params[:page]).per(5)
+  #   render 'show_gifts'
+  # end
+
   # def comment_likes
   #   @user = User.find(params[:id])
   #   @posts = @user.liked_comments_posts.distinct.page(params[:page]).per(5)

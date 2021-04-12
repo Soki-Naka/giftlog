@@ -24,6 +24,17 @@ ja:
           price: 予算
           when: いつ贈りたいか
           description: 自由記述
+      favorite_person: 
+          name: 名前
+          image: 画像
+          birthday: 誕生日
+          description: 備考
+      gift: 
+          item: 贈ったもの
+          situation: シチュエーション
+          price: 予算
+          when: いつ贈ったか
+          description: 備考
   views:
     pagination:
       first: "最初"

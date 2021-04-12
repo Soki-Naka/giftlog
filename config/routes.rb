@@ -14,15 +14,15 @@ Rails.application.routes.draw do
   delete 'post_like/:id' => 'post_likes#destroy', as: 'destroy_like'
   get 'users/:id/post_likes' => 'users#post_likes', as: 'user_post_likes'
   get 'users/:id/comments' => 'users#comments', as: 'user_comments'
-  # get 'users/:id/favorite_people' => 'users#favorite_people', as: 'user_favorite_people'
   # get 'users/:id/comment_likes' => 'users#comment_likes', as:
   # 'user_comment_likes'
   post 'comment_like/:id' => 'comment_likes#create', as: 'create_comment_like'
   delete 'comment_like/:id' => 'comment_likes#destroy', as: 'destroy_comment_like'
   get 'users/:id/favorite_people' => 'users#favorite_people', as: 'user_favorite_people'
   get '/new_favorite_person', to: 'favorite_people#new'
-  get 'users/:id/favorite_people/:id', to: 'favorite_people#show'
-  get 'users/:id/favorite_people/:id/new_gift', to: 'gifts#new'
+  get '/users/:id/favorite_people/:id', to: 'favorite_people#show'
+  get '/new_gift', to: 'gifts#new'
+  # get 'users/:id/favorite_people/:id/new_gift', to: 'gifts#new'
   # get '/gifts/new', to: 'gifts#new'
   resources :users do
     member do
@@ -41,15 +41,15 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: %i[create destroy]
-  resources :favorite_people, only: %i[create destroy] do
+  resources :favorite_people, only: %i[create] do
     member do
       get :gifts
     end
   end
-  resources :users do
-    resources :favorite_people do
-      resources :gifts
-    end
-  end
+  # resources :users do
+  #   resources :favorite_people, only: %i[create] do
+  #     resources :gifts, only: %i[create]
+  #   end
+  # end
   resources :gifts, only: %i[create]
 end
