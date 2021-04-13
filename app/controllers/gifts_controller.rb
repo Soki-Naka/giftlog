@@ -8,7 +8,10 @@ class GiftsController < ApplicationController
 
   def create
     @favorite_person = FavoritePerson.find_by(params[:favorite_person_id])
+    # @gift = Gift.create(gift_params)
     @gift = @favorite_person.gifts.build(gift_params)
+
+    # @gift = Gift.new(**gift_params, favorite_person_id: @favorite_person.id)
 
     if @gift.save
       flash[:success] = '登録が完了しました'
@@ -40,4 +43,8 @@ class GiftsController < ApplicationController
   def gift_params
     params.require(:gift).permit(:item, :situation, :price, :when, :description)
   end
+
+  # def gift_params
+  #   params.require(:gift).permit(:item, :situation, :price, :when, :description).merge(favorite_person_id: @favorite_person.id)
+  # end
 end

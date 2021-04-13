@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   get '/users/:id/favorite_people/:id', to: 'favorite_people#show'
   get '/new_gift', to: 'gifts#new'
   # get 'users/:id/favorite_people/:id/new_gift', to: 'gifts#new'
-  # get '/gifts/new', to: 'gifts#new'
   resources :users do
     member do
       get :following, :followers

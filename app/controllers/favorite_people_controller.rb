@@ -16,7 +16,7 @@ class FavoritePeopleController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
+    # @user = User.find_by(id: params[:id])
     @favorite_person = FavoritePerson.find_by(id: params[:id])
     @gifts = @favorite_person.gifts.page(params[:page]).per(5)
   end
