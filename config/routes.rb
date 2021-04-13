@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: %i[create destroy]
-  resources :favorite_people, only: %i[create] do
+  resources :favorite_people, only: %i[create destroy edit update] do
     member do
       get :gifts
     end
@@ -50,5 +50,5 @@ Rails.application.routes.draw do
   #     resources :gifts, only: %i[create]
   #   end
   # end
-  resources :gifts, only: %i[create]
+  resources :gifts, only: %i[create destroy]
 end

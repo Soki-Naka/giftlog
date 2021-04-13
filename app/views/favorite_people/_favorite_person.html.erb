@@ -7,4 +7,11 @@
   <% end %>
   <p>名前:<%= favorite_person.name %>
   <p>誕生日:<%= favorite_person.birthday&.strftime('%01m月%01d日') %></p>
+
+  <% if current_user?(favorite_person.user) %>
+    <%= link_to "削除する", favorite_person, method: :delete,
+    data: { confirm: "削除してもよろしいですか?" } %>
+    <%= link_to "編集する", edit_favorite_person_path(favorite_person)  %>
+  <% end %>
+
 </li>

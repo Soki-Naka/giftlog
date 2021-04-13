@@ -1,5 +1,5 @@
 class GiftsController < ApplicationController
-  before_action :logged_in_user, only: %i[create]
+  before_action :logged_in_user, only: %i[create destroy]
 
   def new
     # @favorite_person = FavoritePerson.find_by(id: params[:id])
@@ -20,6 +20,14 @@ class GiftsController < ApplicationController
     else
       render 'gifts/new'
     end
+  end
+
+  def destroy
+    @gift = Gift.find(params[:id])
+    @gift.destroy
+    flash[:success] = '削除しました'
+    @favorite_person = FavoritePerson.find(id: params[:id])
+    redirect_to root_url
   end
 
   # def create

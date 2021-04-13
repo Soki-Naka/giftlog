@@ -1,10 +1,11 @@
-<% provide(:title, "新規大切な人登録") %>
+<% provide(:title, "大切な人編集") %>
 
-<h1>新規大切な人登録</h1>
+<h1>大切な人編集</h1>
 
 <div class="row">
   <div>
-    <%= form_with(model: @favorite_person,local: true) do |f| %>
+    <%= form_with(model: @favorite_person,
+    url: { action: :update}, local: true) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
 
         <p><%= f.label :name, "名前(必須)" %></p>
@@ -19,7 +20,7 @@
         <p><%= f.label :description, "備考(任意)" %></p>
         <%= f.text_area :description %>
 
-         <p><%= f.submit "登録" %></p>
+         <p><%= f.submit "更新" %></p>
 
     <% end %>
   </div>

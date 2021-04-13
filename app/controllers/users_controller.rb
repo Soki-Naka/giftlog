@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: %i[index edit update following followers favorite_people]
-  before_action :correct_user,   only: %i[edit update]
+  before_action :correct_user,   only: %i[edit update favorite_people]
 
   def index
     @users = User.all.page(params[:page]).per(5)

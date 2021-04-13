@@ -5,4 +5,8 @@
   <p>予算:<%= gift.price %>円
   <p>いつ贈ったか:<%= gift.when %>
   <p>備考:<%= gift.description %>
+
+  <%= link_to "削除する", gift, method: :delete,
+  data: { confirm: "削除してもよろしいですか?" } %>
+  <%= link_to "編集する", '#' %>
 </li>

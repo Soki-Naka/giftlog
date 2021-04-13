@@ -1,5 +1,6 @@
 class FavoritePeopleController < ApplicationController
-  before_action :logged_in_user, only: %i[create]
+  before_action :logged_in_user, only: %i[create destroy edit update]
+  # before_action :correct_user, only: %i[destroy]
 
   def new
     @favorite_person = FavoritePerson.new
@@ -19,6 +20,27 @@ class FavoritePeopleController < ApplicationController
     # @user = User.find_by(id: params[:id])
     @favorite_person = FavoritePerson.find_by(id: params[:id])
     @gifts = @favorite_person.gifts.page(params[:page]).per(5)
+  end
+
+  def destroy
+    @favorite_person = FavoritePerson.find(params[:id])
+    @favorite_person.destroy
+    flash[:success] = '削除しました'
+    redirect_to favorite_people_user_path(current_user)
+  end
+
+  def edit
+    @favorite_person = FavoritePerson.find(params[:id])
+  end
+
+  def update
+    @favorite_person = FavoritePerson.find(params[:id])
+    if @favorite_person.update(favorite_person_params)
+      flash[:success] = '編集しました'
+      redirect_to favorite_people_user_path(current_user)
+    else
+      render '/favorite_people/edit'
+    end
   end
 
   private
