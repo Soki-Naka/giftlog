@@ -5,6 +5,7 @@
 <div class="row">
   <div>
     <%= form_with(model: @gift, local: true) do |f| %>
+    
         <%= render 'shared/error_messages', object: f.object %>
 
         <p><%= f.label :item, "贈ったもの(必須)" %></p>
@@ -22,6 +23,11 @@
         <p><%= f.label :description, "備考(任意)" %></p>
         <%= f.text_area :description %>
 
+        <% if false %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+         <%= f.hidden_field :favorite_person_id, :value => @gift.favorite_person_id %>
+        <% end %>
+        
         <p><%= f.submit "登録" %></p>
 
     <% end %>

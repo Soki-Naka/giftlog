@@ -45,10 +45,10 @@ Rails.application.routes.draw do
       get :gifts
     end
   end
-  # resources :users do
-  #   resources :favorite_people, only: %i[create] do
-  #     resources :gifts, only: %i[create]
-  #   end
-  # end
+  resources :users do
+    resources :favorite_people, only: %i[create destroy] do
+      resources :gifts
+    end
+  end
   resources :gifts, only: %i[create destroy]
 end
