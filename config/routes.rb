@@ -33,6 +33,12 @@ Rails.application.routes.draw do
       get :favorite_people
     end
   end
+  resources :favorite_people, only: %i[create destroy edit update] do
+    member do
+      get :gifts
+    end
+  end
+  resources :gifts, only: %i[create destroy]
   resources :posts, only: %i[create new update edit destroy] do
     resources :post_likes, only: %i[create destroy]
     resources :comments, only: %i[create destroy] do
@@ -40,15 +46,9 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: %i[create destroy]
-  resources :favorite_people, only: %i[create destroy edit update] do
-    member do
-      get :gifts
-    end
-  end
-  resources :users do
-    resources :favorite_people, only: %i[create destroy] do
-      resources :gifts
-    end
-  end
-  resources :gifts, only: %i[create destroy]
+  # resources :users do
+  #   resources :favorite_people, only: %i[create destroy] do
+  #     resources :gifts
+  #   end
+  # end
 end

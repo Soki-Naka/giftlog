@@ -1,3 +1,4 @@
+<% provide(:title, @favorite_person.name) %>
 <div class="favorite_person-info">
   <% if @favorite_person.image?%>
     <%= image_tag @favorite_person.image.to_s %>
@@ -10,10 +11,7 @@
 </div>
 
 <div>
-  <% if false %>
-    <%= render @gifts %>
-  <% end %>
-  
+
   <h1>贈ったものリスト</h1>
 
   <%= link_to "登録する", new_gift_path %>

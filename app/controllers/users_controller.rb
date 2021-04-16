@@ -73,7 +73,7 @@ class UsersController < ApplicationController
 
   # def gifts
   #   @title = '贈ったものリスト'
-  #   @user  = User.find(params[:id])
+  #   # @user  = User.find(params[:id])
   #   @favorite_person  = FavoritePerson.find(params[:id])
   #   @gifts = @favorite_person.gifts.page(params[:page]).per(5)
   #   render 'show_gifts'

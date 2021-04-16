@@ -2,17 +2,15 @@ class GiftsController < ApplicationController
   before_action :logged_in_user, only: %i[create destroy]
 
   def new
-    # favorite_person = FavoritePerson.find_by(id: params[:favorite_person_id])
     @gift = Gift.new
   end
 
   def create
-    # @user = current_user
+    # @user = User.find_by(params[:user_id])
     @favorite_person = FavoritePerson.find_by(params[:favorite_person_id])
-    # @favorite_person = FavoritePerson.find_by(favorite_person_id: params[:favorite_person][:favorite_person_id])
     # logger.debug("コントローラーでデバッグだよ")
+    # logger.debug(current_user.name)
     # logger.debug(@favorite_person.name)
-    # logger.debug(@user.name)
     # @gift = Gift.create(gift_params)
     @gift = @favorite_person.gifts.build(gift_params)
     # @gift = Gift.new(gift_params)
