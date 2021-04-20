@@ -45,12 +45,14 @@
 <% end %>
 
 <div>
-  <h2>コメントを投稿する</h2>
-  <%= form_with(model: [@post, @comment], local: true) do |f| %>
-    <%= f.text_area :content %>
-    <%= button_tag type: "submit", remote:true do %>
-      <i></i>
-      コメントする
+  <% if logged_in? %>
+    <h2>コメントを投稿する</h2>
+    <%= form_with(model: [@post, @comment], local: true) do |f| %>
+      <%= f.text_area :content %>
+      <%= button_tag type: "submit", remote:true do %>
+        <i></i>
+        コメントする
+      <% end %>
     <% end %>
   <% end %>
   <h2>コメント一覧</h2>

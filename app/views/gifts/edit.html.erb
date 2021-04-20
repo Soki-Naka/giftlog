@@ -1,10 +1,11 @@
-<% provide(:title, "贈り物登録") %>
+<% provide(:title, "贈り物編集") %>
 
-<h1>贈り物登録</h1>
+<h1>贈り物編集</h1>
 
 <div class="row">
   <div>
-    <%= form_with(scope: :gift, url: favorite_person_gifts_path(@favorite_person), local: true) do |f| %>
+    <%= form_with(model: @gift, url: {action: :update}, local: true) do |f| %>
+
         <%= render 'shared/error_messages_for_gifts' %>
 
         <p><%= f.label :item, "贈ったもの(必須)" %></p>
@@ -22,7 +23,7 @@
         <p><%= f.label :description, "備考(任意)" %></p>
         <%= f.text_area :description %>
 
-        <p><%= f.submit "登録" %></p>
+        <p><%= f.submit "更新" %></p>
 
     <% end %>
   </div>

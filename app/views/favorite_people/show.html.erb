@@ -14,7 +14,7 @@
 
   <h1>贈ったものリスト</h1>
 
-  <%= link_to "登録する", new_gift_path %>
+  <%= link_to "登録する",  new_favorite_person_gift_path(@favorite_person)  %>
   <% if @gifts.any? %>
     <ul>
       <%= render @gifts %>

@@ -2,24 +2,30 @@ class GiftsController < ApplicationController
   before_action :logged_in_user, only: %i[create destroy]
 
   def new
+    @favorite_person = FavoritePerson.find(params[:favorite_person_id])
     @gift = Gift.new
   end
 
   def create
     # @user = User.find_by(params[:user_id])
-    @favorite_person = FavoritePerson.find_by(params[:favorite_person_id])
-    # logger.debug("コントローラーでデバッグだよ")
-    # logger.debug(current_user.name)
+    # logger.debug(@favorite_person.name)
+
+    # @favorite_person = FavoritePerson.find_by(user_id: current_user.id)
+    # @favorite_person = FavoritePerson.find(params[:id])
+    # @favorite_person = FavoritePerson.find_by(params[:favorite_person_id])
+    @favorite_person = FavoritePerson.find(params[:favorite_person_id])
+    # @favorite_person = FavoritePerson.find_by(id: params[:favorite_person_id])
     # logger.debug(@favorite_person.name)
     # @gift = Gift.create(gift_params)
     @gift = @favorite_person.gifts.build(gift_params)
+
+    # @gift = current_user.gifts.build(gift_params)
     # @gift = Gift.new(gift_params)
     # @gift = Gift.new(**gift_params, favorite_person_id: @favorite_person.id)
 
     if @gift.save
       flash[:success] = '登録が完了しました'
-      # redirect_to controller: :favorite_people, action: :show, id: @favorite_person.id
-      redirect_to root_url
+      redirect_to controller: :favorite_people, action: :show, id: @favorite_person.id
     else
       render 'gifts/new'
     end
@@ -29,8 +35,21 @@ class GiftsController < ApplicationController
     @gift = Gift.find(params[:id])
     @gift.destroy
     flash[:success] = '削除しました'
-    @favorite_person = FavoritePerson.find(id: params[:id])
-    redirect_to root_url
+    redirect_to request.referer
+  end
+
+  def edit
+    @gift = Gift.find(params[:id])
+  end
+
+  def update
+    @gift = Gift.find(params[:id])
+    if @gift.update(gift_params)
+      flash[:success] = '投稿を編集しました'
+      redirect_to controller: :favorite_people, action: :show, id: @gift.favorite_person_id
+    else
+      render '/gifts/edit'
+    end
   end
 
   # def create

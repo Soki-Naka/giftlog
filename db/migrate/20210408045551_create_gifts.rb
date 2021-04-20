@@ -10,5 +10,6 @@ class CreateGifts < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    add_index :gifts, %i[favorite_person_id created_at]
   end
 end

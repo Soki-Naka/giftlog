@@ -12,6 +12,7 @@ gem 'font-awesome-sass'
 gem 'kaminari'
 gem 'mini_magick'
 gem 'mysql2', '~> 0.5'
+gem 'pry-rails'
 gem 'rails', '~> 6.1.3'
 gem 'rails-i18n'
 # Use Puma as the app server
