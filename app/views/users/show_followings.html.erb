@@ -1,13 +1,11 @@
 <% provide(:title, @title) %>
-<div class="row">
   <div>
-    <h3><%= @title %></h3>
+    <h1 class="text-center"><%= @title %></h3>
     <%= link_to "フォロワー", followers_user_path(@user) %>
     <% if @users.any? %>
-      <ul>
+      <%# <ul> %>
         <%= render @users %>
         <%= paginate @users %>
-      </ul>
+      <%# </ul> %>
     <% end %>
   </div>
-</div>

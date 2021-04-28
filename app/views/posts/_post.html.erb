@@ -1,46 +1,71 @@
-<div>
-  <ul>
-    <li>
-    <%= link_to post.id, "/posts/#{post.id}" %> 
-      <span class="user">
-        <% if post.user.image? %>
-          <%= image_tag post.user.image.to_s %>
-        <% else %>
-          <%= image_tag "default.jpg" %>
+<li class="list-unstyled"> 
+  <div class="card bg-light text-center w-75 mx-auto mb-3">
+
+    <%# <div class="col-1">
+      <%= link_to post.id, "/posts/#{post.id}" %>
+
+
+    <div class="card-img-top mt-2 col-2 mx-auto" data-toggle="tooltip" data-placement="bottom" data-html="true" title=<%= post.user.name %>&#13;&#10;<%= post.user.age %>歳<%= post.user.gender %> >
+      <% if post.user.image? %>
+        <%= link_to image_tag(post.user.image.to_s, size: '100x100', class: "rounded-circle"), post.user %>
+      <% else %>
+        <%= link_to image_tag("default.jpg",size: '100x100', class: "rounded-circle"), post.user %>
+      <% end %>
+    </div>
+
+    <% if false %>
+    <div class="col-2 border">
+      <p class="small">ユーザー名:<%= link_to post.user.name, post.user, class:"small text-dark" %></p>
+      <p class="small">性別:<%= post.user.gender %></p>
+      <p class="small">年齢:<%= post.user.age %>歳</p>
+    </div>
+    <% end %>
+
+    <div class="card-body post-content w-75 mx-auto">
+      <p>贈りたいもの:<%= post.item %></p>
+      <% if post.image? %>
+        <p class="small">贈りたいもののイメージ画像</p>
+        <%# <%= image_tag post.image.to_s, size: '150x150' %> 
+        <%= link_to post.image.to_s, "data-lightbox" => post.image.to_s do %>
+          <%# <%= image_tag post.image.to_s,  height: '150', :style=>"width:150;" %> 
+          <%= image_tag post.image.to_s, size: '150x150' %>
         <% end %>
-        <p>ユーザー名:<%= link_to post.user.name, post.user %></p>
-        <p>性別:<%= post.user.gender %></p>
-        <p>年齢:<%= post.user.age %>歳</p>
+      <% end %>
+      <p>贈りたい人:<%= post.who %></p>
+      <p>シチュエーション:<%= post.situation %></p>
+      <p>説明:<br><%= post.description %></p>
+      <span class="timestamp small">
+        投稿日時:<%= post.created_at.strftime('%Y/%m/%d %H:%M') %>
       </span>
-      <span class="content">
-        <p>贈りたいもの:<%= post.item %></p>
-        <% if post.image? %>
-          <p>贈りたいもののイメージ画像</p>
-          <%= image_tag post.image.to_s %>
-        <% end %>
-        <p>贈りたい人:<%= post.who %></p>
-        <p>シチュエーション:<%= post.situation %></p>
-      </span>
-      <span class="timestamp">
+    </div>
+
+    <%# <div class="card-body post-content w-50 mx-auto">
+      <p>説明:<br><%= post.description %>
+
+    <%# <div class="card-body post-content">
+      <span class="timestamp small">
         <%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-      </span>
-      <div>
+      
+
+    <div class="card-body">
       <i class="fas fa-comment">
         <%= post.comments.count %>
       </i>
       <%= render 'post_likes/like', post: post %>
-      </div>
-        
+      <br>
 
+      <% if false %>
       <% if current_user?(post.user) %>
-        <%= link_to "削除する", post, method: :delete,
-        data: { confirm: "投稿を削除してもよろしいですか?" } %>
-        <%= link_to "編集する", edit_post_path(post)  %>
+        <%= link_to "投稿削除", post, method: :delete,
+        data: { confirm: "投稿を削除してもよろしいですか?" }, class: "mb-2 btn btn-danger btn-sm" %>
+        <%= link_to "投稿編集", edit_post_path(post), class: "btn btn-danger btn-sm" %>
       <% end %>
-    </li>
-  </ul>
-<div>
+      <% end %>
+    </div>
 
+    <div class="card-body">
+      <%= link_to "もっと見る", "/posts/#{post.id}", class: "btn" %>
+    </div>
 
-
-
+  </div>
+</li>

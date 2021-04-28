@@ -34,7 +34,7 @@ class GiftsController < ApplicationController
   def destroy
     @gift = Gift.find(params[:id])
     @gift.destroy
-    flash[:success] = '削除しました'
+    flash[:success] = '登録情報を削除しました'
     redirect_to request.referer
   end
 
@@ -45,7 +45,7 @@ class GiftsController < ApplicationController
   def update
     @gift = Gift.find(params[:id])
     if @gift.update(gift_params)
-      flash[:success] = '投稿を編集しました'
+      flash[:success] = "#{@gift.favorite_person.name}に贈ったものの情報を更新しました"
       redirect_to controller: :favorite_people, action: :show, id: @gift.favorite_person_id
     else
       render '/gifts/edit'

@@ -1,9 +1,10 @@
 <% provide(:title, @favorite_person.name) %>
-<div class="favorite_person-info">
+<div>
+<div class="border text-center w-75 mx-auto">
   <% if @favorite_person.image?%>
-    <%= image_tag @favorite_person.image.to_s %>
+    <%= image_tag @favorite_person.image.to_s, size: '200x200', class: "rounded-circle" %>
   <% else %>
-    <%= image_tag "default.jpg" %>
+    <%= image_tag "default.jpg", size: '200x200',class: "rounded-circle" %>
   <% end %>
   <h2>名前:<%= @favorite_person.name %></h2>
   <p>誕生日:<%= @favorite_person.birthday&.strftime('%01m月%01d日') %></p>
@@ -11,15 +12,16 @@
 </div>
 
 <div>
+  <h1 class="text-center">贈ったものリスト</h1>
 
-  <h1>贈ったものリスト</h1>
-
-  <%= link_to "登録する",  new_favorite_person_gift_path(@favorite_person)  %>
+  <div class="text-center mb-2">
+    <%= link_to "登録する",  new_favorite_person_gift_path(@favorite_person), class: "btn btn-success btn-sm"  %>
+  </div>
   <% if @gifts.any? %>
-    <ul>
+    <ul class="list-unstyled">
       <%= render @gifts %>
       <%= paginate @gifts %>
     </ul>
   <% end %>
-  
+</div>
 </div>

@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   end
 
   def following
-    @title = @user | 'フォロー'
+    @title = 'フォロー'
     @user  = User.find(params[:id])
     @users = @user.following.page(params[:page]).per(5)
     render 'show_followings'

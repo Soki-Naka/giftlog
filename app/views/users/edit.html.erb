@@ -1,38 +1,40 @@
 <% provide(:title, 'プロフィール編集') %>
-<h1>プロフィール編集</h1>
+<h1 class="text-center">プロフィール編集</h1>
 
-<div class="row">
-  <div>
+  <div class="border text-center w-75 mx-auto mb-2">
     <%= form_with(model: @user, local: true) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
 
+        <p><%= f.label :image, "プロフィール画像" %>(任意)</p><br>
         <% if @user.image.present? %>
-          <p><%= f.label :image, "プロフィール画像" %>(任意)</p>
-          <%= image_tag @user.image.url %>
+          <%= image_tag @user.image.url, size: '250x250', class: "rounded-circle" %>
+          <br>
+          <div>
           <%= f.file_field :image %>
+          </div>
           <p><%= f.check_box :remove_image %>画像を削除する</p>
         <% else %>
-          <p><%= f.label :image, "プロフィール画像" %>(任意)</p>
+          <%= image_tag "default.jpg", size: '300x300', class:"rounded-circle" %>
           <%= f.file_field :image %>
         <% end %>
 
         <p><%= f.label :name, "ユーザー名" %>(必須)</p>
-        <%= f.text_field :name,  class:'form-control' %>
+        <%= f.text_field :name %>
 
         <p><%= f.label :email, "メールアドレス" %>(必須)</p>
-        <%= f.email_field :email, class:'form-control' %>
+        <%= f.email_field :email %>
 
         <p><%= f.label :password, "パスワード" %>(必須)</p>
-        <%= f.password_field :password, class:'form-control' %>
+        <%= f.password_field :password %>
 
         <p><%= f.label :password_confirmation, "パスワード確認" %>(必須)</p>
-        <%= f.password_field :password_confirmation,  class:'form-control' %>
+        <%= f.password_field :password_confirmation %>
 
         <p><%= f.label :gender, "性別" %>(必須)</p>
-        <%= f.select :gender, [["男性", "男性"], ["女性", "女性"]], include_blank: "選択してください", class:'form-control' %>
+        <%= f.select :gender, [["男性", "男性"], ["女性", "女性"]], include_blank: "選択してください" %>
 
         <p><%= f.label :age, "年齢" %>(必須)</p>
-        <%= f.number_field :age, :placeholder => "半角数字で入力", class:'form-control', min:0, max:100 %>
+        <%= f.number_field :age, :placeholder => "半角数字で入力", min:0, max:100 %>歳
 
         <p><%= f.label :job, "職業" %>(任意)</p>
         <%= f.text_field :job %>
@@ -43,8 +45,7 @@
         <p><%= f.label :introduction, "自己紹介" %>(任意)</p>
         <%= f.text_area :introduction %>
 
-        <p><%= f.submit "更新" %></p>
+        <p><%= f.submit "更新", class: "btn btn-success btn-lg" %></p>
 
     <% end %>
   </div>
-</div>

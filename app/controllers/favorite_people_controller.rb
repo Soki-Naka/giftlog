@@ -25,7 +25,7 @@ class FavoritePeopleController < ApplicationController
   def destroy
     @favorite_person = FavoritePerson.find(params[:id])
     @favorite_person.destroy
-    flash[:success] = '削除しました'
+    flash[:success] = '登録情報を削除しました'
     redirect_to favorite_people_user_path(current_user)
   end
 
@@ -36,7 +36,7 @@ class FavoritePeopleController < ApplicationController
   def update
     @favorite_person = FavoritePerson.find(params[:id])
     if @favorite_person.update(favorite_person_params)
-      flash[:success] = '編集しました'
+      flash[:success] = "#{@favorite_person.name}の情報を更新しました"
       redirect_to favorite_people_user_path(current_user)
     else
       render '/favorite_people/edit'

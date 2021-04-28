@@ -5,10 +5,14 @@ ruby '3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'bcrypt'
+gem 'bootstrap', '>= 4.2'
+gem 'bootstrap4-kaminari-views'
+gem 'bootstrap-tooltip-rails'
 gem 'carrierwave'
 gem 'device'
 gem 'dotenv-rails'
 gem 'font-awesome-sass'
+gem 'jquery-rails'
 gem 'kaminari'
 gem 'mini_magick'
 gem 'mysql2', '~> 0.5'
@@ -50,7 +54,7 @@ group :development do
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'listen', '~> 3.3'
-  gem 'rack-mini-profiler', '~> 2.0'
+  # gem 'rack-mini-profiler', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end

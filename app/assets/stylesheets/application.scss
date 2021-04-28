@@ -1,2 +1,42 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "bootstrap";
+@import "bootstrap/bootstrap-tooltip";
+
+// ヘッダーメニュー
+.mymenu {
+  width: 175px;
+  height: 130px;
+  text-align: center;
+}
+// ヘッダーメニュー ここまで
+
+// 投稿一覧の表示
+.post-content {
+  text-align: left;
+}
+// 投稿一覧の表示 ここまで
+
+// 投稿詳細ページ 投稿内容
+.post-show-content {
+  text-align: left;
+}
+// 投稿詳細ページ 投稿内容 ここまで
+
+// ユーザー情報
+.user-info {
+  text-align: left;
+}
+// ユーザー情報 ここまで
+
+// 大切な人情報
+.favorite-person-info {
+  text-align: left;
+}
+// 大切な人情報 ここまで
+
+// 贈ったもの情報
+.gift-info {
+  text-align: left;
+}
+// 贈ったもの情報 ここまで

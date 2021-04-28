@@ -1,61 +1,67 @@
 <% provide(:title, @user.name) %>
-
-<% if @user.image? %>
-  <%= image_tag @user.image.to_s %>
-<% else %>
-  <%= image_tag "default.jpg" %>
-<% end %>
-<h1><%= @user.name %></h1>
-<% if logged_in? %>
-<% @user ||= current_user %>
-<div>
-  <a href="<%= following_user_path(@user) %>">
-    <strong id="following">
-      <%= @user.following.count %>
-    </strong>
-    フォロー
-  </a>
-  <a href="<%= followers_user_path(@user) %>">
-    <strong id="followers">
-      <%= @user.followers.count %>
-    </strong>
-    フォロワー
-  </a>
-</div>
-<% else %>
-<div>
-  <span>
-    <strong id="following">
-      <%= @user.following.count %>
-    </strong>
-    フォロー
-  </span>
-  <span>
-    <strong id="followers">
-      <%= @user.followers.count %>
-    </strong>
-    フォロワー
-  </span>
-<% end %>
-</div>
-
-<p>性別:<%= @user.gender %></p>
-<p>年齢:<%= @user.age %>歳</p>
-<p>職業:<%= @user.job %></p>
-<p>出身:<%= @user.prefecture %></p>
-<p>自己紹介:<%= @user.introduction %></p>
-
-<% if logged_in? %>
-  <% unless current_user?(@user) %>
-    <div id="follow_form">
-    <% if current_user.following?(@user) %>
-      <%= render 'unfollow' %>
+<div class="border mb-2 bg-light w-75 mx-auto">
+  <div class="text-center">
+    <% if @user.image?%>
+      <%= image_tag @user.image.to_s, size: '250x250', class: "rounded-circle"%>
     <% else %>
-      <%= render 'follow' %>
+      <%= image_tag "default.jpg" %>
+    <% end %>
+    <h1><%= @user.name %></h1>
+    <% if logged_in? %>
+    <% @user ||= current_user %>
+    <div>
+      <a href="<%= following_user_path(@user) %>">
+        <strong id="following">
+          <%= @user.following.count %>
+        </strong>
+        フォロー
+      </a>
+      <a href="<%= followers_user_path(@user) %>">
+        <strong id="followers">
+          <%= @user.followers.count %>
+        </strong>
+        フォロワー
+      </a>
+    </div>
+    <% else %>
+    <div>
+      <span>
+        <strong id="following">
+          <%= @user.following.count %>
+        </strong>
+        フォロー
+      </span>
+      <span>
+        <strong id="followers">
+          <%= @user.followers.count %>
+        </strong>
+        フォロワー
+      </span>
     <% end %>
     </div>
+    <div class="text-center">
+    <p>性別:<%= @user.gender %></p>
+    <p>年齢:<%= @user.age %>歳</p>
+    <p>職業:<%= @user.job %></p>
+    <p>出身:<%= @user.prefecture %></p>
+    <p>自己紹介:<%= @user.introduction %></p>
+    </div>
+  </div>
+</div>
+
+<div class="text-center">
+  <% if logged_in? %>
+    <% unless current_user?(@user) %>
+      <div id="follow_form">
+      <% if current_user.following?(@user) %>
+        <%= render 'unfollow' %>
+      <% else %>
+        <%= render 'follow' %>
+      <% end %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
 <div class="container">
   <ul class="menu">
@@ -66,7 +72,7 @@
   </ul>
 <div>
 
-<h3>コメントした投稿</h3>
+<h1 class="text-center">コメントした投稿</h3>
 <% if @user.comments.any? %>
   <%= render @posts %>
   <%= paginate @posts %>

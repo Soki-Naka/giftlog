@@ -1,12 +1,18 @@
-<li>
-  <%= link_to gift.id, '#' %> 
-  <p>贈ったもの:<%= gift.item %>
-  <p>シチュエーション:<%= gift.situation %></p>
-  <p>予算:<%= gift.price %>円
-  <p>いつ贈ったか:<%= gift.when %>
-  <p>備考:<%= gift.description %>
+<div class="card bg-light text-center w-50 mx-auto mb-3">
+  <li>
+    <%# <%= link_to gift.id, '#' %> 
+    <div class="card-body gift-info w-75 mx-auto">
+      <p>贈ったもの:<%= gift.item %></p>
+      <p>シチュエーション:<%= gift.situation %></p>
+      <p>予算:<%= gift.price %>円</p>
+      <p>いつ贈ったか:<%= gift.when %></p>
+      <p>備考:<%= gift.description %></p>
+    </div>
 
-  <%= link_to "削除する", gift, method: :delete, 
-  data: { confirm: "削除してもよろしいですか?" } %>
-  <%= link_to "編集する", edit_gift_path(gift) %>
-</li>
+    <div class="card-body">
+      <%= link_to "データ削除", gift, method: :delete, 
+      data: { confirm: "削除してもよろしいですか?" }, class: "btn btn-danger btn-sm mb-2" %>
+      <%= link_to "データ編集", edit_gift_path(gift),class: "btn btn-danger btn-sm mb-2" %>
+    </div>
+  </li>
+</div>

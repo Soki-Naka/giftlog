@@ -1,17 +1,62 @@
+<% if false %>
 <li>
-  <%= link_to favorite_person.id, "/users/#{@user.id}/favorite_people/#{favorite_person.id}" %> 
-  <% if favorite_person.image? %>
-    <%= image_tag favorite_person.image.to_s %>
-  <% else %>
-    <%= image_tag "default.jpg" %>
-  <% end %>
-  <p>名前:<%= favorite_person.name %>
-  <p>誕生日:<%= favorite_person.birthday&.strftime('%01m月%01d日') %></p>
+  <div class="container"> 
+    <div class="row border mb-5">
+      <%# <div class="col">
+        <%= link_to favorite_person.id, "/users/#{@user.id}/favorite_people/#{favorite_person.id}" %> 
 
-  <% if current_user?(favorite_person.user) %>
-    <%= link_to "削除する", favorite_person, method: :delete,
-    data: { confirm: "削除してもよろしいですか?" } %>
-    <%= link_to "編集する", edit_favorite_person_path(favorite_person)  %>
-  <% end %>
+      <div class="col">
+        <% if favorite_person.image? %>
+          <%= image_tag favorite_person.image.to_s, size: '200x200', class: "rounded-circle" %>
+        <% else %>
+          <%= image_tag "default.jpg", size: '200x200', class: "rounded-circle" %>
+        <% end %>
+      </div>
+      <div class="col">
+        <p>名前:<%= favorite_person.name %>
+        <p>誕生日:<%= favorite_person.birthday&.strftime('%01m月%01d日') %></p>
+      </div>
+      <div class="col">
+        <% if current_user?(favorite_person.user) %>
+          <%= link_to "データ削除", favorite_person, method: :delete,
+          data: { confirm: "削除してもよろしいですか?" }, class: "btn btn-danger btn-sm" %>
+          <%= link_to "データ編集", edit_favorite_person_path(favorite_person),class: "btn btn-danger btn-sm"  %>
+        <% end %>
+      </div>
+      <div class="col">
+        <%= link_to "もっと見る", "/users/#{@user.id}/favorite_people/#{favorite_person.id}", class: "btn" %> 
+      </div>
+    </div>
+  </div>
+</li>
+<% end %>
 
+
+<li>
+    <div class="card bg-light text-center w-50 mx-auto mb-3">
+      <%# <div class="col">
+        <%= link_to favorite_person.id, "/users/#{@user.id}/favorite_people/#{favorite_person.id}" %> 
+
+      <div class="card-img-top mt-2">
+        <% if favorite_person.image? %>
+          <%= image_tag favorite_person.image.to_s, size: '200x200', class: "rounded-circle" %>
+        <% else %>
+          <%= image_tag "default.jpg", size: '200x200', class: "rounded-circle" %>
+        <% end %>
+      </div>
+      <div class="card-body favorite-person-info w-50 mx-auto">
+        <p>名前:<%= favorite_person.name %>
+        <p>誕生日:<%= favorite_person.birthday&.strftime('%01m月%01d日') %></p>
+      </div>
+      <div class="card-body">
+        <% if current_user?(favorite_person.user) %>
+          <%= link_to "データ削除", favorite_person, method: :delete,
+          data: { confirm: "削除してもよろしいですか?" }, class: "btn btn-danger btn-sm" %>
+          <%= link_to "データ編集", edit_favorite_person_path(favorite_person),class: "btn btn-danger btn-sm"  %>
+        <% end %>
+      </div>
+      <div class="card-body">
+        <%= link_to "もっと見る", "/users/#{@user.id}/favorite_people/#{favorite_person.id}", class: "btn" %> 
+      </div>
+    </div>
 </li>

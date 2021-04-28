@@ -1,11 +1,19 @@
-<li>
-  <% if user.image? %>
-    <%= image_tag user.image.to_s %>
-  <% else %>
-    <%= image_tag "default.jpg" %>
-  <% end %>
-  <h2><%= link_to user.name, user %></h2>
-  <p>性別:<%= user.gender %></p>
-  <p>年齢:<%= user.age %>歳</p>
-  <p>自己紹介:<%= user.introduction %></p>
+<li class="list-unstyled">
+  <div class="card bg-light text-center w-50 mx-auto mb-3">
+    <div class="card-img-top mt-2">
+      <% if user.image? %>
+        <%= image_tag user.image.to_s, size: '200x200', class: "rounded-circle" %>
+      <% else %>
+        <%= image_tag "default.jpg", size: '200x200', class: "rounded-circle" %>
+      <% end %>
+    </div>
+    <div class="card-body user-info w-75 mx-auto">
+      <h2 class="text-center"><%= link_to user.name, user, class: "stretched-link text-dark" %></h2>
+      <div class="w-75 mx-auto">
+        <p>性別:<%= user.gender %></p>
+        <p>年齢:<%= user.age %>歳</p>
+        <p>自己紹介:<%= user.introduction %></p>
+      </div>
+    </div>
+  </div>
 </li>

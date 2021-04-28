@@ -1,5 +1,12 @@
 <% provide(:title, "ホーム") %>
 
+<div class="card">
+  <%= image_tag 'dog_present.jpg', size: '1100x600', class: "card-img opct opacity-50" %>
+  <div class="card-img-overlay d-flex align-items-center justify-content-center">
+    <h1 class="text-danger font-weight-bold">みんなで贈ろう、プレゼント。<br>みんなで話そう、プレゼント。</h1>
+  </div>
+</div>
+
 <div class="category-selection">
   <div class="title">
     <h2>カテゴリ選択</h2>
@@ -29,7 +36,7 @@
   </div>
 </div>
 
-<div class="ranking-lists">
+<div class="ranking-lists text-right">
   <div class="ranking-list">
     <div class="title">
       <h2>回答数ランキング</h2>
@@ -42,8 +49,10 @@
   </div>
 </div>
 
-<div class="posts">
-  <h1>投稿一覧</h1>
-    <%= render @posts %>
+<div>
+  <h1 class="text-center">投稿一覧</h1>
+    <%# <ul> %>
+      <%= render @posts %>
+    <%# <ul> %>
     <%= paginate @posts %>
 </div>

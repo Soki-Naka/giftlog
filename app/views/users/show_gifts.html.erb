@@ -1,6 +1,5 @@
 <% provide(:title, @title) %>
-<div class="row">
-  <div>
+<div>
     <h3>贈ったものリスト</h3>
     <%= link_to "登録する", new_gift_path %>
     <% if @gifts.any? %>
@@ -9,5 +8,4 @@
         <%= paginate @gifts %>
       </ul>
     <% end %>
-  </div>
 </div>

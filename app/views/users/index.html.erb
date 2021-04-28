@@ -1,7 +1,11 @@
 <% provide(:title, 'ユーザーリスト') %>
-<h1>ユーザーリスト</h1>
 
-<ul class="users">
-  <%= render @users %>
-  <%= paginate @users %>
-</ul>
+<div>
+<h1 class="text-center">ユーザーリスト</h1>
+<div>
+  <%# <ul class="users"> %>
+    <%= render @users %>
+      <%= paginate @users, theme: 'twitter-bootstrap-4' , pagination_class: "justify-content-center" %>
+  <%# </ul> %>
+</div>
+</div>
