@@ -50,10 +50,11 @@
   <% end %>
 </div>
 
-<div class="text-center mt-3">
+<div class="text-center bg-light w-75 mx-auto mt-3">
   <h2>いいねしたユーザー</h2>
+  <div class="d-inline-flex">
   <% @post.liked_users.each do |user| %>
-      <li class="list-unstyled mb-2 col-1 mx-auto">
+      <li class="list-unstyled mb-2 mx-auto">
         <div data-toggle="tooltip" data-placement="bottom" title=<%= user.name %> >
           <% if user.image? %>
             <%= link_to image_tag(user.image.to_s, size: '50x50', class: "rounded-circle"), user %>
@@ -64,28 +65,47 @@
       </li>
     <%# <li class="list-unstyled"><%= link_to user.name, user %>
   <% end %>
+  </div>
 </div>
 
 <div>
-  <div class="text-center mt-3">
+  <div class="text-center w-75 mx-auto mt-3">
     <% if logged_in? %>
       <h2>コメントを投稿する</h2>
-      <%= form_with(model: [@post, @comment], local: true) do |f| %>
-        <%= f.text_area :content %>
-        <br>
-        <%= button_tag type: "submit", remote:true, class: " btn btn-success btn-sm" do %>
-          <i></i>
-          コメントする
+      <div class="bg-light">
+        <%= form_with(model: [@post, @comment], local: true) do |f| %>
+          <%= f.text_area :content, size: '30x8',id: "input-content" %>
+          <div class="cnt_area"><span class="now_cnt_content">0</span> / 400</div>
+          <br>
+          <%= button_tag type: "submit", remote:true, class: " btn btn-success btn-sm" do %>
+            <i></i>
+            コメントする
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     <% end %>
   </div>
-  <h2 class="text-center mt-3">コメント一覧
-  <% if @comments.any? %>
-  (<%= @comments.count%>件)
-  </h2>
-  
-  <% end %>
 </div>
 
-<%= render @comments, post: @post %>
+<h2 class="text-center mt-3">コメント一覧
+  <% if @comments.any? %>
+  (<%= @comments.count%>件)
+  <% end %>
+</h2>
+
+
+<div class="container mb-3">
+  <%= render @comments, post: @post %>
+</div>
+
+<script>
+jQuery(function($){
+    // content入力時
+    $('#input-content').on('input', function(){
+        //文字数を取得
+        var cnt = $(this).val().length;
+        //現在の文字数を表示
+        $('.now_cnt_content').text(cnt);
+    });
+});
+</script>

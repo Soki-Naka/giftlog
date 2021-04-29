@@ -6,9 +6,11 @@
   <% else %>
     <%= image_tag "default.jpg", size: '200x200',class: "rounded-circle" %>
   <% end %>
-  <h2>名前:<%= @favorite_person.name %></h2>
-  <p>誕生日:<%= @favorite_person.birthday&.strftime('%01m月%01d日') %></p>
-  <p>備考:<%= @favorite_person.description %></p>
+  <h2><%= @favorite_person.name %></h2>
+  <div class="w-25 mx-auto favorite-person-info">
+    <p>誕生日:<%= @favorite_person.birthday&.strftime('%01m月%01d日') %></p>
+    <p>備考:<%= @favorite_person.description %></p>
+  </div>
 </div>
 
 <div>

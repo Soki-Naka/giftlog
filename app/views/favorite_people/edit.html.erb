@@ -2,13 +2,14 @@
 
 <h1>大切な人編集</h1>
 
-  <div class="text-center border">
+  <div class="text-center bg-light w-75 mx-auto mb-3 border">
     <%= form_with(model: @favorite_person,
     url: { action: :update}, local: true) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
 
         <p><%= f.label :name, "名前(必須)" %></p>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, id: "input-name" %>
+        <div class="cnt_area"><span class="now_cnt_name">0</span> / 50</div>
 
         <p><%= f.label :image, "画像(任意)" %></p>
         <%= f.file_field :image %>
@@ -17,9 +18,33 @@
         <%= f.date_select :birthday, discard_year: true, prompt:"--" %>
 
         <p><%= f.label :description, "備考(任意)" %></p>
-        <%= f.text_area :description %>
+        <%= f.text_area :description, size: '30x8', id: "input-description" %>
+        <div class="cnt_area"><span class="now_cnt_des">0</span> / 200</div>
 
          <p><%= f.submit "更新", class: "btn btn-success btn-lg" %></p>
 
     <% end %>
   </div>
+
+<script>
+jQuery(function($){
+    // name入力時
+    $('#input-name').on('input', function(){
+        //文字数を取得
+        var cnt = $(this).val().length;
+        //現在の文字数を表示
+        $('.now_cnt_name').text(cnt);
+    });
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-name').trigger('input');
+    // description入力時
+    $('#input-description').on('input', function(){
+        //文字数を取得
+        var cnt = $(this).val().length;
+        //現在の文字数を表示
+        $('.now_cnt_des').text(cnt);
+    });
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-description').trigger('input');
+});
+</script>

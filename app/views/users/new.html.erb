@@ -1,7 +1,7 @@
 <% provide(:title, '新規ユーザー登録') %>
 <h1 class="text-center">新規ユーザー登録</h1>
 
-  <div class="border text-center w-75 mx-auto mb-2">
+  <div class="border text-center w-75 mx-auto mb-2 bg-light">
     <%= form_with(model: @user, local: true) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
 
@@ -9,10 +9,12 @@
         <%= f.file_field :image %>
 
         <p><%= f.label :name, "ユーザー名" %>(必須)</p>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, id: "input-name" %>
+        <div class="cnt_area"><span class="now_cnt_name">0</span> / 50</div>
 
         <p><%= f.label :email, "メールアドレス" %>(必須)</p>
-        <%= f.email_field :email %>
+        <%= f.email_field :email, id: "input-email" %>
+        <div class="cnt_area"><span class="now_cnt_email">0</span> / 255</div>
 
         <p><%= f.label :password, "パスワード" %>(必須)</p>
         <%= f.password_field :password %>
@@ -27,15 +29,59 @@
         <%= f.number_field :age, :placeholder => "半角数字で入力", min:0, max:100 %>歳
 
         <p><%= f.label :job, "職業" %>(任意)</p>
-        <%= f.text_field :job %>
+        <%= f.text_field :job, id: "input-job" %>
+        <div class="cnt_area"><span class="now_cnt_job">0</span> / 50</div>
 
         <p><%= f.label :prefecture, "出身" %>(任意)</p>
-        <%= f.text_field :prefecture %>
+        <%= f.text_field :prefecture, id: "input-prefecture" %>
+        <div class="cnt_area"><span class="now_cnt_pre">0</span> / 30</div>
 
         <p><%= f.label :introduction, "自己紹介" %>(任意)</p>
-        <%= f.text_area :introduction %>
+        <%= f.text_area :introduction, size: '30x8', id: "input-introduction" %>
+        <div class="cnt_area"><span class="now_cnt_intro">0</span> / 200</div>
 
         <p><%= f.submit "作成", class: "btn btn-success btn-lg" %></p>
 
     <% end %>
   </div>
+
+<script>
+jQuery(function($){
+    // name入力時
+    $('#input-name').on('input', function(){
+        //文字数を取得
+        var cnt = $(this).val().length;
+        //現在の文字数を表示
+        $('.now_cnt_name').text(cnt);
+    });
+    // email入力時
+    $('#input-email').on('input', function(){
+        //文字数を取得
+        var cnt = $(this).val().length;
+        //現在の文字数を表示
+        $('.now_cnt_email').text(cnt);
+    });
+    // job入力時
+    $('#input-job').on('input', function(){
+        //文字数を取得
+        var cnt = $(this).val().length;
+        //現在の文字数を表示
+        $('.now_cnt_job').text(cnt);
+    });
+    // prefecture入力時
+    $('#input-pre').on('input', function(){
+        //文字数を取得
+        var cnt = $(this).val().length;
+        //現在の文字数を表示
+        $('.now_cnt_pre').text(cnt);
+    });
+    //introduction入力時  
+    $('#input-introduction').on('input', function(){
+        //文字数を取得
+        var cnt = $(this).val().length;
+        //現在の文字数を表示
+        $('.now_cnt_intro').text(cnt);
+    });
+    
+});
+</script>

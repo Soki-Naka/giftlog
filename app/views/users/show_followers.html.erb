@@ -1,7 +1,10 @@
 <% provide(:title, @title) %>
   <div>
+    <h1 class="text-center"><%= @user.name %></h1>
+    <div class="text-center mb-5">
+      <%= link_to "#{@user.following.count}フォロー", following_user_path(@user) %> | <%= "#{@user.followers.count}フォロワー" %>
+    </div>
     <h1 class="text-center"><%= @title %></h3>
-    <%= link_to "フォロー", following_user_path(@user) %>
     <% if @users.any? %>
       <%# <ul> %>
         <%= render @users %>

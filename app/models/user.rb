@@ -31,6 +31,7 @@ class User < ApplicationRecord
   validates :gender, presence: true
   validates :age, presence: true
   validates :job, length: { maximum: 50 }
+  validates :prefecture, length: { maximum: 30 }
   validates :introduction, length: { maximum: 200 }
 
   # 渡された文字列のハッシュ値を返す
