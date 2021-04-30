@@ -63,6 +63,7 @@
   <% end %>
 </div>
 
+<% if false %>
 <div class="container">
   <ul class="menu">
     <li><%= link_to "投稿一覧", @user %></li>
@@ -77,3 +78,44 @@
   <%= render @posts %>
   <%= paginate @posts %>
 <% end %>
+<% end %>
+
+
+<ul class="nav nav-tabs">
+  <li class="nav-item posts">
+    <%= link_to "投稿一覧", @user %>
+  </li>
+  <li class="nav-item comments">
+    <%= link_to "コメントした投稿", user_comments_path(@user.id) %>
+  </li>
+  <li class="nav-item post-likes">
+    <%= link_to "いいね(投稿)", user_post_likes_path(@user.id) %>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div id="posts" class="tab-pane">
+    <h1 class="text-center">投稿一覧</h3>
+    <% if @user.posts.any? %>
+      <%= render @posts%>
+      <%= paginate @posts %>
+    <% end %>
+  </div>
+
+  <div id="comments" class="tab-pane">
+    <h1 class="text-center">コメントした投稿</h3>
+    <% if @user.comments.any? %>
+      <%= render @posts %>
+      <%= paginate @posts %>
+    <% end %>
+  </div>
+
+  <div id="post-likes" class="tab-pane active">
+    <h1 class="text-center">いいね(投稿)</h3>
+    <% if @user.post_likes.any? %>
+    <%= render @posts %>
+    <%= paginate @posts %>
+    <% end %>
+  </div>
+
+</div>

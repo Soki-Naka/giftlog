@@ -9,5 +9,7 @@
         <%= render @favorite_people %>
         <%= paginate @favorite_people %>
       </ul>
+    <% else %>
+      <p class="text-center">あなたの大切な人の情報を登録してみよう！</p>
     <% end %>
   </div>

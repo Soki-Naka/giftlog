@@ -1,5 +1,5 @@
 <% provide(:title, @user.name) %>
-<div class="border mb-2 bg-light w-75 mx-auto">
+<div class="border mb-5 bg-light w-75 mx-auto">
   <div class="text-center">
     <% if @user.image?%>
       <%= image_tag @user.image.to_s, size: '250x250', class: "rounded-circle"%>
@@ -63,6 +63,7 @@
   <% end %>
 </div>
 
+<% if false %>
 <div class="container">
   <ul class="menu">
     <li><%= link_to "投稿一覧", @user %></li>
@@ -71,11 +72,61 @@
     <li><%= link_to "いいね(コメント)", "#" %>
   </ul>
 <div>
-    <h1 class="text-center">投稿一覧</h3>
+    <h1 class="text-center">投稿一覧</h1>
     <% if @user.posts.any? %>
-    <%# <ul class="posts"> %>
       <%= render @posts%>
       <%= paginate @posts %>
-    <%# </ul> %>
     <% end %>
+</div>
+<% end %>
+
+<ul class="nav nav-tabs justify-content-center w-75 mx-auto ">
+  <li class="nav-item">
+    <a href="#posts" class="nav-link active" data-toggle="tab">投稿一覧</a>
+  </li>
+  <li class="nav-item">
+    <a href="#comments" class="nav-link" data-toggle="tab">コメントした投稿</a>
+  </li>
+  <li class="nav-item">
+    <a href="#post-likes" class="nav-link" data-toggle="tab">いいねした投稿</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div id="posts" class="tab-pane active">
+    <h1 class="text-center">投稿一覧</h1>
+    <div class="w-75 mx-auto">
+      <% if @user.posts.any? %>
+        <%= render @posts %>
+        <%= paginate @posts %>
+      <% else %>
+        <p class="text-center">投稿はありません。<br>投稿して、みんなに質問してみよう！</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div id="comments" class="tab-pane">
+    <h1 class="text-center">コメントした投稿</h1>
+    <div class="w-75 mx-auto">
+      <% if @user.comments.any? && @posts = @user.commented_posts.distinct.page(params[:page]).per(5) %>
+        <%= render @posts %>
+        <%= paginate @posts %>
+      <% else %>
+        <p class="text-center">コメントした投稿はありません。<br>みんなの投稿にコメントしてみよう！</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div id="post-likes" class="tab-pane">
+    <h1 class="text-center">いいねした投稿</h1>
+    <div class="w-75 mx-auto">
+      <% if @user.post_likes.any? && @posts = @user.liked_posts.page(params[:page]).per(5) %>
+      <%= render @posts %>
+      <%= paginate @posts %>
+      <% else %>
+        <p class="text-center">いいねした投稿はありません。<br>みんなの投稿にいいねしてみよう！</p>
+      <% end %>
+    </div>
+  </div>
+
 </div>

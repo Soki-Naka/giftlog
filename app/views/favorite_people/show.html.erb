@@ -1,6 +1,6 @@
 <% provide(:title, @favorite_person.name) %>
 <div>
-<div class="border text-center w-75 mx-auto">
+<div class="border text-center bg-light w-75 mx-auto">
   <% if @favorite_person.image?%>
     <%= image_tag @favorite_person.image.to_s, size: '200x200', class: "rounded-circle" %>
   <% else %>
@@ -24,6 +24,8 @@
       <%= render @gifts %>
       <%= paginate @gifts %>
     </ul>
+  <% else %>
+    <p class="text-center"><%= @favorite_person.name %>さんに今までに何か贈ったことはないですか？<br>贈ったものがあれば登録してみよう！</p>
   <% end %>
 </div>
 </div>

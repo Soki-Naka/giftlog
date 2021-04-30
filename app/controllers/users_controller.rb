@@ -54,15 +54,15 @@ class UsersController < ApplicationController
     render 'show_followers'
   end
 
-  def post_likes
-    @user = User.find(params[:id])
-    @posts = @user.liked_posts.page(params[:page]).per(5)
-  end
+  # def post_likes
+  #   @user = User.find(params[:id])
+  #   @posts = @user.liked_posts.page(params[:page]).per(5)
+  # end
 
-  def comments
-    @user = User.find(params[:id])
-    @posts = @user.commented_posts.distinct.page(params[:page]).per(5)
-  end
+  # def comments
+  #   @user = User.find(params[:id])
+  #   @posts = @user.commented_posts.distinct.page(params[:page]).per(5)
+  # end
 
   def favorite_people
     @title = '大切な人リスト'
@@ -70,20 +70,6 @@ class UsersController < ApplicationController
     @favorite_people = @user.favorite_people.page(params[:page]).per(5)
     render 'show_favorite_people'
   end
-
-  # def gifts
-  #   @title = '贈ったものリスト'
-  #   # @user  = User.find(params[:id])
-  #   @favorite_person  = FavoritePerson.find(params[:id])
-  #   @gifts = @favorite_person.gifts.page(params[:page]).per(5)
-  #   render 'show_gifts'
-  # end
-
-  # def comment_likes
-  #   @user = User.find(params[:id])
-  #   @posts = @user.liked_comments_posts.distinct.page(params[:page]).per(5)
-  #   @comments = @user.comment_likes.distinct
-  # end
 
   private
 
