@@ -24,14 +24,18 @@
               <li><i class="far fa-user"></i><%= link_to "マイページ", current_user, class: "text-white" %></li>
               <li><i class="fas fa-cog"></i><%= link_to "プロフィール編集", edit_user_path(current_user), class: "text-white" %></li>
               <li><i class="fas fa-handshake"></i><%= link_to "フォロー/フォロワー", following_user_path(current_user), class: "text-white" %></li>
+              <% if false %>
               <li><i class="fas fa-pen"></i><%= link_to "下書きリスト", '#', class: "text-white" %></li>
+              <% end %>
               <li><i class="fas fa-sign-out-alt"></i><%= link_to "ログアウト", logout_path, method: :delete, class: "text-white" %></li>
             </ul>
           </li>
+          <li class="list-unstyled nav-item mr-5"><%= link_to about_path, class: "text-white" do %><i class="far fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="GIFT LOGとは？"></i><% end %></li>
           <li class="list-unstyled nav-item mr-5"><%= link_to new_post_path, class: "btn btn-success btn-block" do %><i class="far fa-edit" data-toggle="tooltip" data-placement="bottom" title="投稿する"></i><% end %></li>
         <% else %>
           <li class="list-unstyled nav-item mr-5"><%= link_to "ユーザー登録", signup_path, class: "text-white" %></li>
           <li class="list-unstyled nav-item mr-5"><%= link_to "ログイン", login_path, class: "text-white" %></li>
+          <li class="list-unstyled nav-item mr-5"><%= link_to about_path, class: "text-white" do %><i class="far fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="GIFT LOGとは？"></i><% end %></li>
         <% end %>
       </ul>
     </nav>

@@ -8,11 +8,11 @@
         <%= render 'shared/error_messages_for_gifts' %>
 
         <p><%= f.label :item, "贈ったもの(必須)" %></p>
-        <%= f.text_field :item, id: "input-item" %>
+        <%= f.text_field :item, id: "input-item", placeholder:"例:クマのぬいぐるみ" %>
         <div class="cnt_area"><span class="now_cnt_item">0</span> / 50</div>
 
         <p><%= f.label :situation, "シチュエーション(任意)" %></p>
-        <%= f.text_field :situation, id: "input-situation" %>
+        <%= f.text_field :situation, id: "input-situation", placeholder:"例:誕生日プレゼントとして" %>
         <div class="cnt_area"><span class="now_cnt_situ">0</span> / 50</div>
 
         <p><%= f.label :price, "予算(任意)" %></p>
@@ -20,11 +20,11 @@
         <div class="cnt_area"><span class="now_cnt_price">0</span> / 30</div>
 
         <p><%= f.label :when, "いつ贈ったか(任意)" %></p>
-        <%= f.text_field :when, id: "input-when" %>
+        <%= f.text_field :when, id: "input-when", placeholder:"例:5歳の誕生日に" %>
         <div class="cnt_area"><span class="now_cnt_when">0</span> / 50</div>
         
         <p><%= f.label :description, "備考(任意)" %></p>
-        <%= f.text_area :description, size: '30x8', id: "input-description" %>
+        <%= f.text_area :description, size: '30x8', id: "input-description", placeholder:"プレゼントをあげた時の相手のリアクションやプレゼントを渡すまでの状況について忘れないようにここに記録しておきましょう" %>
         <div class="cnt_area"><span class="now_cnt_des">0</span> / 200</div>
 
         <p><%= f.submit "更新", class: "btn btn-success btn-lg" %></p>

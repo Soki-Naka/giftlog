@@ -74,7 +74,11 @@
       <h2>コメントを投稿する</h2>
       <div class="bg-light">
         <%= form_with(model: [@post, @comment], local: true) do |f| %>
-          <%= f.text_area :content, size: '30x8',id: "input-content" %>
+          <% if current_user == @post.user %>
+          <%= f.text_area :content, size: '30x8',id: "input-content", placeholder:"コメントをしてくれたユーザーにお礼を言おう！\n追加で質問があれば、ここに書きましょう。" %>
+          <% else %>
+          <%= f.text_area :content, size: '30x8',id: "input-content", placeholder:"投稿にコメントしてあげよう！\nプレゼント選びをするときに参考になることを言ってあげよう。" %>
+          <% end %>
           <div class="cnt_area"><span class="now_cnt_content">0</span> / 400</div>
           <br>
           <%= button_tag type: "submit", remote:true, class: " btn btn-success btn-sm" do %>

@@ -7,7 +7,7 @@
         <%= render 'shared/error_messages', object: f.object %>
 
         <p><%= f.label :name, "名前(必須)" %></p>
-        <%= f.text_field :name, id: "input-name" %>
+        <%= f.text_field :name, id: "input-name", placeholder:"ニックネームなど" %>
         <div class="cnt_area"><span class="now_cnt_name">0</span> / 50</div>
 
         <p><%= f.label :image, "画像(任意)" %></p>
@@ -17,7 +17,7 @@
         <%= f.date_select :birthday, discard_year: true, prompt:"--" %>
 
         <p><%= f.label :description, "備考(任意)" %></p>
-        <%= f.text_area :description, size: '30x8', id: "input-description" %>
+        <%= f.text_area :description, size: '30x8', id: "input-description", placeholder:"食の好みや趣味などをメモ書きしておきましょう" %>
         <div class="cnt_area"><span class="now_cnt_des">0</span> / 200</div>
 
         <p><%= f.submit "登録", class: "btn btn-success btn-lg" %></p>
