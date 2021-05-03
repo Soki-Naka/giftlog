@@ -53,7 +53,7 @@
   <h1 class="text-center">投稿一覧</h1>
     <% if @posts.any? %>
     <%= render @posts %>
-    <%= paginate @posts %>
+    <%= paginate @posts, theme: 'twitter-bootstrap-4' , pagination_class: "justify-content-center" %>
     <% else %>
     <p class="text-center">初めての投稿をしてみよう！</p>
     <% end %>

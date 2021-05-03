@@ -1,6 +1,6 @@
 <% provide(:title, "大切な人編集") %>
 
-<h1>大切な人編集</h1>
+<h1 class="text-center">大切な人編集</h1>
 
   <div class="text-center bg-light w-75 mx-auto mb-3 border">
     <%= form_with(model: @favorite_person,
@@ -8,17 +8,17 @@
         <%= render 'shared/error_messages', object: f.object %>
 
         <p><%= f.label :name, "名前(必須)" %></p>
-        <%= f.text_field :name, id: "input-name", placeholder:"ニックネームなど" %>
+        <%= f.text_field :name, id: "input-name", placeholder:"ニックネームなど", class: "form-control mx-auto" %>
         <div class="cnt_area"><span class="now_cnt_name">0</span> / 50</div>
 
         <p><%= f.label :image, "画像(任意)" %></p>
         <%= f.file_field :image %>
 
         <p><%= f.label :birthday, "誕生日(任意)" %></p>
-        <%= f.date_select :birthday, discard_year: true, prompt:"--" %>
+        <%= f.date_select :birthday, discard_year: true, prompt:"--",use_month_numbers:true, date_separator: '月'  %>日
 
         <p><%= f.label :description, "備考(任意)" %></p>
-        <%= f.text_area :description, size: '30x8', id: "input-description", placeholder:"食の好みや趣味などをメモ書きしておきましょう" %>
+        <%= f.text_area :description, size: '30x8', id: "input-description", placeholder:"食の好みや趣味などをメモ書きしておきましょう", class: "form-control w-75 mx-auto" %>
         <div class="cnt_area"><span class="now_cnt_des">0</span> / 200</div>
 
          <p><%= f.submit "更新", class: "btn btn-success btn-lg" %></p>

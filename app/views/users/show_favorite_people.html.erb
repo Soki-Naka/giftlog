@@ -7,7 +7,7 @@
     <% if @favorite_people.any? %>
       <ul class="list-unstyled">
         <%= render @favorite_people %>
-        <%= paginate @favorite_people %>
+        <%= paginate @favorite_people, theme: 'twitter-bootstrap-4' , pagination_class: "justify-content-center" %>
       </ul>
     <% else %>
       <p class="text-center">あなたの大切な人の情報を登録してみよう！</p>

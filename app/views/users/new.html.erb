@@ -9,18 +9,18 @@
         <%= f.file_field :image %>
 
         <p><%= f.label :name, "ユーザー名" %>(必須)</p>
-        <%= f.text_field :name, id: "input-name" %>
+        <%= f.text_field :name, id: "input-name", class: "form-control mx-auto" %>
         <div class="cnt_area"><span class="now_cnt_name">0</span> / 50</div>
 
         <p><%= f.label :email, "メールアドレス" %>(必須)</p>
-        <%= f.email_field :email, id: "input-email" %>
+        <%= f.email_field :email, id: "input-email", class: "form-control mx-auto" %>
         <div class="cnt_area"><span class="now_cnt_email">0</span> / 255</div>
 
         <p><%= f.label :password, "パスワード" %>(必須)</p>
-        <%= f.password_field :password, placeholder: "6文字以上" %>
+        <%= f.password_field :password, placeholder: "6文字以上", class: "form-control mx-auto" %>
 
         <p><%= f.label :password_confirmation, "パスワード確認" %>(必須)</p>
-        <%= f.password_field :password_confirmation, placeholder: "6文字以上" %>
+        <%= f.password_field :password_confirmation, placeholder: "6文字以上", class: "form-control mx-auto" %>
 
         <p><%= f.label :gender, "性別" %>(必須)</p>
         <%= f.select :gender, [["男性", "男性"], ["女性", "女性"]], include_blank: "選択してください" %>
@@ -29,15 +29,15 @@
         <%= f.number_field :age, :placeholder => "半角数字で入力", min:0, max:100 %>歳
 
         <p><%= f.label :job, "職業" %>(任意)</p>
-        <%= f.text_field :job, id: "input-job", placeholder:"例:学生、高校教師" %>
+        <%= f.text_field :job, id: "input-job", placeholder:"例:学生、高校教師", class: "form-control mx-auto" %>
         <div class="cnt_area"><span class="now_cnt_job">0</span> / 50</div>
 
         <p><%= f.label :prefecture, "出身" %>(任意)</p>
-        <%= f.text_field :prefecture, id: "input-prefecture", placeholder:"都道府県or出身地" %>
+        <%= f.text_field :prefecture, id: "input-prefecture", placeholder:"都道府県or出身地", class: "form-control mx-auto" %>
         <div class="cnt_area"><span class="now_cnt_pre">0</span> / 30</div>
 
         <p><%= f.label :introduction, "自己紹介" %>(任意)</p>
-        <%= f.text_area :introduction, size: '30x8', id: "input-introduction", placeholder:"ご自由に書いてください。" %>
+        <%= f.text_area :introduction, size: '30x8', id: "input-introduction", placeholder:"ご自由に書いてください。", class: "form-control mx-auto w-75" %>
         <div class="cnt_area"><span class="now_cnt_intro">0</span> / 200</div>
 
         <p><%= f.submit "作成", class: "btn btn-success btn-lg" %></p>
@@ -54,6 +54,8 @@ jQuery(function($){
         //現在の文字数を表示
         $('.now_cnt_name').text(cnt);
     });
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-name').trigger('input');
     // email入力時
     $('#input-email').on('input', function(){
         //文字数を取得
@@ -61,6 +63,8 @@ jQuery(function($){
         //現在の文字数を表示
         $('.now_cnt_email').text(cnt);
     });
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-email').trigger('input');
     // job入力時
     $('#input-job').on('input', function(){
         //文字数を取得
@@ -68,13 +72,17 @@ jQuery(function($){
         //現在の文字数を表示
         $('.now_cnt_job').text(cnt);
     });
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-job').trigger('input');
     // prefecture入力時
-    $('#input-pre').on('input', function(){
+    $('#input-prefecture').on('input', function(){
         //文字数を取得
         var cnt = $(this).val().length;
         //現在の文字数を表示
         $('.now_cnt_pre').text(cnt);
     });
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-prefecture').trigger('input');
     //introduction入力時  
     $('#input-introduction').on('input', function(){
         //文字数を取得
@@ -82,6 +90,7 @@ jQuery(function($){
         //現在の文字数を表示
         $('.now_cnt_intro').text(cnt);
     });
-    
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-introduction').trigger('input');
 });
 </script>

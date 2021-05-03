@@ -6,12 +6,16 @@
 
       <div class="card-body">
         <%= f.label :email, 'メールアドレス' %>
-        <%= f.email_field :email %>
+        <br>
+        <%# <div class="center-block"> %>
+        <%= f.email_field :email, class: "form-control mx-auto" %>
+        <%# </div> %>
       </div>
 
       <div class="card-body">
         <%= f.label :password, 'パスワード' %>
-        <%= f.password_field :password %>
+        <br>
+        <%= f.password_field :password, class: "form-control mx-auto" %>
       </div>
 
       <div class="card-body">

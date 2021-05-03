@@ -7,23 +7,23 @@
         <%= render 'shared/error_messages_for_gifts' %>
 
         <p><%= f.label :item, "贈ったもの(必須)" %></p>
-        <%= f.text_field :item, id: "input-item", placeholder:"例:クマのぬいぐるみ" %>
+        <%= f.text_field :item, id: "input-item", placeholder:"例:クマのぬいぐるみ", class: "form-control mx-auto" %>
         <div class="cnt_area"><span class="now_cnt_item">0</span> / 50</div>
 
         <p><%= f.label :situation, "シチュエーション(任意)" %></p>
-        <%= f.text_field :situation, id: "input-situation", placeholder:"例:誕生日プレゼントとして" %>
+        <%= f.text_field :situation, id: "input-situation", placeholder:"例:誕生日プレゼントとして", class: "form-control mx-auto" %>
         <div class="cnt_area"><span class="now_cnt_situ">0</span> / 50</div>
 
         <p><%= f.label :price, "予算(任意)" %></p>
-        <%= f.text_field :price, id: "input-price" %>円
+        <%= f.text_field :price, id: "input-price", class: "form-control mx-auto" %>円
         <div class="cnt_area"><span class="now_cnt_price">0</span> / 30</div>
 
         <p><%= f.label :when, "いつ贈ったか(任意)" %></p>
-        <%= f.text_field :when, id: "input-when", placeholder:"例:5歳の誕生日に" %>
+        <%= f.text_field :when, id: "input-when", placeholder:"例:5歳の誕生日に", class: "form-control mx-auto" %>
         <div class="cnt_area"><span class="now_cnt_when">0</span> / 50</div>
         
         <p><%= f.label :description, "備考(任意)" %></p>
-        <%= f.text_area :description, size: '30x8', id: "input-description", placeholder:"プレゼントをあげた時の相手のリアクションやプレゼントを渡すまでの状況について忘れないようにここに記録しておきましょう" %>
+        <%= f.text_area :description, size: '30x8', id: "input-description", placeholder:"プレゼントをあげた時の相手のリアクションやプレゼントを渡すまでの状況について忘れないようにここに記録しておきましょう", class: "form-control w-75 mx-auto" %>
         <div class="cnt_area"><span class="now_cnt_des">0</span> / 200</div>
 
         <p><%= f.submit "登録", class: "btn btn-success btn-lg" %></p>
@@ -40,6 +40,8 @@ jQuery(function($){
         //現在の文字数を表示
         $('.now_cnt_item').text(cnt);
     });
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-item').trigger('input');
     // situation入力時
     $('#input-situation').on('input', function(){
         //文字数を取得
@@ -47,6 +49,8 @@ jQuery(function($){
         //現在の文字数を表示
         $('.now_cnt_situ').text(cnt);
     });
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-situation').trigger('input');
     // price入力時
     $('#input-price').on('input', function(){
         //文字数を取得
@@ -54,6 +58,8 @@ jQuery(function($){
         //現在の文字数を表示
         $('.now_cnt_price').text(cnt);
     });
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-price').trigger('input');
     // when入力時
     $('#input-when').on('input', function(){
         //文字数を取得
@@ -61,6 +67,8 @@ jQuery(function($){
         //現在の文字数を表示
         $('.now_cnt_when').text(cnt);
     });
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-when').trigger('input');
     // description入力時
     $('#input-description').on('input', function(){
         //文字数を取得
@@ -68,5 +76,7 @@ jQuery(function($){
         //現在の文字数を表示
         $('.now_cnt_des').text(cnt);
     });
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-description').trigger('input');
 });
 </script>

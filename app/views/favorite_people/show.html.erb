@@ -22,7 +22,7 @@
   <% if @gifts.any? %>
     <ul class="list-unstyled">
       <%= render @gifts %>
-      <%= paginate @gifts %>
+      <%= paginate @gifts, theme: 'twitter-bootstrap-4' , pagination_class: "justify-content-center" %>
     </ul>
   <% else %>
     <p class="text-center"><%= @favorite_person.name %>さんに今までに何か贈ったことはないですか？<br>贈ったものがあれば登録してみよう！</p>

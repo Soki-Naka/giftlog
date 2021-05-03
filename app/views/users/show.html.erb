@@ -110,7 +110,7 @@
     <div class="w-75 mx-auto">
       <% if @user.comments.any? && @posts = @user.commented_posts.distinct.page(params[:page]).per(5) %>
         <%= render @posts %>
-        <%= paginate @posts %>
+        <%= paginate @posts, theme: 'twitter-bootstrap-4' , pagination_class: "justify-content-center" %>
       <% else %>
         <p class="text-center">コメントした投稿はありません。<br>みんなの投稿にコメントしてみよう！</p>
       <% end %>

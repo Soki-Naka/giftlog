@@ -7,7 +7,7 @@
     <h1 class="text-center"><%= @title %></h3>
     <% if @users.any? %>
       <%= render @users %>
-      <%= paginate @users %>
+      <%= paginate @users, theme: 'twitter-bootstrap-4' , pagination_class: "justify-content-center" %>
     <% else %>
       <p class="text-center">フォロワーはいません。<br>あなたから誰かをフォローしてみよう！</p>
     <% end %>

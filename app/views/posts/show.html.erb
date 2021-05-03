@@ -75,9 +75,9 @@
       <div class="bg-light">
         <%= form_with(model: [@post, @comment], local: true) do |f| %>
           <% if current_user == @post.user %>
-          <%= f.text_area :content, size: '30x8',id: "input-content", placeholder:"コメントをしてくれたユーザーにお礼を言おう！\n追加で質問があれば、ここに書きましょう。" %>
+          <%= f.text_area :content, size: '30x8',id: "input-content", placeholder:"コメントをしてくれたユーザーにお礼を言おう！\n追加で質問があれば、ここに書きましょう。", class: "form-control  w-75 mx-auto" %>
           <% else %>
-          <%= f.text_area :content, size: '30x8',id: "input-content", placeholder:"投稿にコメントしてあげよう！\nプレゼント選びをするときに参考になることを言ってあげよう。" %>
+          <%= f.text_area :content, size: '30x8',id: "input-content", placeholder:"投稿にコメントしてあげよう！\nプレゼント選びをするときに参考になることを言ってあげよう。", class: "form-control w-75 mx-auto" %>
           <% end %>
           <div class="cnt_area"><span class="now_cnt_content">0</span> / 400</div>
           <br>
