@@ -9,6 +9,10 @@
       <%= render @users %>
       <%= paginate @users, theme: 'twitter-bootstrap-4' , pagination_class: "justify-content-center" %>
     <% else %>
-      <p class="text-center">フォローしたユーザーはいません。<br>ユーザーリストからフォローしてみよう！</p>
+      <p class="text-center">フォローしたユーザーはいません。
+      <% if current_user?(@user) %>
+        <br>ユーザーリストからフォローしてみよう！
+      <% end %>
+      </p>
     <% end %>
   </div>

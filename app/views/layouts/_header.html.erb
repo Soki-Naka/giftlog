@@ -1,15 +1,21 @@
 <header>
-  <%= link_to "GIFT LOG", root_path, id: "logo", class: "navbar-brand bg-danger text-white pl-2 pr-2 mt-3 mb-3 ml-3" %>
-  <nav>
-    <ul class="navbar bg-danger">
-        <li class="list-unstyled nav-item mr-5"><%= link_to root_path, class: "text-white" do %><i class="fas fa-home" data-toggle="tooltip" data-placement="bottom" title="ホーム"></i><% end %>
-        </li>
+  <%# <%= link_to "GIFT LOG", root_path, id: "logo", class: "navbar-brand bg-danger text-white pl-2 pr-2 mt-3 mb-3 ml-3" %> 
+  <nav class="navbar navbar-expand-lg navbar-light bg-danger">
+    <%= link_to "GIFT LOG", root_path, id: "logo", class: "navbar-brand bg-white text-danger pl-2 pr-2 mt-3 mb-3 ml-5  d-flex justify-content-start" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerMenu" aria-controls="navbarTogglerMenu" aria-expanded="false"  aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerMenu">
+    <ul class="d-lg-flex align-items-lg-center">
+        
       <% if logged_in? %>
-        <li class="list-unstyled nav-item mr-5"><%= link_to users_path, class: "text-white" do %>
+        <li class="list-unstyled nav-item mr-5 mb-4"><%= link_to root_path, class: "text-white" do %><i class="fas fa-home" data-toggle="tooltip" data-placement="bottom" title="ホーム"></i><% end %>
+        </li>
+        <li class="list-unstyled nav-item mr-5 mb-4"><%= link_to users_path, class: "text-white" do %>
         <i class="fas fa-users" data-toggle="tooltip" data-placement="bottom" title="ユーザーリスト"></i><% end %></li>
-        <li class="list-unstyled nav-item mr-5"><%= link_to '#', class: "text-white" do %><i class="far fa-calendar" data-toggle="tooltip" data-placement="bottom" title="カレンダー"></i><% end %></li>
-        <li class="list-unstyled nav-item mr-5"><%= link_to favorite_people_user_path(current_user), class: "text-white" do %><i class="fas fa-hand-holding-heart" data-toggle="tooltip" data-placement="bottom" title="大切な人リスト"></i><% end %></li>
-        <li class="dropdown list-unstyled mr-5">
+        <li class="list-unstyled nav-item mr-5 mb-4"><%= link_to '#', class: "text-white" do %><i class="far fa-calendar" data-toggle="tooltip" data-placement="bottom" title="カレンダー"></i><% end %></li>
+        <li class="list-unstyled nav-item mr-5 mb-4"><%= link_to favorite_people_user_path(current_user), class: "text-white" do %><i class="fas fa-hand-holding-heart" data-toggle="tooltip" data-placement="bottom" title="大切な人リスト"></i><% end %></li>
+        <li class="dropdown list-unstyled mr-5 mb-4">
           <a href= '#' class="dropdown-toggle text-white" data-toggle="dropdown">
           <div data-toggle="tooltip",data-placement="bottom", title= <%=current_user.name %> >
           <% if current_user.image? %>
@@ -29,13 +35,16 @@
             <li><i class="fas fa-sign-out-alt"></i><%= link_to "ログアウト", logout_path, method: :delete, class: "text-white" %></li>
           </ul>
         </li>
-        <li class="list-unstyled nav-item mr-5"><%= link_to about_path, class: "text-white" do %><i class="far fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="GIFT LOGとは？"></i><% end %></li>
-        <li class="list-unstyled nav-item mr-5"><%= link_to new_post_path, class: "btn btn-success btn-block" do %><i class="far fa-edit" data-toggle="tooltip" data-placement="bottom" title="投稿する"></i><% end %></li>
+        <li class="list-unstyled nav-item mr-5 mb-4"><%= link_to about_path, class: "text-white" do %><i class="far fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="GIFT LOGとは？"></i><% end %></li>
+        <li class="list-unstyled nav-item mr-5"><%= link_to new_post_path, class: "btn btn-success btn-lg" do %><i class="far fa-edit" data-toggle="tooltip" data-placement="bottom" title="投稿する"></i><% end %></li>
       <% else %>
-        <li class="list-unstyled nav-item mr-5"><%= link_to "ユーザー登録", signup_path, class: "text-white" %></li>
-        <li class="list-unstyled nav-item mr-5"><%= link_to "ログイン", login_path, class: "text-white" %></li>
-        <li class="list-unstyled nav-item mr-5"><%= link_to about_path, class: "text-white" do %><i class="far fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="GIFT LOGとは？"></i><% end %></li>
+        <li class="list-unstyled nav-item mr-5 mb-4 mt-4"><%= link_to root_path, class: "text-white" do %><i class="fas fa-home" data-toggle="tooltip" data-placement="bottom" title="ホーム"></i><% end %>
+        </li>
+        <li class="list-unstyled nav-item mr-5 mb-4"><%= link_to "ユーザー登録", signup_path, class: "text-white" %></li>
+        <li class="list-unstyled nav-item mr-5 mb-4"><%= link_to "ログイン", login_path, class: "text-white" %></li>
+        <li class="list-unstyled nav-item mr-5 mb-4"><%= link_to about_path, class: "text-white" do %><i class="far fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="GIFT LOGとは？"></i><% end %></li>
       <% end %>
     </ul>
+    </div>
   </nav>
 </header>

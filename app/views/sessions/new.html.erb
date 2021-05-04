@@ -8,14 +8,14 @@
         <%= f.label :email, 'メールアドレス' %>
         <br>
         <%# <div class="center-block"> %>
-        <%= f.email_field :email, class: "form-control mx-auto" %>
+        <%= f.email_field :email, class: "form-control w-50 mx-auto" %>
         <%# </div> %>
       </div>
 
       <div class="card-body">
         <%= f.label :password, 'パスワード' %>
         <br>
-        <%= f.password_field :password, class: "form-control mx-auto" %>
+        <%= f.password_field :password, class: "form-control w-50 mx-auto" %>
       </div>
 
       <div class="card-body">
@@ -29,6 +29,5 @@
         <%= f.submit "ログイン" %>
       </div>
     <% end %>
-
-    <%= link_to "アカウントをお持ちでない方", signup_path %>
+    <%= link_to "アカウントをお持ちでない方はこちらから", signup_path %>
   </div>

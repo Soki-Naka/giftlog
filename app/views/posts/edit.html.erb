@@ -6,31 +6,31 @@
     <%= form_with(model: @post, url: { action: :update},  local: true) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
 
-        <p><%= f.label :who, "1.誰に贈りたいですか？" %>(必須)</p>
-        <%= f.text_field :who, id: "input-who", placeholder: "例:彼女、職場の上司", class: "form-control mx-auto" %>
+        <p><%= f.label :who, "1.誰に贈りたいですか？", class: "mt-3" %>(必須)</p>
+        <%= f.text_area :who, id: "input-who", placeholder: "例:彼女、職場の上司", class: "form-control w-50 mx-auto",size: '5x2' %>
         <div class="cnt_area"><span class="now_cnt_who"></span> / 50</div>
 
-        <p>2.その人はどんな人ですか？</p>
+        <p class="mt-3">2.その人はどんな人ですか？</p>
 
-        <p><%= f.label :gender, "性別" %>(必須)</p>
+        <p><%= f.label :gender, "性別", class: "mt-1" %>(必須)</p>
         <%= f.select :gender, [["男性", "男性"], ["女性", "女性"]], include_blank: "選択してください" %>
 
-        <p><%= f.label :age, "年齢" %>(必須)</p>
+        <p><%= f.label :age, "年齢", class: "mt-3" %>(必須)</p>
         <%= f.select :age, [["10代まで", "10代まで"], ["10代", "10代"], ["20代", "20代"], ["30代", "30代"], ["40代", "40代"], ["50代", "50代"], ["60代", "60代"], ["70代", "70代"], ["80代", "80代"], ["90代", "90代"], ["100代以上", "100代以上"]], include_blank: "選択してください" %>
 
-        <p><%= f.label :job, "職業" %>(任意)</p>
-        <%= f.text_field :job, id: "input-job", placeholder:"例:学生、高校教師", class: "form-control mx-auto" %>
+        <p><%= f.label :job, "職業", class: "mt-3" %>(任意)</p>
+        <%= f.text_area :job, id: "input-job", placeholder:"例:学生、高校教師", class: "form-control w-50 mx-auto",size: '5x2' %>
         <div class="cnt_area"><span class="now_cnt_job"></span> / 50</div>
 
-        <p><%= f.label :situation, "3.どんなシチュエーションですか？" %>(必須)</p>
+        <p><%= f.label :situation, "3.どんなシチュエーションですか？", class: "mt-3" %>(必須)</p>
         <%= f.select :situation, [["誕生日祝い", "誕生日祝い"], ["結婚祝い", "結婚祝い"], ["出産祝い", "出産祝い"], ["引越祝い", "引越祝い"], ["クリスマス", "クリスマス"], ["バレンタイン", "バレンタイン"], ["ホワイトデー", "ホワイトデー"], ["合格祝い", "合格祝い"], ["入学祝い", "入学祝い"], ["卒業祝い", "卒業祝い"], ["就職祝い", "就職祝い"], ["昇進祝い", "昇進祝い"], ["記念日", "記念日"], ["送別会", "送別会"], ["送別会", "送別会"], ["母の日", "母の日"], ["父の日", "父の日"], ["敬老の日", "敬老の日"], ["お礼", "お礼"], ["パーティー", "パーティー"], ["お見舞い", "お見舞い"], ["手土産", "手土産"], ["その他", "その他"]], include_blank: "選択してください" %>
 
-        <p><%= f.label :item, "4.何を贈ろうと思っていますか？" %>(必須)</p>
-        <%= f.text_field :item, id: "input-item", placeholder:"複数候補があれば、全て記入", class: "form-control mx-auto" %>
-        <div class="cnt_area"><span class="now_cnt_item"></span> / 50</div>
+        <p><%= f.label :item, "4.何を贈ろうと思っていますか？", class: "mt-3" %>(必須)</p>
+        <%= f.text_area :item, id: "input-item", placeholder:"複数候補があれば、全て記入", class: "form-control w-50 mx-auto",size: '5x4' %>
+        <div class="cnt_area"><span class="now_cnt_item"></span> / 100</div>
 
         <% if @post.image.present? %>
-          <p><%= f.label :image, "5.贈りたいもののイメージ画像"  %>(任意)</p>
+          <p><%= f.label :image, "5.贈りたいもののイメージ画像", class: "mt-3" %>(任意)</p>
           <%= image_tag @post.image.url %>
           <%= f.file_field :image %>
           <p><%= f.check_box :remove_image %>画像を削除する</p>
@@ -39,19 +39,19 @@
           <%= f.file_field :image %>
         <% end %>
 
-        <p><%= f.label :price, "6.予算は？" %>(必須)</p>
+        <p><%= f.label :price, "6.予算は？", class: "mt-3" %>(必須)</p>
         <%= f.select :price, [["1,000円未満", "1,000円未満"], ["1,000~2,000円", "1,000~2,000円"], ["2,000~3,000円", "2,000~3,000円"], ["3,000~5,000円", "3,000~5,000円"], ["5,000~8,000円", "5,000~8,000円"], ["8,000~10,000円", "8,000~10,000円"], ["10,000~15,000円", "10,000~15,000円"], ["15,000円以上", "15,000円以上"]], include_blank: "選択してください" %>
 
-        <p><%= f.label :when, "7.いつ贈りたいと思っていますか？" %>(任意)</p>
-        <%= f.text_field :when, id: "input-when", placeholder:"例:来週末、次に会う時", class: "form-control mx-auto" %>
+        <p><%= f.label :when, "7.いつ贈りたいと思っていますか？", class: "mt-3" %>(任意)</p>
+        <%= f.text_area :when, id: "input-when", placeholder:"例:来週末、次に会う時", class: "form-control w-50 mx-auto",size: '5x2' %>
         <div class="cnt_area"><span class="now_cnt_when"></span> / 50</div>
 
-        <p><%= f.label :description, "8.ご自由に書いてください。" %>(任意)</p>
-        <%= f.text_area :description, placeholder: "プレゼントを贈る上で悩んでいることや贈りたいものの参考URLなどをご自由に書いてください。\n質問でも構いません。", size: '30x10', id: "input-description", class: "form-control w-75 mx-auto" %>
+        <p><%= f.label :description, "8.ご自由に書いてください。", class: "mt-3" %>(任意)</p>
+        <%= f.text_area :description, placeholder: "プレゼントを贈る上で悩んでいることや贈りたいものの参考URLなどをご自由に書いてください。\n質問でも構いません。", size: '5x13', id: "input-description", class: "form-control w-50 mx-auto" %>
         <div class="cnt_area"><span class="now_cnt_des"></span> / 400</div>
 
         <br>
-        <%= f.submit "更新", class: "btn btn-success btn-lg mb-2" %>
+        <%= f.submit "更新", class: "btn btn-success btn-lg mb-5" %>
 
     <% end %>
   </div>

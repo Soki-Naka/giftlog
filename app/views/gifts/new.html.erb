@@ -1,32 +1,32 @@
 <% provide(:title, "贈り物登録") %>
 
-<h1 class="text-center">贈り物登録</h1>
+<h1 class="text-center mt-3">贈り物登録</h1>
 
   <div class="border bg-light w-75 mx-auto mb-3 text-center">
     <%= form_with(scope: :gift, url: favorite_person_gifts_path(@favorite_person), local: true) do |f| %>
         <%= render 'shared/error_messages_for_gifts' %>
 
-        <p><%= f.label :item, "贈ったもの(必須)" %></p>
-        <%= f.text_field :item, id: "input-item", placeholder:"例:クマのぬいぐるみ", class: "form-control mx-auto" %>
+        <p><%= f.label :item, "贈ったもの(必須)", class: "mt-3" %></p>
+        <%= f.text_area :item, id: "input-item", placeholder:"例:クマのぬいぐるみ", class: "form-control w-50 mx-auto", size: '5x3' %>
         <div class="cnt_area"><span class="now_cnt_item">0</span> / 50</div>
 
-        <p><%= f.label :situation, "シチュエーション(任意)" %></p>
-        <%= f.text_field :situation, id: "input-situation", placeholder:"例:誕生日プレゼントとして", class: "form-control mx-auto" %>
+        <p><%= f.label :situation, "シチュエーション(任意)", class: "mt-3" %></p>
+        <%= f.text_area :situation, id: "input-situation", placeholder:"例:誕生日プレゼントとして", class: "form-control w-50 mx-auto", size: '5x3' %>
         <div class="cnt_area"><span class="now_cnt_situ">0</span> / 50</div>
 
-        <p><%= f.label :price, "予算(任意)" %></p>
-        <%= f.text_field :price, id: "input-price", class: "form-control mx-auto" %>円
+        <p><%= f.label :price, "予算(任意)", class: "mt-3" %></p>
+        <%= f.text_field :price, id: "input-price", class: "form-control w-50 mx-auto" %>円
         <div class="cnt_area"><span class="now_cnt_price">0</span> / 30</div>
 
-        <p><%= f.label :when, "いつ贈ったか(任意)" %></p>
-        <%= f.text_field :when, id: "input-when", placeholder:"例:5歳の誕生日に", class: "form-control mx-auto" %>
+        <p><%= f.label :when, "いつ贈ったか(任意)", class: "mt-3" %></p>
+        <%= f.text_area :when, id: "input-when", placeholder:"例:5歳の誕生日に", class: "form-control w-50 mx-auto", size: '5x3' %>
         <div class="cnt_area"><span class="now_cnt_when">0</span> / 50</div>
         
-        <p><%= f.label :description, "備考(任意)" %></p>
-        <%= f.text_area :description, size: '30x8', id: "input-description", placeholder:"プレゼントをあげた時の相手のリアクションやプレゼントを渡すまでの状況について忘れないようにここに記録しておきましょう", class: "form-control w-75 mx-auto" %>
+        <p><%= f.label :description, "備考(任意)", class: "mt-3" %></p>
+        <%= f.text_area :description, id: "input-description", placeholder:"プレゼントをあげた時の相手のリアクションやプレゼントを渡すまでの状況について忘れないようにここに記録しておきましょう", class: "form-control w-50 mx-auto", size: '5x9' %>
         <div class="cnt_area"><span class="now_cnt_des">0</span> / 200</div>
 
-        <p><%= f.submit "登録", class: "btn btn-success btn-lg" %></p>
+        <p><%= f.submit "登録", class: "btn btn-success btn-lg mt-5" %></p>
 
     <% end %>
   </div>

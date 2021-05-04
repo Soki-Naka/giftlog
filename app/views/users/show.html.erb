@@ -1,15 +1,15 @@
 <% provide(:title, @user.name) %>
-<div class="border mb-5 bg-light w-75 mx-auto">
-  <div class="text-center">
+<div class="border mb-5 mt-3 bg-light w-75 mx-auto">
+  <div class="text-center mt-2">
     <% if @user.image?%>
       <%= image_tag @user.image.to_s, size: '250x250', class: "rounded-circle"%>
     <% else %>
-      <%= image_tag "default.jpg" %>
+      <%= image_tag "default.jpg", class: "rounded-circle" %>
     <% end %>
     <h1><%= @user.name %></h1>
     <% if logged_in? %>
     <% @user ||= current_user %>
-    <div>
+    <div class="mb-3">
       <a href="<%= following_user_path(@user) %>">
         <strong id="following">
           <%= @user.following.count %>
@@ -24,21 +24,21 @@
       </a>
     </div>
     <% else %>
-    <div>
-      <span>
-        <strong id="following">
-          <%= @user.following.count %>
-        </strong>
-        フォロー
-      </span>
-      <span>
-        <strong id="followers">
-          <%= @user.followers.count %>
-        </strong>
-        フォロワー
-      </span>
+      <div class="mb-3">
+        <span>
+          <strong id="following">
+            <%= @user.following.count %>
+          </strong>
+          フォロー
+        </span>
+        <span>
+          <strong id="followers">
+            <%= @user.followers.count %>
+          </strong>
+          フォロワー
+        </span>
+      </div>
     <% end %>
-    </div>
     <div class="user-info col-3 mx-auto">
       <p>性別:<%= @user.gender %></p>
       <p>年齢:<%= @user.age %>歳</p>
@@ -46,21 +46,21 @@
       <p>出身:<%= @user.prefecture %></p>
       <p>自己紹介:<%= @user.introduction %></p>
     </div>
-  </div>
-</div>
 
-<div class="text-center">
-  <% if logged_in? %>
-    <% unless current_user?(@user) %>
-      <div id="follow_form">
-      <% if current_user.following?(@user) %>
-        <%= render 'unfollow' %>
-      <% else %>
-        <%= render 'follow' %>
+    <div class="text-center">
+    <% if logged_in? %>
+      <% unless current_user?(@user) %>
+        <div id="follow_form">
+        <% if current_user.following?(@user) %>
+          <%= render 'unfollow' %>
+        <% else %>
+          <%= render 'follow' %>
+        <% end %>
+        </div>
       <% end %>
-      </div>
     <% end %>
-  <% end %>
+    </div>
+  </div>
 </div>
 
 <% if false %>
@@ -100,7 +100,13 @@
         <%= render @posts %>
         <%= paginate @posts %>
       <% else %>
-        <p class="text-center">投稿はありません。<br>投稿して、みんなに質問してみよう！</p>
+        <p class="text-center">
+          <% if current_user != @user %>
+            <%= @user.name %>さんの<% end %>投稿はありません。
+        <% if current_user?(@user)%>
+          <br>投稿して、みんなに質問してみよう！
+        <% end %>
+        </p>
       <% end %>
     </div>
   </div>
@@ -112,7 +118,13 @@
         <%= render @posts %>
         <%= paginate @posts, theme: 'twitter-bootstrap-4' , pagination_class: "justify-content-center" %>
       <% else %>
-        <p class="text-center">コメントした投稿はありません。<br>みんなの投稿にコメントしてみよう！</p>
+        <p class="text-center">
+          <% if current_user != @user %>
+            <%= @user.name %>さんの<% end %>コメントした投稿はありません。
+          <% if current_user?(@user)%>
+            <br>みんなの投稿にコメントしてみよう！
+          <% end %>
+        </p>
       <% end %>
     </div>
   </div>
@@ -124,7 +136,13 @@
       <%= render @posts %>
       <%= paginate @posts %>
       <% else %>
-        <p class="text-center">いいねした投稿はありません。<br>みんなの投稿にいいねしてみよう！</p>
+        <p class="text-center">
+          <% if current_user != @user %>
+            <%= @user.name %>さんの<% end %>いいねした投稿はありません。
+          <% if current_user?(@user)%>
+            <br>みんなの投稿にいいねしてみよう！
+          <% end %>
+        </p>
       <% end %>
     </div>
   </div>
