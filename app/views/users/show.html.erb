@@ -1,5 +1,5 @@
 <% provide(:title, @user.name) %>
-<div class="border mb-5 mt-3 bg-light w-75 mx-auto">
+<div class="border mb-5 mt-3 bg-light w-75 mx-auto rounded">
   <div class="text-center mt-2">
     <% if @user.image?%>
       <%= image_tag @user.image.to_s, size: '250x250', class: "rounded-circle"%>
@@ -82,13 +82,13 @@
 
 <ul class="nav nav-tabs justify-content-center w-75 mx-auto ">
   <li class="nav-item">
-    <a href="#posts" class="nav-link active" data-toggle="tab">投稿一覧</a>
+    <a href="#posts" class="nav-link active rounded" data-toggle="tab">投稿一覧</a>
   </li>
   <li class="nav-item">
-    <a href="#comments" class="nav-link" data-toggle="tab">コメントした投稿</a>
+    <a href="#comments" class="nav-link rounded" data-toggle="tab">コメントした投稿</a>
   </li>
   <li class="nav-item">
-    <a href="#post-likes" class="nav-link" data-toggle="tab">いいねした投稿</a>
+    <a href="#post-likes" class="nav-link rounded" data-toggle="tab">いいねした投稿</a>
   </li>
 </ul>
 

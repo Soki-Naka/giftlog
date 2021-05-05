@@ -116,21 +116,6 @@ body {
 }
 // コメントチャット風 ここまで
 
-// input[type="text"] {
-//   width: 250px;
-//   height: 30px;
-// }
-
-// input[type="email"] {
-//   width: 250px;
-//   height: 30px;
-// }
-
-// input[type="password"] {
-//   width: 250px;
-//   height: 30px;
-// }
-
 .heading {
   font-family: HanziPen SC;
   font-weight: bold;
@@ -141,3 +126,16 @@ body {
   height: calc( 1.3em * 5 );
   line-height: 1.3;
 }
+
+
+@media screen and (max-width:991px) {
+  .wrap {
+    
+    // display:flex;
+    // flex-flow: column;
+    // justify-content:space-around;
+  }
+  .menu-item {
+    margin-top: 5%;
+  }
+  }
