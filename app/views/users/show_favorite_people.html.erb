@@ -1,5 +1,11 @@
 <% provide(:title, @title) %>
   <div>
+    <div class="card mt-2">
+      <%= image_tag 'favorite_people_heading.jpg', size: '1100x200', class: "card-img opct opacity-50 heading-image" %>
+      <div class="card-img-overlay d-flex align-items-center justify-content-center">
+        <h1 class="font-weight-bold heading" >My favorite people ...</h1>
+      </div>
+    </div>
     <h1 class="text-center mt-3">大切な人リスト</h3>
       <div class="text-center mb-2">
         <%= link_to "登録する", new_favorite_person_path, class: "btn btn-success btn-sm mb-3" %>
