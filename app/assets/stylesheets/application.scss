@@ -3,9 +3,11 @@
 @import "bootstrap";
 @import "bootstrap/bootstrap-tooltip";
 
+// 全体
 body {
   background-color: #dedede;
 }
+// 全体 ここまで
 
 // ヘッダーメニュー
 .mymenu {
@@ -79,14 +81,6 @@ body {
   padding: 1em;
 }
 
-// .chat-talk .talk-icon img {
-  // max-width: 100%;
-  // height: auto;
-  // vertical-align: bottom;
-  // border: 2px solid #fff;
-  // border-radius: 50%;
-// }
-
 .chat-talk .talk-content:before {
   position: absolute;
   top: 15px;
@@ -96,7 +90,6 @@ body {
   height: 0;
   content: '';
   border: 10px solid transparent;
-  // border-right-color: #FFFFFF;
   border-right-color: #000;
 }
 .chat-talk.mytalk .talk-icon {
@@ -111,7 +104,6 @@ body {
   right: -20px;
   left: auto;
   border-color: transparent;
-  // border-left-color: #78FF6C;
   border-left-color: #000;
 }
 // コメントチャット風 ここまで
@@ -131,14 +123,11 @@ body {
 }
 // heading画像 ここまで
 
+// ヘッダーロゴ
 #logo {
   margin-left: 3%;
 }
-
-.row-5 {
-  height: calc( 1.3em * 5 );
-  line-height: 1.3;
-}
+// ヘッダーロゴ ここまで
 
 // ハンバーガーメニュー レスポンシブ対応
 @media screen and (max-width:991px) {
@@ -210,10 +199,6 @@ body {
   text-align: center;
 }
 
-// .good-point {
-//   margin-bottom: 5%;
-// }
-
 .good-point {
   padding-top: 5%;
   width:90%;
@@ -250,3 +235,36 @@ body {
 .about-buttons {
   clear: both;
 }
+
+// Aboutページ ここまで
+
+// 投稿に対してのいいね
+.like-link {
+  text-decoration: none;
+}
+
+.like-link:hover {
+  background-color: #fff!important;
+}
+
+.like-btn {
+  font-size: 15px;
+  color: #808080;
+}
+ 
+.unlike-btn {
+  font-size: 15px;
+  color: #e54747;
+}
+// 投稿に対してのいいね ここまで
+
+
+// メモ
+
+// ↓消してもどこにも影響なくて必要なければ消す
+// .row-5 {
+//   height: calc( 1.3em * 5 );
+//   line-height: 1.3;
+// }
+
+// メモ ここまで
