@@ -1,7 +1,6 @@
 <header>
-  <%# <%= link_to "GIFT LOG", root_path, id: "logo", class: "navbar-brand bg-danger text-white pl-2 pr-2 mt-3 mb-3 ml-3" %> 
   <nav class="navbar navbar-expand-lg navbar-light bg-danger">
-    <%= link_to "GIFT LOG", root_path, id: "logo", class: "navbar-brand bg-white text-danger pl-2 pr-2 ml-5  d-flex justify-content-start rounded" %>
+    <%= link_to "GIFT LOG", root_path, id: "logo", class: "navbar-brand bg-white text-danger pl-2 pr-2 d-flex justify-content-start rounded" %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerMenu" aria-controls="navbarTogglerMenu" aria-expanded="false"  aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -38,11 +37,11 @@
         <li class="list-unstyled nav-item mr-5"><%= link_to about_path, class: "text-white" do %><i class="far fa-question-circle menu-item" data-toggle="tooltip" data-placement="bottom" title="GIFT LOGとは？"></i><% end %></li>
         <li class="list-unstyled nav-item mr-5"><%= link_to new_post_path, class: "btn btn-success btn-lg menu-item" do %><i class="far fa-edit" data-toggle="tooltip" data-placement="bottom" title="投稿する"></i><% end %></li>
       <% else %>
-        <li class="list-unstyled nav-item mr-5"><%= link_to root_path, class: "text-white" do %><i class="fas fa-home" data-toggle="tooltip" data-placement="bottom" title="ホーム"></i><% end %>
+        <li class="list-unstyled nav-item mr-5"><%= link_to root_path, class: "text-white" do %><i class="fas fa-home menu-item" data-toggle="tooltip" data-placement="bottom" title="ホーム"></i><% end %>
         </li>
-        <li class="list-unstyled nav-item mr-5"><%= link_to "ユーザー登録", signup_path, class: "text-white" %></li>
-        <li class="list-unstyled nav-item mr-5"><%= link_to "ログイン", login_path, class: "text-white" %></li>
-        <li class="list-unstyled nav-item mr-5"><%= link_to about_path, class: "text-white" do %><i class="far fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="GIFT LOGとは？"></i><% end %></li>
+        <li class="list-unstyled nav-item mr-5 menu-item"><%= link_to "ユーザー登録", signup_path, class: "text-white" %></li>
+        <li class="list-unstyled nav-item mr-5 menu-item"><%= link_to "ログイン", login_path, class: "text-white" %></li>
+        <li class="list-unstyled nav-item mr-5"><%= link_to about_path, class: "text-white" do %><i class="far fa-question-circle menu-item" data-toggle="tooltip" data-placement="bottom" title="GIFT LOGとは？"></i><% end %></li>
       <% end %>
     </ul>
     </div>

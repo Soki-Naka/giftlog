@@ -116,10 +116,23 @@ body {
 }
 // コメントチャット風 ここまで
 
+// ホーム画像
 .heading {
   font-family: HanziPen SC;
-  font-weight: bold;
+  font-weight: 900;
   font-size: 60px;
+  color: black;
+}
+// ホーム画像 ここまで
+
+// heading画像
+.heading-image {
+  opacity: 0.7;
+}
+// heading画像 ここまで
+
+#logo {
+  margin-left: 3%;
 }
 
 .row-5 {
@@ -127,15 +140,113 @@ body {
   line-height: 1.3;
 }
 
-
+// ハンバーガーメニュー レスポンシブ対応
 @media screen and (max-width:991px) {
-  .wrap {
-    
-    // display:flex;
-    // flex-flow: column;
-    // justify-content:space-around;
-  }
   .menu-item {
     margin-top: 5%;
   }
+  .about-image {
+    display: none;
   }
+}
+// ハンバーガーメニュー レスポンシブ対応 ここまで
+
+// ハンバーガーメニュー色
+.navbar-light .navbar-toggler {
+  border-color: rgba(0,0,0,0);
+}
+
+.navbar-light .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30'
+  xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(999, 999, 999, 1)'
+  stroke-width='3' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+// ハンバーガーメニュー色 ここまで
+
+// Aboutページ
+.about-feeling {
+  color: red;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+.about-question {
+  color: blue;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.catch-copy {
+  color: green;
+  border-bottom: dashed green 1px;
+}
+
+.about-texts {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  text-align: center;
+}
+
+.first-sentence {
+  font-weight: bold;
+  display: inline-block;
+  border-bottom: solid black 1px;
+}
+
+.about-text {
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.about-heading {
+  text-align: center;
+  display: inline-block;
+  border-bottom: solid black 1px;
+  margin-bottom: 3%;
+  margin-top: 3%;
+  font-weight: 700;
+}
+
+.wrapper {
+  text-align: center;
+}
+
+// .good-point {
+//   margin-bottom: 5%;
+// }
+
+.good-point {
+  padding-top: 5%;
+  width:90%;
+  margin: 0 auto;
+  border-bottom: solid black 1px;
+}
+
+.good-point-texts {
+  margin-left: 1%;
+}
+
+.thinking-image {
+  float: right;
+}
+
+.signup-image {
+  float: left;
+  margin-top: 1%;
+}
+
+.gifts-image {
+  float: right;
+  margin-top: 1%;
+}
+
+.clear {
+  clear: both;
+}
+
+.starts {
+  text-align: center;
+}
+
+.about-buttons {
+  clear: both;
+}

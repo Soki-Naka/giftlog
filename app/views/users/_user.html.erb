@@ -1,5 +1,5 @@
 <li class="list-unstyled">
-  <div class="card bg-light text-center w-75 mx-auto mb-3">
+  <div class="card bg-light text-center w-75 mx-auto mb-3 rounded">
     <div class="card-img-top mt-2">
       <% if user.image? %>
         <%= image_tag user.image.to_s, size: '200x200', class: "rounded-circle" %>
@@ -10,9 +10,9 @@
     <div class="card-body user-info w-75 mx-auto">
       <h2 class="text-center"><%= link_to user.name, user, class: "stretched-link text-dark" %></h2>
       <div class="w-75 mx-auto">
-        <p>性別:<%= user.gender %></p>
-        <p>年齢:<%= user.age %>歳</p>
-        <p>自己紹介:<%= user.introduction %></p>
+        <p class="border-bottom"><span class="badge badge-pill badge-secondary ml-2 mr-1">性別</span><%= user.gender %></p>
+        <p class="border-bottom"><span class="badge badge-pill badge-secondary ml-2 mr-1">年齢</span><%= user.age %>歳</p>
+        <p class="border-bottom"><span class="badge badge-pill badge-secondary ml-2 mr-1">自己紹介</span><%= user.introduction %></p>
       </div>
     </div>
   </div>

@@ -15,5 +15,5 @@ class Post < ApplicationRecord
   mount_uploader :image, ImageUploader
   validates :price, presence: true
   validates :when, length: { maximum: 50 }
-  validates :description, length: { maximum: 400 }
+  validates :description, presence: true, length: { maximum: 400 }
 end

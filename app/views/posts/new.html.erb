@@ -1,8 +1,8 @@
 <% provide(:title, "新規投稿") %>
 
-<h1 class="text-center">新規投稿</h1>
+<h1 class="text-center mt-3">新規投稿</h1>
 
-  <div class="border bg-light mb-2">
+  <div class="border bg-light mb-2 w-75 mx-auto">
     <%= form_with(model: @post, local: true, class: "text-center") do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         
@@ -42,7 +42,7 @@
         <div class="cnt_area"><span class="now_cnt_when">0</span> / 50</div>
 
         <div>
-        <p><%= f.label :description, "8.ご自由に書いてください。", class: "mt-3" %>(任意)</p>
+        <p><%= f.label :description, "8.他のユーザーに聞きたいことなどを書いてください。", class: "mt-3" %>(必須)</p>
         <%= f.text_area :description, placeholder: "プレゼントを贈る上で悩んでいることや贈りたいものの参考URLなどをご自由に書いてください。\n質問でも構いません。", size: '5x13', id: "input-description", class: "form-control w-50 mx-auto" %>
         <div class="cnt_area"><span class="now_cnt_des">0</span> / 400</div>
 

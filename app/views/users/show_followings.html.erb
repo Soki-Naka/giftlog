@@ -1,6 +1,6 @@
 <% provide(:title, @title) %>
   <div>
-    <h1 class="text-center"><%= @user.name %></h1>
+    <h1 class="text-center mt-3"><%= @user.name %></h1>
     <div class="text-center mb-5">
       <%= "#{@user.following.count}フォロー" %> | <%= link_to "#{@user.followers.count}フォロワー", followers_user_path(@user) %>
     </div>

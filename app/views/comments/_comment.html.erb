@@ -1,41 +1,4 @@
-<% if false %>
-<div class="card bg-light text-center w-75 mx-auto mb-2">
-<%# <div class="border mb-2"> %>
-  <ul class="list-unstyled">
-    <li>
-      <% unless comment.user.blank? %>
-        <a href="<%= user_path(comment.user_id) %>"></a>
-      <% end %>
-      <div class="card-img-top col-1 mt-2 mx-auto" data-toggle="tooltip" data-placement="bottom" title=<%= comment.user.name %> >
-        <% if comment.user.image? %>
-          <%= link_to image_tag(comment.user.image.to_s, size: '50x50',class: "rounded-circle"), comment.user %>
-        <% else %>
-          <%= link_to image_tag("default.jpg", size: '50x50',class: "rounded-circle"), comment.user %>
-        <% end %>
-      </div>
-      <%# <%= link_to comment.user.name, comment.user unless comment.user.blank? %>
-      <br>
-      <div class="ml-1 card-body"> 
-        <%= comment.content %>
-        <p><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></p>
-      </div>
-
-      <% if current_user?(@post.user) && comment.user != current_user %>
-
-        <%= render 'comment_likes/like', post: @post, comment: comment %>
-
-      <% end %>
-
-      <% if current_user?(comment.user) %>
-        <%= link_to "コメント削除", post_comment_path(@post, comment), method: :delete, class: "btn btn-danger btn-sm ml-1" %>
-      <% end %>
-    </li>
-  </ul>
-</div>
-<% end %>
-
-  
-<div id="chat-frame">
+<div id="chat-frame" class="rounded">
   <ul class="list-unstyled">
   <div>
     <% if comment.user == current_user %>
@@ -53,7 +16,7 @@
       <br>
       <div class="talk-content"> 
         <%= comment.content %>
-        <p><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+        <p class="small">投稿日時:<%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></p>
       </div>
 
       <% if @post.user.comment_liked_by?(comment.id) %>
@@ -80,7 +43,7 @@
       <br>
       <div class="talk-content"> 
         <%= comment.content %>
-        <p><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+         <p class="small">投稿日時:<%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></p>
       </div>
 
       <% if current_user != @post.user && @post.user.comment_liked_by?(comment.id) %>

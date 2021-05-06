@@ -9,26 +9,20 @@
       <% end %>
     </div>
 
-    <% if false %>
-    <div class="col-2 border">
-      <p class="small">ユーザー名:<%= link_to post.user.name, post.user, class:"small text-dark" %></p>
-      <p class="small">性別:<%= post.user.gender %></p>
-      <p class="small">年齢:<%= post.user.age %>歳</p>
-    </div>
-    <% end %>
-
     <div class="card-body post-content w-75 mx-auto">
-      <p>贈りたいもの:<%= post.item %></p>
+      <p class="border-bottom"><span class="badge badge-pill badge-dark ml-2 mr-1">贈りたいもの</span><%= post.item %></p>
       <% if post.image? %>
-        <p class="small">贈りたいもののイメージ画像</p>
+        <p class="small"><span class="badge badge-pill badge-dark ml-2 mr-1">贈りたいもののイメージ画像</span></p>
         <%= link_to post.image.to_s, "data-lightbox" => post.image.to_s do %>
         <%= image_tag post.image.to_s, size: '150x150' %>
         <% end %>
       <% end %>
-      <p>贈りたい人:<%= post.who %></p>
-      <p>シチュエーション:<%= post.situation %></p>
-      <p><br><%= post.description %></p>
-      <span class="timestamp small">
+      <p class="border-bottom"><span class="badge badge-pill badge-dark ml-2 mr-1">贈りたい人</span><%= post.who %></p>
+      <p class="border-bottom"><span class="badge badge-pill badge-dark ml-2 mr-1">シチュエーション</span><%= post.situation %></p>
+      <p class="border-bottom ml-2 mr-1">
+        <span class="badge badge-pill badge-dark">説明</span><br><%= post.description %>
+      </p>
+      <span class="timestamp small ml-2">
         投稿日時:<%= post.created_at.strftime('%Y/%m/%d %H:%M') %>
       </span>
     </div>
@@ -53,7 +47,7 @@
     </div>
 
     <div class="card-body">
-      <%= link_to "もっと見る", "/posts/#{post.id}", class: "btn" %>
+      <%= link_to "もっと見る", "/posts/#{post.id}", class: "small" %>
     </div>
 
   </div>

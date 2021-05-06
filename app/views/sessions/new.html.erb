@@ -1,5 +1,5 @@
 <% provide(:title, "ログイン") %>
-<h1 class="text-center">ログイン</h1>
+<h1 class="text-center mt-3">ログイン</h1>
 
   <div class="card text-center bg-light w-75 mx-auto mb-2">
     <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
@@ -7,9 +7,7 @@
       <div class="card-body">
         <%= f.label :email, 'メールアドレス' %>
         <br>
-        <%# <div class="center-block"> %>
         <%= f.email_field :email, class: "form-control w-50 mx-auto" %>
-        <%# </div> %>
       </div>
 
       <div class="card-body">
@@ -21,7 +19,7 @@
       <div class="card-body">
         <%= f.label :remember_me, class: "checkbox inline" do %>
         <%= f.check_box :remember_me %>
-        <span>メールアドレスとパスワードを記憶する</span>
+        <span class="small">メールアドレスとパスワードを記憶する</span>
         <% end %>
       </div>
 
@@ -29,5 +27,5 @@
         <%= f.submit "ログイン" %>
       </div>
     <% end %>
-    <%= link_to "アカウントをお持ちでない方はこちらから", signup_path %>
+    <%= link_to "アカウントをお持ちでない方はこちらから", signup_path, class: "small" %>
   </div>

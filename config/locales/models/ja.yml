@@ -23,7 +23,7 @@ ja:
           item: 贈りたいもの
           price: 予算
           when: いつ贈りたいか
-          description: 自由記述
+          description: 説明
       favorite_person: 
           name: 名前
           image: 画像

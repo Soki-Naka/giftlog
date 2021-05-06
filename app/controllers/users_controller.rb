@@ -54,16 +54,6 @@ class UsersController < ApplicationController
     render 'show_followers'
   end
 
-  # def post_likes
-  #   @user = User.find(params[:id])
-  #   @posts = @user.liked_posts.page(params[:page]).per(5)
-  # end
-
-  # def comments
-  #   @user = User.find(params[:id])
-  #   @posts = @user.commented_posts.distinct.page(params[:page]).per(5)
-  # end
-
   def favorite_people
     @title = '大切な人リスト'
     @user  = User.find(params[:id])
