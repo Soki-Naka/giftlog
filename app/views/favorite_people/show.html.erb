@@ -1,0 +1,31 @@
+<% provide(:title, @favorite_person.name) %>
+<div>
+<div class="border text-center bg-light w-75 mx-auto mt-3 rounded">
+  <% if @favorite_person.image?%>
+    <%= image_tag @favorite_person.image.to_s, size: '200x200', class: "rounded-circle mt-2" %>
+  <% else %>
+    <%= image_tag "default.jpg", size: '200x200',class: "rounded-circle mt-2" %>
+  <% end %>
+  <h2><%= @favorite_person.name %></h2>
+  <div class="w-25 mx-auto favorite-person-info">
+    <p class="border-bottom"><span class="badge badge-pill badge-dark ml-2 mr-1">誕生日</span><%= @favorite_person.birthday&.strftime('%01m月%01d日') %></p>
+    <p class="border-bottom"><span class="badge badge-pill badge-dark ml-2 mr-1">備考</span><%= @favorite_person.description %></p>
+  </div>
+</div>
+
+<div>
+  <h1 class="text-center mt-5">贈ったものリスト</h1>
+
+  <div class="text-center mb-2">
+    <%= link_to "登録する",  new_favorite_person_gift_path(@favorite_person), class: "btn btn-success btn-sm mb-3"  %>
+  </div>
+  <% if @gifts.any? %>
+    <ul class="list-unstyled">
+      <%= render @gifts %>
+      <%= paginate @gifts, theme: 'twitter-bootstrap-4' , pagination_class: "justify-content-center" %>
+    </ul>
+  <% else %>
+    <p class="text-center"><%= @favorite_person.name %>さんに今までに何か贈ったことはないですか？<br>贈ったものがあれば登録してみよう！</p>
+  <% end %>
+</div>
+</div>

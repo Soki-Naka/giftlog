@@ -1,0 +1,17 @@
+<div class="card bg-light text-center w-50 mx-auto mb-3 rounded">
+  <li>
+    <div class="card-body gift-info w-75 mx-auto">
+      <p class="border-bottom"><span class="badge badge-pill badge-dark ml-2 mr-1">贈ったもの</span><%= gift.item %></p>
+      <p class="border-bottom"><span class="badge badge-pill badge-dark ml-2 mr-1">シチュエーション</span><%= gift.situation %></p>
+      <p class="border-bottom"><span class="badge badge-pill badge-dark ml-2 mr-1">予算</span><%= gift.price %></p>
+      <p class="border-bottom"><span class="badge badge-pill badge-dark ml-2 mr-1">いつ贈ったか</span><%= gift.when %></p>
+      <p class="border-bottom"><span class="badge badge-pill badge-dark ml-2 mr-1">備考</span><%= gift.description %></p>
+    </div>
+
+    <div class="card-body">
+      <%= link_to "データ削除", gift, method: :delete, 
+      data: { confirm: "削除してもよろしいですか?" }, class: "btn btn-danger btn-sm mb-2" %>
+      <%= link_to "データ編集", edit_gift_path(gift),class: "btn btn-danger btn-sm mb-2" %>
+    </div>
+  </li>
+</div>

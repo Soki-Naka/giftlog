@@ -1,0 +1,17 @@
+<% provide(:title, @title) %>
+  <div>
+    <h1 class="text-center mt-3"><%= @user.name %></h1>
+    <div class="text-center mb-5">
+      <%= link_to "#{@user.following.count}フォロー", following_user_path(@user) %> | <%= "#{@user.followers.count}フォロワー" %>
+    </div>
+    <h1 class="text-center"><%= @title %></h3>
+    <% if @users.any? %>
+      <%= render @users %>
+      <%= paginate @users, theme: 'twitter-bootstrap-4' , pagination_class: "justify-content-center" %>
+    <% else %>
+      <p class="text-center">フォロワーはいません。
+      <% if current_user?(@user) %>
+        <br>あなたから誰かをフォローしてみよう！</p>
+      <% end%>
+    <% end %>
+  </div>

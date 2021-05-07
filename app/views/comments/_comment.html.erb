@@ -1,0 +1,69 @@
+<div id="chat-frame" class="rounded">
+  <ul class="list-unstyled">
+  <div>
+    <% if comment.user == current_user %>
+    <li class="chat-talk mytalk">
+      <% unless comment.user.blank? %>
+        <a href="<%= user_path(comment.user_id) %>"></a>
+      <% end %>
+      <div class="talk-icon" data-toggle="tooltip" data-placement="bottom" title=<%= comment.user.name %> >
+        <% if comment.user.image? %>
+          <%= link_to image_tag(comment.user.image.to_s, size: '50x50',class: "rounded-circle"), comment.user %>
+        <% else %>
+          <%= link_to image_tag("default.jpg", size: '50x50',class: "rounded-circle"), comment.user %>
+        <% end %>
+      </div>
+      <br>
+      <div class="talk-content"> 
+        <%= comment.content %>
+        <p class="small">投稿日時:<%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+      </div>
+
+      <% if @post.user.comment_liked_by?(comment.id) %>
+        <p>このコメントは投稿者の<%= @post.user.name %>さんからいいねされました！</p>
+      <% end %>
+
+        <%= link_to "コメント削除", post_comment_path(@post, comment), method: :delete,
+        data: { confirm: "コメントを削除してもよろしいですか?" }, class: "btn btn-danger btn-sm ml-1 mt-2" %>
+    </li>
+      
+
+   <% else %>
+      <li class="chat-talk">
+      <% unless comment.user.blank? %>
+        <a href="<%= user_path(comment.user_id) %>"></a>
+      <% end %>
+      <div class="talk-icon" data-toggle="tooltip" data-placement="bottom" title=<%= comment.user.name %> >
+        <% if comment.user.image? %>
+          <%= link_to image_tag(comment.user.image.to_s, size: '50x50',class: "rounded-circle"), comment.user %>
+        <% else %>
+          <%= link_to image_tag("default.jpg", size: '50x50',class: "rounded-circle"), comment.user %>
+        <% end %>
+      </div>
+      <br>
+      <div class="talk-content"> 
+        <%= comment.content %>
+         <p class="small">投稿日時:<%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+      </div>
+
+      <% if current_user != @post.user && @post.user.comment_liked_by?(comment.id) %>
+        <p>このコメントは投稿者の<%= @post.user.name %>さんからいいねされました！</p>
+      <% end %>
+
+      <% if current_user?(@post.user) && comment.user != current_user %>
+
+      <%= render 'comment_likes/like', post: @post, comment: comment %>
+      <% end %>
+    </li>
+   <% end %>
+
+    </div>
+  </ul>
+</div>
+
+
+
+
+
+
+ 

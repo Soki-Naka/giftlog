@@ -1,0 +1,133 @@
+<% provide(:title, @user.name) %>
+<div class="border mb-5 mt-3 bg-light w-75 mx-auto rounded">
+  <div class="text-center mt-2">
+    <% if @user.image?%>
+      <%= image_tag @user.image.to_s, size: '250x250', class: "rounded-circle"%>
+    <% else %>
+      <%= image_tag "default.jpg", class: "rounded-circle" %>
+    <% end %>
+    <h1><%= @user.name %></h1>
+    <% if logged_in? %>
+    <% @user ||= current_user %>
+    <div class="mb-3">
+      <a href="<%= following_user_path(@user) %>">
+        <strong id="following">
+          <%= @user.following.count %>
+        </strong>
+        フォロー
+      </a>
+      <a href="<%= followers_user_path(@user) %>">
+        <strong id="followers">
+          <%= @user.followers.count %>
+        </strong>
+        フォロワー
+      </a>
+    </div>
+    <% else %>
+      <div class="mb-3">
+        <span>
+          <strong id="following">
+            <%= @user.following.count %>
+          </strong>
+          フォロー
+        </span>
+        <span>
+          <strong id="followers">
+            <%= @user.followers.count %>
+          </strong>
+          フォロワー
+        </span>
+      </div>
+    <% end %>
+    <div class="user-info col-xl-3 mx-auto">
+      <p class="border-bottom"><span class="badge badge-pill badge-secondary ml-2 mr-1">性別</span><%= @user.gender %></p>
+      <p class="border-bottom"><span class="badge badge-pill badge-secondary ml-2 mr-1">年齢</span><%= @user.age %>歳</p>
+      <p class="border-bottom"><span class="badge badge-pill badge-secondary ml-2 mr-1">職業</span><%= @user.job %></p>
+      <p class="border-bottom"><span class="badge badge-pill badge-secondary ml-2 mr-1">出身</span><%= @user.prefecture %></p>
+      <p class="border-bottom ml-2 mr-1"><span class="badge badge-pill badge-secondary">自己紹介</span><br><%= @user.introduction %></p>
+    </div>
+
+    <div class="text-center">
+    <% if logged_in? %>
+      <% unless current_user?(@user) %>
+        <div id="follow_form">
+        <% if current_user.following?(@user) %>
+          <%= render 'unfollow' %>
+        <% else %>
+          <%= render 'follow' %>
+        <% end %>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+<ul class="nav nav-tabs justify-content-center w-75 mx-auto ">
+  <li class="nav-item">
+    <a href="#posts" class="nav-link active rounded" data-toggle="tab">投稿一覧</a>
+  </li>
+  <li class="nav-item">
+    <a href="#comments" class="nav-link rounded" data-toggle="tab">コメントした投稿</a>
+  </li>
+  <li class="nav-item">
+    <a href="#post-likes" class="nav-link rounded" data-toggle="tab">いいねした投稿</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div id="posts" class="tab-pane active">
+    <h1 class="text-center mt-3">投稿一覧</h1>
+    <div class="w-75 mx-auto">
+      <% if @user.posts.any? %>
+        <%= render @posts %>
+        <%= paginate @posts %>
+      <% else %>
+        <p class="text-center">
+          <% if current_user != @user %>
+            <%= @user.name %>さんの<% end %>投稿はありません。
+        <% if current_user?(@user)%>
+          <br>投稿して、みんなに質問してみよう！
+        <% end %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+
+  <div id="comments" class="tab-pane">
+    <h1 class="text-center mt-3">コメントした投稿</h1>
+    <div class="w-75 mx-auto">
+      <% if @user.comments.any? && @posts = @user.commented_posts.distinct.page(params[:page]).per(5) %>
+        <%= render @posts %>
+        <%= paginate @posts, theme: 'twitter-bootstrap-4' , pagination_class: "justify-content-center" %>
+      <% else %>
+        <p class="text-center">
+          <% if current_user != @user %>
+            <%= @user.name %>さんの<% end %>コメントした投稿はありません。
+          <% if current_user?(@user)%>
+            <br>みんなの投稿にコメントしてみよう！
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+
+  <div id="post-likes" class="tab-pane">
+    <h1 class="text-center mt-3">いいねした投稿</h1>
+    <div class="w-75 mx-auto">
+      <% if @user.post_likes.any? && @posts = @user.liked_posts.page(params[:page]).per(5) %>
+      <%= render @posts %>
+      <%= paginate @posts %>
+      <% else %>
+        <p class="text-center">
+          <% if current_user != @user %>
+            <%= @user.name %>さんの<% end %>いいねした投稿はありません。
+          <% if current_user?(@user)%>
+            <br>みんなの投稿にいいねしてみよう！
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+
+</div>

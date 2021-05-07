@@ -1,0 +1,49 @@
+<% provide(:title, "新規大切な人登録") %>
+
+<h1 class="text-center mt-3">大切な人新規登録</h1>
+
+  <div class="border bg-light w-75 mx-auto mb-3 text-center">
+    <%= form_with(model: @favorite_person,local: true) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <p><%= f.label :name, "名前(必須)", class:'mt-3' %></p>
+        <%= f.text_area :name, id: "input-name", placeholder:"ニックネームなど", class: "form-control w-50 mx-auto", size: '5x3' %>
+        <div class="cnt_area"><span class="now_cnt_name">0</span> / 50</div>
+
+        <p><%= f.label :image, "画像(任意)", class:'mt-3' %></p>
+        <%= f.file_field :image %>
+
+        <p><%= f.label :birthday, "誕生日(任意)", class:'mt-3' %></p>
+        <%= f.date_select :birthday, discard_year: true, prompt:"--",use_month_numbers:true, date_separator: '月'  %>日
+
+        <p><%= f.label :description, "備考(任意)", class:'mt-3' %></p>
+        <%= f.text_area :description, id: "input-description", placeholder:"食の好みや趣味などをメモ書きしておきましょう", class: "form-control w-50 mx-auto", size: '5x9' %>
+        <div class="cnt_area"><span class="now_cnt_des">0</span> / 200</div>
+
+        <p><%= f.submit "登録", class: "btn btn-success btn-lg mt-5" %></p>
+
+    <% end %>
+  </div>
+
+<script>
+jQuery(function($){
+    // name入力時
+    $('#input-name').on('input', function(){
+        //文字数を取得
+        var cnt = $(this).val().length;
+        //現在の文字数を表示
+        $('.now_cnt_name').text(cnt);
+    });
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-name').trigger('input');
+    // description入力時
+    $('#input-description').on('input', function(){
+        //文字数を取得
+        var cnt = $(this).val().length;
+        //現在の文字数を表示
+        $('.now_cnt_des').text(cnt);
+    });
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-description').trigger('input');
+});
+</script>

@@ -1,0 +1,72 @@
+<% provide(:title, @user.name) %>
+
+<h1><%= @user.name %></h1>
+<% if logged_in? %>
+<% @user ||= current_user %>
+<div>
+  <a href="<%= following_user_path(@user) %>">
+    <strong id="following">
+      <%= @user.following.count %>
+    </strong>
+    フォロー
+  </a>
+  <a href="<%= followers_user_path(@user) %>">
+    <strong id="followers">
+      <%= @user.followers.count %>
+    </strong>
+    フォロワー
+  </a>
+</div>
+<% else %>
+<div>
+  <span>
+    <strong id="following">
+      <%= @user.following.count %>
+    </strong>
+    フォロー
+  </span>
+  <span>
+    <strong id="followers">
+      <%= @user.followers.count %>
+    </strong>
+    フォロワー
+  </span>
+<% end %>
+</div>
+
+<% if @user.image? %>
+  <%= image_tag @user.image.to_s %>
+<% else %>
+  <%= image_tag "default.jpg" %>
+<% end %>
+<p>性別:<%= @user.gender %></p>
+<p>年齢:<%= @user.age %>歳</p>
+<p>職業:<%= @user.job %></p>
+<p>出身:<%= @user.prefecture %></p>
+<p>自己紹介:<%= @user.introduction %></p>
+
+<% if logged_in? %>
+  <% unless current_user?(@user) %>
+    <div id="follow_form">
+    <% if current_user.following?(@user) %>
+      <%= render 'unfollow' %>
+    <% else %>
+      <%= render 'follow' %>
+    <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="container">
+  <ul class="menu">
+    <li><%= link_to "投稿一覧", @user %></li>
+    <li><%= link_to "コメントした投稿", user_comments_path(@user.id) %></li>
+    <li><%= link_to "いいね(投稿)", user_post_likes_path(@user.id) %></li>
+    <li><%= link_to "いいね(コメント)", user_comment_likes_path(@user.id) %>
+  </ul>
+<div>
+
+<h3>いいね(コメント)</h3>
+<% if @user.comment_likes.any? %>
+  <%= paginate @comments %>
+<% end %>

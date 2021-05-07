@@ -1,0 +1,113 @@
+<div class="card bg-light text-center w-75 mx-auto mb-3 mt-3">
+  <div class="card-img-top mt-2">
+    <% if @post.user.image?%>
+      <%= image_tag @post.user.image.to_s, size: '200x200',class: "rounded-circle" %>
+    <% else %>
+      <%= image_tag "default.jpg", size: '200x200',class: "rounded-circle" %>
+    <% end %>
+  </div>
+  <div class="card-body rounded">
+    <div class="card-title">
+      <h2><%= @post.user.name %></h2>
+    </div>
+    <p>性別:<%= @post.user.gender %></p>
+    <p>年齢:<%= @post.user.age %>歳</p>
+  </div>
+</div>
+
+<div class="card bg-light text-center w-75 mx-auto mb-3">
+  <div class="card-body post-show-content w-75 mx-auto rounded">
+  <p class="border-bottom"><span class="badge badge-pill badge-dark mr-1">贈りたいもの</span><%= @post.item %></p>
+  <% if @post.image? %>
+    <p><span class="badge badge-pill badge-dark">贈りたいもののイメージ画像</span></p>
+    <%= image_tag @post.image.to_s, class: 'mb-2' %>
+  <% end %>
+  <p class="border-bottom"><span class="badge badge-pill badge-dark mr-1">贈りたい人</span><%= @post.who %></p>
+  <p><span class="badge badge-pill badge-dark">その人の特徴</span></p>
+  <p class="border-bottom"><span class="badge badge-pill badge-dark ml-2 mr-1">性別</span><%= @post.gender %></p>
+  <p class="border-bottom"><span class="badge badge-pill badge-dark ml-2 mr-1">年齢</span><%= @post.age %></p>
+  <p class="border-bottom"><span class="badge badge-pill badge-dark ml-2 mr-1">職業</span><%= @post.job %></p>
+  <p class="border-bottom"><span class="badge badge-pill badge-dark mr-1">シチュエーション</span><%= @post.situation %></p>
+  <p class="border-bottom"><span class="badge badge-pill badge-dark mr-1">予算</span><%= @post.price %></p>
+  <p class="border-bottom"><span class="badge badge-pill badge-dark mr-1">いつ贈りたいか</span><%= @post.when %></p>
+  <p class="border-bottom"><span class="badge badge-pill badge-dark">説明</span><br><%= @post.description %></p>
+  <span class="timestamp small">
+    投稿日時:<%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>
+  </span>
+  </div>
+  <div class="text-right mr-3">
+    <%= render 'post_likes/like', post: @post %>
+  </div>
+</div>
+
+<div class="text-right w-75 mx-auto mb-3">
+  <% if current_user?(@post.user) %>
+    <%= link_to "投稿削除", @post, method: :delete,
+  data: { confirm: "投稿を削除してもよろしいですか?" }, class: "mt-2 btn btn-danger btn-sm text-right" %>
+    <%= link_to "投稿編集", edit_post_path(@post), class: "mt-2 btn btn-danger btn-sm " %>
+  <% end %>
+</div>
+
+<h2 class="text-center">いいねしたユーザー</h2>
+<div class="text-center bg-light w-75 mx-auto mt-3 rounded">
+  <div class="d-inline-flex">
+  <% @post.liked_users.each do |user| %>
+      <li class="list-unstyled mb-2 mt-2 pr-1 mx-auto">
+        <div data-toggle="tooltip" data-placement="bottom" title=<%= user.name %> >
+          <% if user.image? %>
+            <%= link_to image_tag(user.image.to_s, size: '50x50', class: "rounded-circle"), user %>
+          <% else %>
+            <%= link_to image_tag("default.jpg", size: '50x50', class: "rounded-circle"), user %>
+          <% end %>
+        </div>
+      </li>
+  <% end %>
+  </div>
+</div>
+
+<div>
+  <div class="text-center w-75 mx-auto mt-3">
+    <% if logged_in? %>
+      <h2>コメントを投稿する</h2>
+      <div class="bg-light p-2 rounded">
+        <%= form_with(model: [@post, @comment], local: true) do |f| %>
+          <% if current_user == @post.user %>
+          <%= f.text_area :content ,id: "input-content", placeholder:"コメントをしてくれたユーザーにお礼を言おう！\n追加で質問があれば、ここに書きましょう。", class: "form-control  w-75 mx-auto", size: '30x11' %>
+          <% else %>
+          <%= f.text_area :content ,id: "input-content", placeholder:"投稿にコメントしてあげよう！\nプレゼント選びをするときに参考になることを言ってあげよう。", class: "form-control w-75 mx-auto", size: '30x11' %>
+          <% end %>
+          <div class="cnt_area"><span class="now_cnt_content">0</span> / 400</div>
+          <br>
+          <%= button_tag type: "submit", remote:true, class: " btn btn-success btn-sm" do %>
+            <i></i>
+            コメントする
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<% if @comments.any? %>
+  <h2 class="text-center mt-3">コメント一覧(<%= @comments.count%>件)</h2>
+<% else %>
+  <h2 class="text-center mt-3">コメント一覧</h2>
+  <p class="text-center mt-3">コメントはありません。</p>
+<% end %>
+
+
+<div class="container mb-3 rounded">
+  <%= render @comments, post: @post %>
+</div>
+
+<script>
+jQuery(function($){
+    // content入力時
+    $('#input-content').on('input', function(){
+        //文字数を取得
+        var cnt = $(this).val().length;
+        //現在の文字数を表示
+        $('.now_cnt_content').text(cnt);
+    });
+});
+</script>

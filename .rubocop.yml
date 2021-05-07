@@ -59,7 +59,11 @@ Metrics/CyclomaticComplexity:
 
 # 1行の文字数
 Metrics/LineLength:
+<<<<<<< HEAD
   Max: 160
+=======
+  Max: 210
+>>>>>>> origin/master
   Exclude:
     - "db/migrate/*.rb"
 
@@ -68,4 +72,19 @@ Metrics/MethodLength:
   Max: 20
   Exclude:
     - "db/migrate/*.rb"
+<<<<<<< HEAD
     
+=======
+
+# if 文の中に 3 行程度のブロックを書くぐらいは許容した方が現実的
+
+Style/GuardClause:
+  MinBodyLength: 5
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/routes.rb'
+>>>>>>> origin/master

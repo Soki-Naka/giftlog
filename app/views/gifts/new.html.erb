@@ -1,0 +1,84 @@
+<% provide(:title, "贈り物登録") %>
+
+<h1 class="text-center mt-3">贈り物登録</h1>
+
+  <div class="border bg-light w-75 mx-auto mb-3 text-center">
+    <%= form_with(scope: :gift, url: favorite_person_gifts_path(@favorite_person), local: true) do |f| %>
+        <%= render 'shared/error_messages_for_gifts' %>
+
+        <p><%= f.label :item, "贈ったもの(必須)", class: "mt-3" %></p>
+        <%= f.text_area :item, id: "input-item", placeholder:"例:クマのぬいぐるみ", class: "form-control w-50 mx-auto", size: '5x3' %>
+        <div class="cnt_area"><span class="now_cnt_item">0</span> / 50</div>
+
+        <p><%= f.label :situation, "シチュエーション(任意)", class: "mt-3" %></p>
+        <%= f.text_area :situation, id: "input-situation", placeholder:"例:誕生日プレゼントとして", class: "form-control w-50 mx-auto", size: '5x3' %>
+        <div class="cnt_area"><span class="now_cnt_situ">0</span> / 50</div>
+
+        <p><%= f.label :price, "予算(任意)", class: "mt-3" %></p>
+        <div>
+            <%= f.text_field :price, id: "input-price", class: "form-control w-50 mx-auto", placeholder:"例:10,000円" %>
+        </div>
+        <div class="cnt_area"><span class="now_cnt_price">0</span> / 30</div>
+
+        <p><%= f.label :when, "いつ贈ったか(任意)", class: "mt-3" %></p>
+        <%= f.text_area :when, id: "input-when", placeholder:"例:5歳の誕生日に", class: "form-control w-50 mx-auto", size: '5x3' %>
+        <div class="cnt_area"><span class="now_cnt_when">0</span> / 50</div>
+        
+        <p><%= f.label :description, "備考(任意)", class: "mt-3" %></p>
+        <%= f.text_area :description, id: "input-description", placeholder:"プレゼントをあげた時の相手のリアクションやプレゼントを渡すまでの状況について忘れないようにここに記録しておきましょう", class: "form-control w-50 mx-auto", size: '5x9' %>
+        <div class="cnt_area"><span class="now_cnt_des">0</span> / 200</div>
+
+        <p><%= f.submit "登録", class: "btn btn-success btn-lg mt-5" %></p>
+
+    <% end %>
+  </div>
+
+<script>
+jQuery(function($){
+    // item入力時
+    $('#input-item').on('input', function(){
+        //文字数を取得
+        var cnt = $(this).val().length;
+        //現在の文字数を表示
+        $('.now_cnt_item').text(cnt);
+    });
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-item').trigger('input');
+    // situation入力時
+    $('#input-situation').on('input', function(){
+        //文字数を取得
+        var cnt = $(this).val().length;
+        //現在の文字数を表示
+        $('.now_cnt_situ').text(cnt);
+    });
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-situation').trigger('input');
+    // price入力時
+    $('#input-price').on('input', function(){
+        //文字数を取得
+        var cnt = $(this).val().length;
+        //現在の文字数を表示
+        $('.now_cnt_price').text(cnt);
+    });
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-price').trigger('input');
+    // when入力時
+    $('#input-when').on('input', function(){
+        //文字数を取得
+        var cnt = $(this).val().length;
+        //現在の文字数を表示
+        $('.now_cnt_when').text(cnt);
+    });
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-when').trigger('input');
+    // description入力時
+    $('#input-description').on('input', function(){
+        //文字数を取得
+        var cnt = $(this).val().length;
+        //現在の文字数を表示
+        $('.now_cnt_des').text(cnt);
+    });
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-description').trigger('input');
+});
+</script>

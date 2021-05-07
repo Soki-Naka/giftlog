@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+<<<<<<< HEAD
     <title>Giftlog</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -14,3 +15,23 @@
     <%= yield %>
   </body>
 </html>
+=======
+    <title><%= yield(:title) %> | GIFT LOG</title>
+    <%= favicon_link_tag('giftlog_favicon.png') %>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <%= render 'layouts/rails_default' %>
+    <%= render 'layouts/shim' %>
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="container mx-auto">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
+  </body>
+</html>
+
+>>>>>>> origin/master
