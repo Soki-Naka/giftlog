@@ -44,6 +44,6 @@ class FavoritePeopleController < ApplicationController
   private
 
   def favorite_person_params
-    params.require(:favorite_person).permit(:name, :image, :birthday, :description)
+    params.require(:favorite_person).permit(:name, :image, :remove_image, :birthday, :description)
   end
 end

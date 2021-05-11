@@ -20,7 +20,9 @@
   <p class="border-bottom"><span class="badge badge-pill badge-dark mr-1">贈りたいもの</span><%= @post.item %></p>
   <% if @post.image? %>
     <p><span class="badge badge-pill badge-dark">贈りたいもののイメージ画像</span></p>
-    <%= image_tag @post.image.to_s, class: 'mb-2' %>
+    <%= link_to @post.image.to_s, "data-lightbox" => @post.image.to_s do %>
+    <%= image_tag @post.image.to_s,size: '200x200', class: 'mb-2' %>
+    <% end %>
   <% end %>
   <p class="border-bottom"><span class="badge badge-pill badge-dark mr-1">贈りたい人</span><%= @post.who %></p>
   <p><span class="badge badge-pill badge-dark">その人の特徴</span></p>
