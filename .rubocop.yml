@@ -80,3 +80,7 @@ Rails/UniqueValidationWithoutIndex:
 Metrics/BlockLength:
   Exclude:
     - 'config/routes.rb'
+
+Rails/FilePath:
+  Exclude:
+    - 'config/puma.rb'
