@@ -18,6 +18,10 @@ worker_timeout 3600 if ENV.fetch('RAILS_ENV', 'development') == 'development'
 # port ENV.fetch('PORT') { 3000 }
 bind "unix://#{Rails.root}/tmp/sockets/puma.sock"
 
+pidfile "#{Rails.root}/tmp/pids/puma.pid"
+state_path "#{Rails.root}/tmp/pids/puma.state"
+stdout_redirect "#{Rails.root}/log/puma.stdout.log", "#{Rails.root}/log/puma.stderr.log", true
+
 # Specifies the `environment` that Puma will run in.
 #
 environment ENV.fetch('RAILS_ENV') { 'development' }
