@@ -22,13 +22,6 @@ pidfile "#{Rails.root}/tmp/pids/puma.pid"
 state_path "#{Rails.root}/tmp/pids/puma.state"
 stdout_redirect "#{Rails.root}/log/puma.stdout.log", "#{Rails.root}/log/puma.stderr.log", true
 
-rails_env = ENV.fetch('RAILS_ENV') { 'production' }
-if rails_env == 'production'
-  daemonize true
-  stdout_redirect '/var/log/puma/puma.stdout.log', '/var/log/puma/puma.stderr.log', true
-end
-environment rails_env
-
 # Specifies the `environment` that Puma will run in.
 environment ENV.fetch('RAILS_ENV') { 'development' }
 
