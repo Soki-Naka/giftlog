@@ -84,3 +84,7 @@ Metrics/BlockLength:
 Rails/FilePath:
   Exclude:
     - 'config/puma.rb'
+
+Style/StringConcatenation:
+  Exclude:
+    - 'config/puma.rb'
