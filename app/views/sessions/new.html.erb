@@ -24,7 +24,8 @@
       </div>
 
       <div class="card-body">
-        <%= f.submit "ログイン" %>
+        <%= f.submit "ログイン", class: "btn btn-lg btn-danger mb-3" %>
+        <br><%= link_to "ゲストログイン(ポートフォリオ閲覧)", guest_path, method: :post, class: "btn btn-lg btn-warning" %>
       </div>
     <% end %>
     <%= link_to "アカウントをお持ちでない方はこちらから", signup_path, class: "small" %>

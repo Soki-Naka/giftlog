@@ -27,7 +27,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    if !guest_user
+      @user = User.find(params[:id])
+    else
+      flash[:danger] = 'ゲストユーザーはプロフィールを編集できません'
+      redirect_to @user
+    end
   end
 
   def update
