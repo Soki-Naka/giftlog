@@ -33,7 +33,7 @@
     <%= select_tag :situation, options_for_select(["誕生日祝い","結婚祝い","出産祝い","引越祝い","クリスマス","バレンタイン","ホワイトデー","合格祝い", "入学祝い","卒業祝い","就職祝い","昇進祝い","送別会","記念日","母の日","父の日","敬老の日","お礼","パーティー","お見舞い","手土産","その他"]), include_blank: "指定なし", class: "form-control" %>
     <%= label_tag :price, "贈りたい物の予算" %>
     <%= select_tag :price, options_for_select(["1,000円未満","1,000~2,000円", "2,000~3,000円","3,000~5,000円","5,000~8,000円","8,000~10,000円","10,000~15,000円","15,000円以上"]), include_blank: "指定なし", class: "form-control" %>
-    <%= submit_tag "検索", class: "btn btn-lg btn-success mt-2" %>
+    <%= submit_tag "検索", class: "btn btn-success mt-2" %>
     <% end %>
   </div>
 </div>

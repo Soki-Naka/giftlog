@@ -1,13 +1,14 @@
 <% provide(:title, 'ユーザーリスト') %>
 
+<h1 class="text-center mt-3">ユーザーリスト</h1>
+
 <div class="search-form text-left w-75 mx-auto">
   <%= form_tag(users_path, method: "get") do %>
     <%= text_field_tag :name, params[:name], placeholder: "ユーザー名", class: 'form-control w-25 pull-right mt-3' %>
-    <%= submit_tag "検索", class: "btn btn-lg btn-success mt-2" %>
+    <%= submit_tag "検索", class: "btn btn-success mt-2 mb-2" %>
   <% end %>
 </div>
 
-<h1 class="text-center mt-3">ユーザーリスト</h1>
 <div>
   <% if @users.any? %>
     <%= render @users %>
