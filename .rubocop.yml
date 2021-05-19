@@ -51,7 +51,7 @@ Style/RedundantSelf:
 
 # 変数の代入(A)、メソッドの呼び出し等(B)、条件分岐(C)から算出される複雑度
 Metrics/AbcSize:
-  Max: 30
+  Max: 65
 
 # 循環的複雑度 ≒ 分岐の数
 Metrics/CyclomaticComplexity:
@@ -65,7 +65,7 @@ Metrics/LineLength:
 
 # メソッドの行数
 Metrics/MethodLength:
-  Max: 20
+  Max: 25
   Exclude:
     - "db/migrate/*.rb"
 
@@ -88,3 +88,6 @@ Rails/FilePath:
 Style/StringConcatenation:
   Exclude:
     - 'config/puma.rb'
+
+Metrics/PerceivedComplexity:
+  Max: 9

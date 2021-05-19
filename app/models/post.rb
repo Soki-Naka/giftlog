@@ -16,4 +16,19 @@ class Post < ApplicationRecord
   validates :price, presence: true
   validates :when, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 400 }
+
+  # enum gender: { 男性: 0, 女性: 1}
+  # 性別による絞り込み
+  scope :get_by_gender, lambda { |gender|
+    where(gender: gender)
+  }
+  scope :get_by_age, lambda { |age|
+    where(age: age)
+  }
+  scope :get_by_situation, lambda { |situation|
+    where(situation: situation)
+  }
+  scope :get_by_price, lambda { |price|
+    where(price: price)
+  }
 end

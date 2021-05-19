@@ -1,0 +1,23 @@
+<h1 class="text-center mt-3">検索結果</h1>
+<%= page_entries_info(@posts) %>
+<p>選択条件</p>
+<p class="border-bottom border-dark w-75">
+<% if params[:gender].present? %>
+  性別: <%= params[:gender] %>
+<% end %>
+<% if params[:age].present? %>
+  年齢: <%= params[:age] %>
+<% end %>
+<% if params[:situation].present? %>
+  シチュエーション: <%= params[:situation] %>
+<% end %>
+<% if params[:price].present? %>
+  予算: <%= params[:price] %>
+<% end %>
+</p>
+<% if @posts.any?%>
+  <%= render @posts %>
+  <%= paginate @posts, theme: 'twitter-bootstrap-4' , pagination_class: "justify-content-center" %>
+<% else %>
+  <p>検索結果に一致する投稿はありません。</p>
+<% end %>

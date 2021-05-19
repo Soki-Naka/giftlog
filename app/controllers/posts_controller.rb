@@ -43,6 +43,30 @@ class PostsController < ApplicationController
     end
   end
 
+  def search
+    @posts = Post.all.page(params[:page])
+    if params[:gender].present?
+      @posts = @posts.get_by_gender params[:gender]
+      @posts = @posts.page(params[:page]).per(5)
+    end
+    if params[:age].present?
+      @posts = @posts.get_by_age params[:age]
+      @posts = @posts.page(params[:page]).per(5)
+    end
+    if params[:situation].present?
+      @posts = @posts.get_by_situation params[:situation]
+      @posts = @posts.page(params[:page]).per(5)
+    end
+    if params[:price].present?
+      @posts = @posts.get_by_price params[:price]
+      @posts = @posts.page(params[:page]).per(5)
+    end
+    if params[:gender].blank? && params[:age].blank? && params[:situation].blank? && params[:price].blank?
+      flash[:warning] = '条件を指定してください'
+      redirect_to root_url
+    end
+  end
+
   private
 
   def post_params

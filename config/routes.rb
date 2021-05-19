@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   post '/guest', to: 'guest_sessions#create'
   get '/new_post', to: 'posts#new'
+  get '/search', to: 'posts#search'
   get '/posts/:id', to: 'posts#show'
   get '/posts/:id/edit', to: 'posts#edit'
   post 'post_like/:id' => 'post_likes#create', as: 'create_like'
