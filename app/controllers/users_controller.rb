@@ -3,7 +3,13 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: %i[edit update favorite_people]
 
   def index
-    @users = User.all.page(params[:page]).per(5)
+    @users = User.all.page(params[:page]).per(5) if params[:name].blank?
+    # パラメータとして名前を受け取っている場合は絞って検索する
+    if params[:name].present?
+      @users = User.all
+      @users = @users.get_by_name params[:name]
+      @users = @users.page(params[:page]).per(5)
+    end
   end
 
   def show

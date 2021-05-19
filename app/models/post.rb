@@ -17,8 +17,6 @@ class Post < ApplicationRecord
   validates :when, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 400 }
 
-  # enum gender: { 男性: 0, 女性: 1}
-  # 性別による絞り込み
   scope :get_by_gender, lambda { |gender|
     where(gender: gender)
   }

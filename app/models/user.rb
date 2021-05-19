@@ -33,6 +33,11 @@ class User < ApplicationRecord
   validates :prefecture, length: { maximum: 30 }
   validates :introduction, length: { maximum: 200 }
 
+  # ユーザー名による絞り込み
+  scope :get_by_name, lambda { |name|
+    where('name like ?', "%#{name}%")
+  }
+
   # 渡された文字列のハッシュ値を返す
   def self.digest(string)
     cost = if ActiveModel::SecurePassword.min_cost
