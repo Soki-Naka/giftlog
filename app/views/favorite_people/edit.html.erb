@@ -8,11 +8,13 @@
         <%= render 'shared/error_messages', object: f.object %>
 
         <p><%= f.label :name, "名前(必須)", class:'mt-3' %></p>
-        <%= f.text_area :name, id: "input-name", placeholder:"ニックネームなど", class: "form-control w-50 mx-auto", size: '5x3' %>
+        <%= f.text_area :name, id: "input-name", placeholder:"ニックネームなど", class: "form-control text-area mx-auto", size: '5x3' %>
         <div class="cnt_area"><span class="now_cnt_name">0</span> / 50</div>
 
         <p><%= f.label :image, "画像(任意)", class:'mt-3' %></p>
-        <%= image_tag @favorite_person.image.url,size: '200x200' %>
+        <% if @favorite_person.image.present? %>
+          <%= image_tag @favorite_person.image.url,size: '200x200' %>
+        <% end %>
         <br><%= f.file_field :image, class:'mt-1 mb-2' %>
         <p><%= f.check_box :remove_image %>画像を削除する</p>
 
@@ -20,7 +22,7 @@
         <%= f.date_select :birthday, discard_year: true, prompt:"--",use_month_numbers:true, date_separator: '月'  %>日
 
         <p><%= f.label :description, "備考(任意)", class:'mt-3' %></p>
-        <%= f.text_area :description, id: "input-description", placeholder:"食の好みや趣味などをメモ書きしておきましょう", class: "form-control w-50 mx-auto", size: '5x9' %>
+        <%= f.text_area :description, id: "input-description", placeholder:"食の好みや趣味などをメモ書きしておきましょう", class: "form-control text-area mx-auto", size: '5x9' %>
         <div class="cnt_area"><span class="now_cnt_des">0</span> / 200</div>
 
          <p><%= f.submit "更新", class: "btn btn-success btn-lg mt-5" %></p>

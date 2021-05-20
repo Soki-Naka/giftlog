@@ -63,7 +63,7 @@
   </div>
 </div>
 
-<ul class="nav nav-tabs justify-content-center w-75 mx-auto ">
+<ul class="nav nav-tabs justify-content-center mx-auto ">
   <li class="nav-item">
     <a href="#posts" class="nav-link active rounded" data-toggle="tab">投稿一覧</a>
   </li>
@@ -81,7 +81,7 @@
     <div class="w-75 mx-auto">
       <% if @user.posts.any? %>
         <%= render @posts %>
-        <%= paginate @posts %>
+        <%= paginate @posts, theme: 'twitter-bootstrap-4' , pagination_class: "justify-content-center" %>
       <% else %>
         <p class="text-center">
           <% if current_user != @user %>
@@ -117,7 +117,7 @@
     <div class="w-75 mx-auto">
       <% if @user.post_likes.any? && @posts = @user.liked_posts.page(params[:page]).per(5) %>
       <%= render @posts %>
-      <%= paginate @posts %>
+      <%= paginate @posts, theme: 'twitter-bootstrap-4' , pagination_class: "justify-content-center" %>
       <% else %>
         <p class="text-center">
           <% if current_user != @user %>

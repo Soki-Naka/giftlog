@@ -9,18 +9,18 @@
         <%= f.file_field :image, class: 'mb-3' %>
 
         <p><%= f.label :name, "ユーザー名" %>(必須)</p>
-        <%= f.text_area :name, id: "input-name", class: "form-control w-50 mx-auto", size: '5x2' %>
+        <%= f.text_area :name, id: "input-name", class: "form-control text-area mx-auto", size: '5x2' %>
         <div class="cnt_area"><span class="now_cnt_name">0</span> / 50</div>
 
         <p><%= f.label :email, "メールアドレス" %>(必須)</p>
-        <%= f.email_field :email, id: "input-email", class: "form-control w-50 mx-auto" %>
+        <%= f.email_field :email, id: "input-email", class: "form-control text-area mx-auto" %>
         <div class="cnt_area"><span class="now_cnt_email">0</span> / 100</div>
 
         <p><%= f.label :password, "パスワード" %>(必須)</p>
-        <%= f.password_field :password, placeholder: "6文字以上", class: "form-control w-50 mx-auto" %>
+        <%= f.password_field :password, placeholder: "6文字以上", class: "form-control text-area mx-auto" %>
 
         <p><%= f.label :password_confirmation, "パスワード確認" %>(必須)</p>
-        <%= f.password_field :password_confirmation, placeholder: "6文字以上", class: "form-control w-50 mx-auto" %>
+        <%= f.password_field :password_confirmation, placeholder: "6文字以上", class: "form-control text-area mx-auto" %>
 
         <p><%= f.label :gender, "性別" %>(必須)</p>
         <%= f.select :gender, [["男性", "男性"], ["女性", "女性"]], include_blank: "選択してください" %>
@@ -29,15 +29,15 @@
         <%= f.number_field :age, :placeholder => "半角数字で入力", min:0, max:100 %>歳
 
         <p><%= f.label :job, "職業" %>(任意)</p>
-        <%= f.text_area :job, id: "input-job", placeholder:"例:学生、高校教師", class: "form-control w-50 mx-auto", size: '5x2' %>
+        <%= f.text_area :job, id: "input-job", placeholder:"例:学生、高校教師", class: "form-control text-area mx-auto", size: '5x2' %>
         <div class="cnt_area"><span class="now_cnt_job">0</span> / 50</div>
 
         <p><%= f.label :prefecture, "出身" %>(任意)</p>
-        <%= f.text_field :prefecture, id: "input-prefecture", placeholder:"都道府県or出身地", class: "form-control w-50 mx-auto" %>
+        <%= f.text_field :prefecture, id: "input-prefecture", placeholder:"都道府県or出身地", class: "form-control text-area mx-auto" %>
         <div class="cnt_area"><span class="now_cnt_pre">0</span> / 30</div>
 
         <p><%= f.label :introduction, "自己紹介" %>(任意)</p>
-        <%= f.text_area :introduction, id: "input-introduction", placeholder:"ご自由に書いてください。", class: "form-control mx-auto w-50", size: '5x9' %>
+        <%= f.text_area :introduction, id: "input-introduction", placeholder:"ご自由に書いてください。", class: "form-control mx-auto text-area", size: '5x9' %>
         <div class="cnt_area"><span class="now_cnt_intro">0</span> / 200</div>
 
         <p><%= f.submit "作成", class: "btn btn-success btn-lg mt-5" %></p>

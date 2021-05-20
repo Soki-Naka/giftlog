@@ -14,7 +14,7 @@
 
     <div class="search-form text-left w-75 mx-auto">
       <%= form_tag(user_favorite_people_path, method: "get") do %>
-        <%= text_field_tag :name, params[:name], placeholder: "名前", class: 'form-control w-25 pull-right mt-3' %>
+        <%= text_field_tag :name, params[:name], placeholder: "名前", class: 'form-control pull-right mt-3 text-field-for-search' %>
         <%= submit_tag "検索", class: "btn btn-success mt-2 mb-2" %>
       <% end %>
     </div>
@@ -23,9 +23,12 @@
         <%= render @favorite_people %>
         <%= paginate @favorite_people, theme: 'twitter-bootstrap-4' , pagination_class: "justify-content-center" %>
       </ul>
+      <%= link_to "大切な人リストのトップへ戻る", favorite_people_user_path(current_user), class:"float-right small" %>
     <% elsif @user.favorite_people.any? && @favorite_people.blank? %>
       <p class="text-center">検索に一致する大切な人は見つかりません。</p>
+      <%= link_to "大切な人リストのトップへ戻る", favorite_people_user_path(current_user), class:"float-right small" %>
     <% else %> 
       <p class="text-center">あなたの大切な人の情報を登録してみよう！</p>
     <% end %>
+    
   </div>

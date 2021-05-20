@@ -114,6 +114,7 @@ body {
   font-weight: 900;
   font-size: 60px;
   color: black;
+  text-align: center;
 }
 // ホーム画像 ここまで
 
@@ -129,7 +130,33 @@ body {
 }
 // ヘッダーロゴ ここまで
 
-// ハンバーガーメニュー レスポンシブ対応
+// レスポンシブ対応(入力フィールド関係)
+@media screen and (max-width:991px) {
+  .text-field-for-search {
+    width: 60%;
+  }
+  .text-area {
+    width: 90%;
+  }
+  .comment-text-area {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width:991px) {
+  .text-field-for-search {
+    width: 30%;
+  }
+  .text-area {
+    width: 50%;
+  }
+  .comment-text-area {
+    width: 75%;
+  }
+}
+// レスポンシブ対応(入力フィールド関係) ここまで
+
+// ハンバーガーメニュー
 @media screen and (max-width:991px) {
   .menu-item {
     margin-top: 5%;
@@ -138,7 +165,7 @@ body {
     display: none;
   }
 }
-// ハンバーガーメニュー レスポンシブ対応 ここまで
+// ハンバーガーメニュー ここまで
 
 // ハンバーガーメニュー色
 .navbar-light .navbar-toggler {
