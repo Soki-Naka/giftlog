@@ -59,7 +59,7 @@ Metrics/CyclomaticComplexity:
 
 # 1行の文字数
 Metrics/LineLength:
-  Max: 210
+  Max: 270
   Exclude:
     - "db/migrate/*.rb"
 
