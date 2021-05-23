@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :admin_user, only: :destroy
+
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
@@ -25,5 +27,14 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:content)
+  end
+
+  # 管理者かコメント投稿者かどちらかであるか確認
+  def admin_user
+    @comment = Comment.find(params[:id])
+    if current_user.admin.blank? && current_user != @comment.user
+      flash[:danger] = '権限がありません'
+      redirect_to(root_url)
+    end
   end
 end

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: %i[index edit update following followers favorite_people]
+  before_action :logged_in_user, only: %i[index edit update destroy following followers favorite_people]
   before_action :correct_user,   only: %i[edit update favorite_people]
+  before_action :admin_user, only: :destroy
 
   def index
     @users = User.all.page(params[:page]).per(5) if params[:name].blank?
@@ -51,6 +52,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    if @user.destroy
+      flash[:success] = 'ユーザーを削除しました'
+      redirect_to users_url
+    end
+  end
+
   def following
     @title = 'フォロー'
     @user  = User.find(params[:id])
@@ -95,5 +105,13 @@ class UsersController < ApplicationController
   def correct_user
     @user = User.find(params[:id])
     redirect_to(root_url) unless current_user?(@user)
+  end
+
+  # 管理者か確認
+  def admin_user
+    if current_user.admin.blank?
+      flash[:danger] = '権限がありません'
+      redirect_to(root_url)
+    end
   end
 end

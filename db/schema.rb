@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_08_045551) do
+ActiveRecord::Schema.define(version: 2021_05_22_075941) do
 
   create_table "comment_likes", charset: "utf8", force: :cascade do |t|
     t.integer "user_id"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2021_04_08_045551) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "remember_digest"
     t.string "image"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
