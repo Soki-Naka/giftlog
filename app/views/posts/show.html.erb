@@ -48,7 +48,7 @@
   data: { confirm: "投稿を削除してもよろしいですか?" }, class: "mt-2 btn btn-danger btn-sm text-right" %>
     <%= link_to "投稿編集", edit_post_path(@post), class: "mt-2 btn btn-danger btn-sm " %>
   <% end %>
-  <% if current_user.admin? %>
+  <% if logged_in? && current_user.admin? %>
     <%= link_to "投稿削除", @post, method: :delete,
     data: { confirm: "投稿を削除してもよろしいですか?" }, class: "mt-2 btn btn-danger btn-sm text-right" %>
   <% end %>

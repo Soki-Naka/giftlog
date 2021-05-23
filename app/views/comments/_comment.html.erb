@@ -50,7 +50,7 @@
         <p>このコメントは投稿者の<%= @post.user.name %>さんからいいねされました！</p>
       <% end %>
 
-      <% if current_user.admin? %>
+      <% if logged_in? && current_user.admin? %>
         <%= link_to "コメント削除", post_comment_path(@post, comment), method: :delete,
         data: { confirm: "コメントを削除してもよろしいですか?" }, class: "btn btn-danger btn-sm ml-1 mt-2" %>
       <% end%>
