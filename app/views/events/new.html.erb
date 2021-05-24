@@ -15,7 +15,7 @@
     <div class="cnt_area"><span class="now_cnt_des">0</span> / 200</div>
 
     <p><%= f.label :start_time, "日時(必須)", class:'mt-3' %></p>
-    <%= f.date_select :start_time, prompt:"--",discard_minute: true, discard_second: true, use_month_numbers:true, date_separator:'/' %>
+    <%= f.date_select :start_time, discard_minute: true, discard_second: true, use_month_numbers:true, date_separator:'/' %>
 
     <p><%= f.submit "登録", class: "btn btn-success btn-lg mt-5" %></p>
   <% end %>
