@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: %i[index edit update destroy following followers favorite_people]
-  before_action :correct_user,   only: %i[edit update favorite_people]
+  before_action :logged_in_user, only: %i[index edit update destroy following followers favorite_people events]
+  before_action :correct_user,   only: %i[edit update favorite_people events]
   before_action :admin_user, only: :destroy
 
   def index
@@ -91,6 +91,13 @@ class UsersController < ApplicationController
       @favorite_people = @user.favorite_people.page(params[:page]).per(5)
     end
     render 'show_favorite_people'
+  end
+
+  def events
+    @title = 'カレンダー'
+    @user  = User.find(params[:id])
+    @events = @user.events.all
+    render 'show_events'
   end
 
   private

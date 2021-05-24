@@ -1,0 +1,11 @@
+<% provide(:title, @event.title) %>
+<div class="border text-center bg-light w-75 mx-auto mt-3 rounded">
+  <p class="border-bottom"><span class="badge badge-pill badge-dark ml-2 mr-1">タイトル</span><%= @event.title %></p>
+  <p class="border-bottom"><span class="badge badge-pill badge-dark ml-2 mr-1">内容</span><%= @event.description %></p>
+  <p class="border-bottom"><span class="badge badge-pill badge-dark ml-2 mr-1">日時</span><%= @event.start_time.strftime('%Y年%01m月%01d日') %></p>
+<p>
+<%= link_to 'データ編集', edit_event_path(@event), class: "btn btn-danger btn-sm" %>
+<%= link_to 'データ削除',event_path(@event.id), method: :delete, data: { confirm: '削除しますか?' }, class: "btn btn-danger btn-sm" %>
+</p>
+<%= link_to 'カレンダートップへ戻る', "/users/#{@user.id}/events", class: "small" %>
+</div>

@@ -1,0 +1,37 @@
+<% provide(:title, "カレンダー") %>
+
+<div class="text-center">
+  <h1 class="mt-3">カレンダー</h1>
+  <br>
+
+  <%= link_to "登録する", new_event_path, class: "btn btn-success btn-sm mb-3" %>
+
+  <div class="schedule">イベント一覧</div>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>タイトル</th>
+        <th>日程</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @events.each do |event| %>
+        <tr>
+          <td><%= link_to event.title , "/users/#{@user.id}/events/#{event.id}" %></td>
+          <td><%= event.start_time.strftime('%Y年%01m月%01d日') %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= month_calendar events: @events do |date, events| %>
+    <%= date.day %>
+
+    <% events.each do |event| %>
+      <div>
+        <%= link_to event.title, "/users/#{@user.id}/events/#{event.id}" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

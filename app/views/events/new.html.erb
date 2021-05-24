@@ -1,0 +1,46 @@
+<% provide(:title, "イベント登録") %>
+
+<h1 class="text-center mt-3">イベント新規登録</h1>
+
+<div class="border bg-light w-75 mx-auto mb-3 text-center">
+  <%= form_with(model: @event, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+    <p><%= f.label :title, "タイトル(必須)", class:'mt-3' %></p>
+    <%= f.text_field :title, id: "input-title", class: "form-control text-area mx-auto" %>
+    <div class="cnt_area"><span class="now_cnt_title">0</span> / 50</div>
+
+    <p><%= f.label :description, "詳細(任意)", class:'mt-3' %></p>
+    <%= f.text_area :description, id: "input-description", class: "form-control text-area mx-auto", size: '5x3' %>
+    <div class="cnt_area"><span class="now_cnt_des">0</span> / 200</div>
+
+    <p><%= f.label :start_time, "日時(必須)", class:'mt-3' %></p>
+    <%= f.date_select :start_time, prompt:"--",discard_minute: true, discard_second: true, use_month_numbers:true, date_separator:'/' %>
+
+    <p><%= f.submit "登録", class: "btn btn-success btn-lg mt-5" %></p>
+  <% end %>
+</div>
+
+
+<script>
+jQuery(function($){
+    // title入力時
+    $('#input-title').on('input', function(){
+        //文字数を取得
+        var cnt = $(this).val().length;
+        //現在の文字数を表示
+        $('.now_cnt_title').text(cnt);
+    });
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-title').trigger('input');
+    // description入力時
+    $('#input-description').on('input', function(){
+        //文字数を取得
+        var cnt = $(this).val().length;
+        //現在の文字数を表示
+        $('.now_cnt_des').text(cnt);
+    });
+    //リロード時に初期文字列が入っていた時の対策
+    $('#input-description').trigger('input');
+});
+</script>

@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   delete 'comment_like/:id' => 'comment_likes#destroy', as: 'destroy_comment_like'
   get 'users/:id/favorite_people' => 'users#favorite_people', as: 'user_favorite_people'
   get '/users/:id/favorite_people/:id', to: 'favorite_people#show'
+  get 'users/:id/events' => 'users#events', as: 'user_events'
+  get '/users/:id/events/:id', to: 'events#show'
   resources :users do
     member do
       get :following, :followers
@@ -30,6 +32,11 @@ Rails.application.routes.draw do
       get :favorite_people
     end
   end
+  resources :users do
+    member do
+      get :events
+    end
+  end
   resources :favorite_people, only: %i[create destroy edit update new] do
     member do
       get :gifts
@@ -37,6 +44,7 @@ Rails.application.routes.draw do
     resources :gifts, only: %i[create destroy new edit update]
   end
   resources :gifts, only: %i[create destroy new edit update]
+  resources :events, only: %i[create destroy new edit update]
   resources :posts, only: %i[create new update edit destroy] do
     resources :post_likes, only: %i[create destroy]
     resources :comments, only: %i[create destroy] do

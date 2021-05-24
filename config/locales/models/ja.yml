@@ -35,6 +35,10 @@ ja:
           price: 予算
           when: いつ贈ったか
           description: 備考
+      event: 
+          title: タイトル
+          description: 詳細
+          start_time: 日時
   views:
     pagination:
       first: "最初"
@@ -51,3 +55,6 @@ ja:
           other: "<strong>1-%{count}</strong>/%{count}件中"
       more_pages:
         display_entries: "<strong>%{first}-%{last}</strong>/%{total}件中"
+  simple_calendar:
+    previous: "＜"
+    next: "＞"

@@ -2,6 +2,7 @@
 @import "font-awesome";
 @import "bootstrap";
 @import "bootstrap/bootstrap-tooltip";
+@import "simple_calendar";
 
 // 全体
 body {
@@ -284,6 +285,34 @@ body {
   color: #e54747;
 }
 // 投稿に対してのいいね ここまで
+
+//  カレンダー
+.simple-calendar {
+  .day {}
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {}
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month { }
+  .current-month {}
+
+  .has-events {
+    background: #98fb98;
+  }
+}
+// カレンダー ここまで
 
 // メモ
 
