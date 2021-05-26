@@ -1,3 +1,5 @@
+<% provide(:title, "#{@post.user.name}さんの投稿詳細") %>
+
 <div class="card bg-light text-center w-75 mx-auto mb-3 mt-3">
   <div class="card-img-top mt-2">
     <% if @post.user.image?%>
