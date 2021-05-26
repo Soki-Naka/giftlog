@@ -99,3 +99,7 @@ Rails/HelperInstanceVariable:
 Style/StringConcatenation:
   Exclude:
     - 'app/helpers/notifications_helper.rb'
+
+Rails/BulkChangeTable:
+  Exclude:
+    - 'db/migrate/20210525013938_create_notifications.rb'
