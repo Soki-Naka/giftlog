@@ -78,15 +78,10 @@ class UsersController < ApplicationController
   def favorite_people
     @title = '大切な人リスト'
     @user  = User.find(params[:id])
-    # @favorite_people = @user.favorite_people.page(params[:page]).per(5) if params[:name].blank?
-    # @favorite_people = @user.favorite_people.page(params[:page]).per(5)
-    # render 'show_favorite_people'
     if params[:name].present?
       @favorite_people = @user.favorite_people.all
       @favorite_people = @favorite_people.get_by_name params[:name]
       @favorite_people = @favorite_people.page(params[:page]).per(5)
-      # render 'show_favorite_people'
-      # redirect_to user_favorite_people_path
     else
       @favorite_people = @user.favorite_people.page(params[:page]).per(5)
     end

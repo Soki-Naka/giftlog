@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_24_040200) do
+ActiveRecord::Schema.define(version: 2021_05_25_013938) do
 
   create_table "comment_likes", charset: "utf8", force: :cascade do |t|
     t.integer "user_id"
@@ -60,6 +60,21 @@ ActiveRecord::Schema.define(version: 2021_05_24_040200) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["favorite_person_id"], name: "index_gifts_on_favorite_person_id"
+  end
+
+  create_table "notifications", charset: "utf8", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "post_id"
+    t.integer "comment_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_notifications_on_comment_id"
+    t.index ["post_id"], name: "index_notifications_on_post_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
   create_table "post_likes", charset: "utf8", force: :cascade do |t|

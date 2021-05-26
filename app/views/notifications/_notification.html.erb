@@ -1,0 +1,24 @@
+<% user = notification.visitor %>
+
+<% if notification.action != 'comment' || (notification.action == 'comment' && notification.post.user_id == notification.visited.id) %>
+  <li class="list-unstyled">
+    <div class="card bg-light mb-3 text-center w-75 mx-auto">
+    <%# <% if notification.post.user_id == notification.visited.id %> 
+        <div class="card-body">
+          <%= link_to user_path(notification.visitor) do %>
+            <% if user.image? %>
+                <%= image_tag user.image.to_s, size: '50x50', class: "rounded-circle" %>
+              <% else %>
+                <%= image_tag "default.jpg", size: '50x50', class: "rounded-circle" %>
+              <% end %>
+          <% end %>
+          <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span>
+          <br>
+          <% if !@comment.nil? %>
+            <p class="moderate-font text-center" style="color: black">コメント:<%= @comment %></p>
+          <% end %>
+        </div>
+    <%# <% end %> 
+    </div>
+  </li>
+<% end %>

@@ -91,3 +91,11 @@ Style/StringConcatenation:
 
 Metrics/PerceivedComplexity:
   Max: 9
+
+Rails/HelperInstanceVariable:
+  Exclude:
+    - 'app/helpers/notifications_helper.rb'
+
+Style/StringConcatenation:
+  Exclude:
+    - 'app/helpers/notifications_helper.rb'

@@ -35,6 +35,12 @@
           </ul>
         </li>
         <li class="list-unstyled nav-item mr-5"><%= link_to about_path, class: "text-white" do %><i class="far fa-question-circle menu-item" data-toggle="tooltip" data-placement="bottom" title="GIFT LOGとは？"></i><% end %></li>
+        <% if unchecked_notifications.any? %>
+          <i class="fa fa-circle" style="color: gold;"></i>
+        <% end %>
+        <li class="list-unstyled nav-item mr-5">
+          <%= link_to notifications_path(current_user), class: "text-white" do %><i class="far fa-bell menu-item" data-toggle="tooltip" data-placement="bottom" title="通知"></i><% end %>
+        </li>
         <li class="list-unstyled nav-item mr-5"><%= link_to new_post_path, class: "btn btn-success btn-lg menu-item" do %><i class="far fa-edit" data-toggle="tooltip" data-placement="bottom" title="投稿する"></i><% end %></li>
       <% else %>
         <li class="list-unstyled nav-item mr-5"><%= link_to root_path, class: "text-white" do %><i class="fas fa-home menu-item" data-toggle="tooltip" data-placement="bottom" title="ホーム"></i><% end %>

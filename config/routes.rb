@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get '/users/:id/favorite_people/:id', to: 'favorite_people#show'
   get 'users/:id/events' => 'users#events', as: 'user_events'
   get '/users/:id/events/:id', to: 'events#show'
+  # get 'users/:id/notifications' => 'users#notifications', as: 'user_notifications'
+  get 'users/:id/notifications' => 'notifications#index'
   resources :users do
     member do
       get :following, :followers
@@ -37,6 +39,11 @@ Rails.application.routes.draw do
       get :events
     end
   end
+  # resources :users do
+  #   member do
+  #     get :notifications
+  #   end
+  # end
   resources :favorite_people, only: %i[create destroy edit update new] do
     member do
       get :gifts
@@ -52,4 +59,5 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: %i[create destroy]
+  resources :notifications, only: :index
 end

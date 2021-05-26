@@ -3,6 +3,7 @@ class CommentLikesController < ApplicationController
 
   def create
     CommentLike.create(user_id: current_user.id, comment_id: params[:id])
+    @comment.create_notification_comment_like!(current_user)
   end
 
   def destroy
