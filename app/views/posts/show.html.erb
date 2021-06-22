@@ -63,9 +63,17 @@
       <li class="list-unstyled mb-2 mt-2 pr-1 mx-auto">
         <div data-toggle="tooltip" data-placement="bottom" title=<%= user.name %> >
           <% if user.image? %>
-            <%= link_to image_tag(user.image.to_s, size: '50x50', class: "rounded-circle"), user %>
+            <% if logged_in? %>
+              <%= link_to image_tag(user.image.to_s, size: '50x50', class: "rounded-circle"), user %>
+            <% else %>
+              <%= image_tag(user.image.to_s, size: '50x50', class: "rounded-circle") %>
+            <% end %>
           <% else %>
-            <%= link_to image_tag("default.jpg", size: '50x50', class: "rounded-circle"), user %>
+            <% if logged_in? %>
+              <%= link_to image_tag("default.jpg", size: '50x50', class: "rounded-circle"), user %>
+            <% else %>
+              <%= image_tag("default.jpg", size: '50x50', class: "rounded-circle") %>
+            <% end %>
           <% end %>
         </div>
       </li>

@@ -89,9 +89,17 @@
           <p>第<%= j %>位</p>
           <div class="card-img-top mt-2 mx-auto" data-toggle="tooltip" data-placement="bottom" data-html="true" title=<%= user.name %>&#13;&#10;<%= user.age %>歳<%= user.gender %> >
             <% if user.image? %>
-              <%= link_to image_tag(user.image.to_s, size: '50x50', class: "rounded-circle"), user %>
+              <% if logged_in? %>
+                <%= link_to image_tag(user.image.to_s, size: '50x50', class: "rounded-circle"), user %>
+              <% else %>
+                <%= image_tag(user.image.to_s, size: '50x50', class: "rounded-circle") %>
+              <% end %>
             <% else %>
-              <%= link_to image_tag("default.jpg",size: '50x50', class: "rounded-circle"), user %>
+              <% if logged_in? %>
+                <%= link_to image_tag("default.jpg",size: '50x50', class: "rounded-circle"), user %>
+              <% else %>
+                <%= image_tag("default.jpg", size: '50x50', class: "rounded-circle") %>
+              <% end %>
             <% end %>
           </div>
           <p>コメント<br>いいね獲得数: <%= user.comment_likes_count %></p>
@@ -101,9 +109,17 @@
           <p>第<%= j %>位</p>
           <div class="card-img-top mt-2 mx-auto" data-toggle="tooltip" data-placement="bottom" data-html="true" title=<%= user.name %>&#13;&#10;<%= user.age %>歳<%= user.gender %> >
           <% if user.image? %>
-            <%= link_to image_tag(user.image.to_s, size: '50x50', class: "rounded-circle"), user %>
+            <% if logged_in? %>
+              <%= link_to image_tag(user.image.to_s, size: '50x50', class: "rounded-circle"), user %>
+            <% else %>
+              <%= image_tag(user.image.to_s, size: '50x50', class: "rounded-circle") %>
+            <% end %>
           <% else %>
-            <%= link_to image_tag("default.jpg",size: '50x50', class: "rounded-circle"), user %>
+            <% if logged_in? %>
+              <%= link_to image_tag("default.jpg",size: '50x50', class: "rounded-circle"), user %>
+            <% else %>
+              <%= image_tag("default.jpg", size: '50x50', class: "rounded-circle") %>
+            <% end %>
           <% end %>
           <p>コメント<br>いいね獲得数: <%= user.comment_likes_count %></p>
         <% end %>

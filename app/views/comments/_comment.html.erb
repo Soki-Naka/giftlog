@@ -35,9 +35,17 @@
       <% end %>
       <div class="talk-icon" data-toggle="tooltip" data-placement="bottom" title=<%= comment.user.name %> >
         <% if comment.user.image? %>
-          <%= link_to image_tag(comment.user.image.to_s, size: '50x50',class: "rounded-circle"), comment.user %>
+          <% if logged_in? %>
+            <%= link_to image_tag(comment.user.image.to_s, size: '50x50',class: "rounded-circle"), comment.user %>
+          <% else %>
+            <%= image_tag(comment.user.image.to_s, size: '50x50',class: "rounded-circle") %>
+          <% end %>
         <% else %>
-          <%= link_to image_tag("default.jpg", size: '50x50',class: "rounded-circle"), comment.user %>
+          <% if logged_in? %>
+            <%= link_to image_tag("default.jpg", size: '50x50',class: "rounded-circle"), comment.user %>
+          <% else %>
+            <%= image_tag("default.jpg", size: '50x50',class: "rounded-circle") %>
+          <% end %>
         <% end %>
       </div>
       <br>
