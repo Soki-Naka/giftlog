@@ -1,24 +1,106 @@
-# README
+# GIFTLOG
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[GIFTLOG(https://giftlog.work)](https://giftlog.work)
 
-Things you may want to cover:
+ログインページより、ポートフォリオ閲覧用のゲストログインができます。
 
-* Ruby version
+![demo](https://gyazo.com/9a6eb7bbdebdd465277cc70059b655c8/raw)
 
-* System dependencies
+## 概要
 
-* Configuration
+プレゼント選びに関してユーザー同士で質問し合えるサイトです。<br>
+自分がプレゼントを渡す相手の特徴やシチュエーション、予算などを入力して投稿を行うことで<br>
+他のユーザーからコメントを受け付けることができます。<br>
+また、自分の大切な人の誕生日などの情報やイベントスケジュールもアプリ内で管理できます。 <br>
+レスポンシブ対応しているので、スマホからもご利用いただけます。
 
-* Database creation
+○投稿一覧
+![demo](https://gyazo.com/da381c4392dfc5664bd744d9199afa38/raw)
 
-* Database initialization
+○投稿詳細ページのユーザー同士のやりとりの様子
+![demo](https://gyazo.com/c797c45fd79a8bf543ef8b722c9c7d69/raw)
 
-* How to run the test suite
+○大切な人リスト
+![demo](https://gyazo.com/2aa6649d78e897d5ea71b697f78e7dab/raw)
 
-* Services (job queues, cache servers, search engines, etc.)
+## なぜこのサービスを作ったのか
+私は人に何かをプレゼントするのが好きです。<br>
+人に何かをあげるからには、喜んで欲しいので、いつもめちゃくちゃ悩みます。<br>
+そんな時、誰かに相談できる場があれば良いと思い、<br>
+また、プレゼント選びに関しての意見を交換し合える既存のサービスが見当たらなかったので、<br>
+実際に自分で作ってみることにしました。<br>
+プログラミングスクール等には通わず、全て独学で開発しました。<br>
+アプリ開発を通じて、「人のためになるサービス」を提供できるようになりたいです。
 
-* Deployment instructions
+## 使用技術
 
-* ...
+### バックエンド
+・Ruby(3.0.0)<br>
+・Ruby on Rails(6.1.3)
+
+### フロントエンド
+・HTML/CSS<br>
+・JavaScript<br>
+・jQuery<br>
+・Bootstrap(4.6.0)
+
+### インフラ
+・MySQL(8.0.23)<br>
+・AWS(EC2/VPC/Routes53/ACM)<br>
+・Puma<br>
+・Nginx
+
+### その他使用技術
+・非同期通信(投稿へのいいね、コメントへのいいね、ユーザーのフォロー/フォロー解除)<br>
+・コードの自動修正(Rubocop)<br>
+・GitHubの活用
+・HTTPS通信(AWS Certificate Manager)
+
+## テーブル設計
+### ER図
+![ギフトログ(6月23日)](https://user-images.githubusercontent.com/73925114/123044578-d2812900-d434-11eb-9c9e-c15e7503c7c9.png)
+
+## 機能一覧
+
+○ユーザーに関する機能<br>
+・基本機能<br>
+→新規登録機能、ログイン認証機能(永続ログインあり)<br>
+・ユーザー情報機能<br>
+→編集機能(本人のみ)、一覧表示機能、詳細表示機能、削除機能(管理者のみ)、検索機能<br>
+・フォローに関する機能<br>
+→フォロー機能(非同期通信)、フォロー/フォロワー一覧表示機能<br>
+・その他<br>
+→ポートフォリオ閲覧用ゲストログイン機能
+
+○投稿に関する機能<br>
+→新規投稿機能、編集機能(投稿ユーザーのみ)、一覧表示機能、詳細表示機能<br>
+(投稿/コメントした投稿/いいねした投稿のタブ切り替え可能)、<br>
+削除機能(投稿ユーザー、管理者のみ)、検索機能(条件指定)、投稿に対するいいね機能(非同期通信)
+
+○コメントに関する機能<br>
+→新規投稿機能、削除機能(投稿ユーザー、管理者のみ)、<br>
+一覧表示機能、コメントに対するいいね機能(非同期通信)
+
+○個別ユーザーサービスに関する機能<br>
+・「大切な人リスト」機能<br>
+→新規登録機能、編集機能、削除機能、一覧表示機能、検索機能<br>
+・「大切な人」の「贈ったものリスト」機能<br>
+→新規登録機能、編集機能、削除機能、一覧表示機能<br>
+・イベント管理機能<br>
+→新規登録機能、編集機能、削除機能、一覧表示機能、カレンダー表示機能(SimpleCalendar)<br>
+・通知機能(フォロー、コメント、投稿に対してのいいね、<br>
+コメントに対してのいいねに関しての通知に関しての一覧表示機能)
+
+○その他<br>
+・コメントに対してのいいね獲得数ランキング表示機能<br>
+・ページネーション(kaminari)<br>
+・画像アップロード機能<br>
+・レスポンシブ対応
+
+
+
+
+
+
+
+
