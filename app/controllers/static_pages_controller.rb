@@ -29,9 +29,10 @@ class StaticPagesController < ApplicationController
     # コメント回答数ランキング(自分の投稿へのコメントも含む)(修正版)↓
     # @comments_users_rank = User.joins(:comments).group(comments[:user_id]).select('users.*, COUNT(`comments`.`id`) AS comments_count').order('count(user_id) desc').limit(3)
 
-    # 5月26日↓
-    # @comments_users_rank = User.joins(:comments, :posts).group(comments[:user_id]).where.not(comments[:user_id].eq(posts[:user_id])).select('users.*, COUNT(`comments`.`id`) AS comments_count').order('count(comments.id) desc').limit(3)
+    # 6月24日
+    # @comments_users_rank = User.joins(posts: :comments).where.not(posts[:user_id].eq(comments[:user_id])).group(:id).select('users.*, COUNT(`comments`.`id`) AS comments_count').order('count(comments.id) DESC').limit(3)
 
+    # 5月26日↓
     # @comments_users_rank = User.joins(:comments, :posts).group(comments[:user_id]).where.not(comments[:user_id].eq(posts[:user_id])).select('users.*, COUNT(`comments`.`id`) AS comments_count').order('count(comments.id) desc').limit(3)
 
     # コメントへのいいね獲得数ランキング
