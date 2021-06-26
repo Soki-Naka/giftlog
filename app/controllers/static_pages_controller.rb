@@ -18,7 +18,7 @@ class StaticPagesController < ApplicationController
     comment_likes = CommentLike.arel_table
     comments = Comment.arel_table
     # これいじる↓
-    # posts = Post.arel_table
+    posts = Post.arel_table
 
     # コメント回答数ランキング(自分の投稿へのコメントも含む)
     # @comments_users_rank = User.find(Comment.group(:user_id).order('count(user_id) desc').limit(3).pluck(:user_id))
@@ -31,6 +31,9 @@ class StaticPagesController < ApplicationController
 
     # 6月24日
     # @comments_users_rank = User.joins(posts: :comments).where.not(posts[:user_id].eq(comments[:user_id])).group(:id).select('users.*, COUNT(`comments`.`id`) AS comments_count').order('count(comments.id) DESC').limit(3)
+
+    @comments_users_rank = User.joins("LEFT OUTER JOIN comments ON users.id = comments.user_id
+    LEFT OUTER JOIN posts ON comments.post_id = posts.id").where.not(posts[:user_id].eq(comments[:user_id])).group(:id).select('users.*, COUNT(`comments`.`id`) AS comments_count').order('count(comments.id) DESC').limit(3)
 
     # 5月26日↓
     # @comments_users_rank = User.joins(:comments, :posts).group(comments[:user_id]).where.not(comments[:user_id].eq(posts[:user_id])).select('users.*, COUNT(`comments`.`id`) AS comments_count').order('count(comments.id) desc').limit(3)

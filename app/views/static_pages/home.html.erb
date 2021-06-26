@@ -63,24 +63,66 @@
           <p>回答数: <%= user.comments_count %></p>
         <% end %>
         <% end %>
+
+<%# コメント数ランキング ここから %>
+      <h2>コメント数ランキング</h2>
+
+      <% lastComment = 0 %>
+      <% j = 1 %>
+      <% @comments_users_rank.each.with_index(1) do |user, i| %>
+        <% if i == 1 %>
+          <% lastComment = user.comments_count %>
+        <% end %>
+        <% if user.comments_count != lastComment %>
+          <% j = i %>
+          <p>第<%= j %>位</p>
+          <div class="card-img-top mt-2 mx-auto" data-toggle="tooltip" data-placement="bottom" data-html="true" title=<%= user.name %>&#13;&#10;<%= user.age %>歳<%= user.gender %> >
+            <% if user.image? %>
+              <% if logged_in? %>
+                <%= link_to image_tag(user.image.to_s, size: '50x50', class: "rounded-circle"), user %>
+              <% else %>
+                <%= image_tag(user.image.to_s, size: '50x50', class: "rounded-circle") %>
+              <% end %>
+            <% else %>
+              <% if logged_in? %>
+                <%= link_to image_tag("default.jpg",size: '50x50', class: "rounded-circle"), user %>
+              <% else %>
+                <%= image_tag("default.jpg", size: '50x50', class: "rounded-circle") %>
+              <% end %>
+            <% end %>
+          </div>
+          <p>コメント数: <%= user.comments_count %></p>
+          <% lastComment = user.comments_count %>
+        <% else %>
+          <% lastComment = user.comments_count %>
+          <p>第<%= j %>位</p>
+          <div class="card-img-top mt-2 mx-auto" data-toggle="tooltip" data-placement="bottom" data-html="true" title=<%= user.name %>&#13;&#10;<%= user.age %>歳<%= user.gender %> >
+          <% if user.image? %>
+            <% if logged_in? %>
+              <%= link_to image_tag(user.image.to_s, size: '50x50', class: "rounded-circle"), user %>
+            <% else %>
+              <%= image_tag(user.image.to_s, size: '50x50', class: "rounded-circle") %>
+            <% end %>
+          <% else %>
+            <% if logged_in? %>
+              <%= link_to image_tag("default.jpg",size: '50x50', class: "rounded-circle"), user %>
+            <% else %>
+              <%= image_tag("default.jpg", size: '50x50', class: "rounded-circle") %>
+            <% end %>
+          <% end %>
+          <p>コメント数: <%= user.comments_count %></p>
+        <% end %>
+      <% end %>
+      </div>
+      <%# コメント数ランキングここまで %>
       
 
-  
+  <%# コメントへのいいね獲得数ランキング ここから %>
       <h2>コメントへのいいね獲得<br>ランキング</h2>
-      <% if false %>
-      <% @comments_likes_users_rank.each.with_index(1) do |user, i| %>
-        <p>第<%= i %>位</p>
-        <p>ユーザー名: <%= link_to user.name, user %></p>
-        <p>いいね獲得数: <%= user.comment_likes_count %></p>
-      <% end %>
-      <% end %>
 
       <% lastLike = 0 %>
       <% j = 1 %>
-      <%# <div class="d-inline-flex float-right "> %>
-      <%# <h2 class="d-none">コメントへのいいね獲得ランキング</h2> %>
       <% @comments_likes_users_rank.each.with_index(1) do |user, i| %>
-        <%# <div> %>
         <% if i == 1 %>
           <% lastLike = user.comment_likes_count %>
         <% end %>
@@ -123,13 +165,10 @@
           <% end %>
           <p>コメント<br>いいね獲得数: <%= user.comment_likes_count %></p>
         <% end %>
-      <%# </div> %>
       <% end %>
-      <%# </div> %>
   </div>
-<%# <% end %> 
+  <%# コメントへのいいね獲得数ランキングここまで %>
 </div>
-<%# </div> %>
 
 <div class="w-75 mx-auto">
   <h1 class="text-center">投稿一覧</h1>
