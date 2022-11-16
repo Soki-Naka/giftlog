@@ -1,6 +1,6 @@
 # GIFTLOG
 
-[GIFTLOG(https://giftlog.work)](https://giftlog.work)
+[GIFTLOG(https://giftlog.work)](https://giftlog.work)(現在はサービス停止中)
 
 ログインページより、ポートフォリオ閲覧用のゲストログインができます。
 
